@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "gDlWU/520NxOBRr+XDI4gjlSsxDDpOu8X72GtHo0JHegtmP+IwLXFLznDf1soo4h8ZtqFb6T4iJEJlVTgk79jA==",
+  "success": true,
+  "projectFilePath": "/home/ledson/Desktop/dotnet_projects/socialNetwork/Source/Core/Core.Domain/Core.Domain.csproj",
+  "expectedPackageFiles": [
+    "/home/ledson/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.25/microsoft.aspnetcore.app.ref.6.0.25.nupkg.sha512"
+  ],
+  "logs": []
+}
