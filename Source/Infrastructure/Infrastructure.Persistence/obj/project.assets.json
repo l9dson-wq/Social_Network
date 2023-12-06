@@ -805,6 +805,11 @@
       "Core.Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore": "6.0.25",
+          "Microsoft.EntityFrameworkCore.InMemory": "6.0.25",
+          "Microsoft.Extensions.Options.ConfigurationExtensions": "6.0.25"
+        },
         "compile": {
           "bin/placeholder/Core.Application.dll": {}
         },

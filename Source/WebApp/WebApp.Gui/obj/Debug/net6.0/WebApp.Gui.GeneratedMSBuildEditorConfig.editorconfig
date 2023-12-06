@@ -14,7 +14,7 @@ build_property.EnableComHosting =
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
-build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = /home/ledson/Desktop/dotnet_projects/socialNetwork/Source/WebApp/WebApp.Gui
 build_property._RazorSourceGeneratorDebug = 
 

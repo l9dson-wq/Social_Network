@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "BLG5P5svfbBQYA1dMTKuTs1sVPPcTuC/dNs8oNO+zhnPZElvGk09ZBNtyndWkw62eVMCkGsjuP1pQF/beQC0Og==",
+  "dgSpecHash": "6WD/iTtFMDZqbF6D8Z8DppUjJuCpx64InURoiXwQi0wJUuG4CZa35zb35G61oTlabrRNiiqsgbqjXSnAwdPjrg==",
   "success": true,
   "projectFilePath": "/home/ledson/Desktop/dotnet_projects/socialNetwork/Source/Infrastructure/Infrastructure.Persistence/Infrastructure.Persistence.csproj",
   "expectedPackageFiles": [
