@@ -16,7 +16,7 @@ public class UserService : CommonService<SaveUserViewModel, UserViewModel, User>
 
   public async Task<List<UserViewModel>> GetAllViewModelWithInclude()
   {
-    List<User> users = await _iUserRepository.GetAllWithIncludeAsync(new List<string> { "UserProfile" });
+    List<User> users = await _iUserRepository.GetAllWithIncludeAsync(new List<string> { "UserProfile", "Posts" });
 
     return users.Select(user => new UserViewModel
     {

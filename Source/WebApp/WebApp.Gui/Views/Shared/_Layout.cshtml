@@ -2,53 +2,83 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - WebApp.Gui</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/WebApp.Gui.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@ViewData["Title"] - WebApp.Gui</title>
+  @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+  <link rel="stylesheet" href="~/WebApp.Gui.styles.css" asp-append-version="true" /> *@
+  <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.6.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">WebApp.Gui</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
-                                asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
+<body class=" bg-gray-300">
+  <header>
+    <!-- NAVBAR -->
+    <div class="w-full flex items-center justify0center border border-1 boder-blue-600 bg-white fixed top-0 mb-9">
+      <div class="w-full flex flex-row justify-between items-center">
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - WebApp.Gui - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        <div class="w-96 flex items-center justify-center">
+          <div><a href="#" class="text-2xl font-bold text-black">Social <span class="text-orange-500">Network</span></a>
+          </div>
+          <div class="flex ms-5 justify-center items-center p-2"><a href="#" class="text-black hover:text-blue-500"><i
+                class="ri-home-4-line text-xl font-normal"></i>
+              Home</a></div>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+
+        <div class="w-6/12">
+          <i class="ri-search-line absolute text-2xl top-2 text-gray-400 ms-2"></i>
+          <input type="search" class="bg-transparent border-2 p-1 rounded-md w-full px-9 text-sm" />
+        </div>
+
+        <div class="flex items-center justify-center w-fit">
+          <div class=""><a href="#"><i class="ri-chat-3-line text-2xl text-black hover:text-blue-500"></i></a></div>
+          <div class="ms-2"><a href="#"><i
+                class="ri-notification-3-line text-2xl text-black hover:text-blue-500"></i></a>
+          </div>
+          <div class="ms-2"><a href="#"><i class="ri-add-circle-line text-2xl text-black hover:text-blue-500"></i></a>
+          </div>
+          <div class="ms-2 bg-gray-200 p-1 rounded-md"><a href="#"
+              class="flex items-center justify-center text-sm text-black hover:text-blue-500"><i
+                class="ri-megaphone-line text-xl"></i>advertise</a></div>
+          <div class="ms-2">
+
+            <div class="flex items-center justify-evenly p-1">
+              <img src="https://wallpapers-clan.com/wp-content/uploads/2023/05/cool-pfp-02.jpg" alt="profile picture"
+                class="w-10 mr-2 rounded-full">
+              <div class="flex items-centert flex-col justify-evenly">
+                <p class="text-sm font-bold">l3dson-wq</p>
+                <span class="text-sm">3 Karma</span>
+              </div>
+              <div class="ms-5 border border-1 rounded-md">
+                <a href="#" class="text-black hover:text-blue-500"><i class="ri-arrow-down-s-line text-xl"></i></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- NAVBAR -->
+  </header>
+
+  <br>
+  <br>
+
+  <main role="main">
+    @RenderBody()
+  </main>
+
+  <footer class="border-top footer text-muted">
+    <div class="container">
+
+    </div>
+  </footer>
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+  <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="~/js/site.js" asp-append-version="true"></script>
+  @await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>
