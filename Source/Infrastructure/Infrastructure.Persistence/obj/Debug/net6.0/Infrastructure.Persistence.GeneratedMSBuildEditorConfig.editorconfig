@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Infrastructure.Persistence
-build_property.ProjectDir = /home/ledson/Desktop/dotnet_projects/socialNetwork/Source/Infrastructure/Infrastructure.Persistence/
+build_property.ProjectDir = /Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Persistence/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

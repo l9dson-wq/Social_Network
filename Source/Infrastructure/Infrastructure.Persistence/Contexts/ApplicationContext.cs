@@ -17,6 +17,27 @@ public class ApplicationContext : DbContext
   public DbSet<Like> LikeBaseEntities { get; set; }
   public DbSet<FriendShip> FriendShips { get; set; }
 
+  //Modifying savechanges method
+  public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = new())
+  {
+    foreach (var entry in ChangeTracker.Entries<AuditableBaseEntity>())
+    {
+      switch (entry.State)
+      {
+        case EntityState.Added:
+          entry.Entity.Created = DateTime.Now;
+          entry.Entity.CreatedBy = "DefaultAppUser";
+          break;
+        case EntityState.Modified:
+          entry.Entity.LastModified = DateTime.Now;
+          entry.Entity.LastModifiedBy = "DefaultAppUser";
+          break;
+      }
+    }
+
+    return base.SaveChangesAsync(cancellationToken);
+  }
+
   protected override void OnModelCreating(ModelBuilder modelBuilder)
   {
     //FLUENT API
@@ -29,10 +50,10 @@ public class ApplicationContext : DbContext
       user.HasKey(u => u.Id);
 
       user.HasOne(u => u.UserProfile).WithOne(up => up.User).HasForeignKey<UserProfile>(up => up.UserId).OnDelete(DeleteBehavior.Cascade);
-      user.HasMany(u => u.Likes).WithOne(l => l.User).HasForeignKey(l => l.UserId).OnDelete(DeleteBehavior.Cascade);
+      user.HasMany(u => u.Likes).WithOne(l => l.User).HasForeignKey(l => l.UserId).OnDelete(DeleteBehavior.NoAction);
       user.HasMany(u => u.Posts).WithOne(p => p.User).HasForeignKey(p => p.UserId).OnDelete(DeleteBehavior.Cascade);
       user.HasMany(u => u.Saveds).WithOne(s => s.User).HasForeignKey(s => s.UserId).OnDelete(DeleteBehavior.Cascade);
-      user.HasMany(u => u.FriendShips).WithOne(f => f.User).HasForeignKey(f => f.User).OnDelete(DeleteBehavior.NoAction);
+      user.HasMany(u => u.FriendShips).WithOne(f => f.User).HasForeignKey(f => f.UserId).OnDelete(DeleteBehavior.NoAction);
       user.HasMany(u => u.IAmFriend).WithOne(f => f.Friend).HasForeignKey(f => f.FriendId).OnDelete(DeleteBehavior.NoAction);
       user.HasMany(u => u.Comments).WithOne(c => c.User).HasForeignKey(c => c.UserId).OnDelete(DeleteBehavior.NoAction);
 
@@ -60,7 +81,7 @@ public class ApplicationContext : DbContext
       post.HasKey(p => p.Id);
 
       post.HasMany(p => p.Comments).WithOne(c => c.Post).HasForeignKey(c => c.PostId).OnDelete(DeleteBehavior.Cascade);
-      post.HasMany(p => p.Likes).WithOne(l => l.Post).HasForeignKey(l => l.PostId).OnDelete(DeleteBehavior.Cascade);
+      post.HasMany(p => p.Likes).WithOne(l => l.Post).HasForeignKey(l => l.PostId).OnDelete(DeleteBehavior.NoAction);
     });
 
     //Comment

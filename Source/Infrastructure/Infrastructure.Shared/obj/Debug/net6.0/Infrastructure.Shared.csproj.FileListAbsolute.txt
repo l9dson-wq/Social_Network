@@ -1,0 +1,12 @@
+/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/bin/Debug/net6.0/Infrastructure.Shared.deps.json
+/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/bin/Debug/net6.0/Infrastructure.Shared.dll
+/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/bin/Debug/net6.0/Infrastructure.Shared.pdb
+/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/obj/Debug/net6.0/Infrastructure.Shared.GeneratedMSBuildEditorConfig.editorconfig
+/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/obj/Debug/net6.0/Infrastructure.Shared.AssemblyInfoInputs.cache
+/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/obj/Debug/net6.0/Infrastructure.Shared.AssemblyInfo.cs
+/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/obj/Debug/net6.0/Infrastructure.Shared.csproj.CoreCompileInputs.cache
+/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/obj/Debug/net6.0/Infrastructure.Shared.sourcelink.json
+/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/obj/Debug/net6.0/Infrastructure.Shared.dll
+/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/obj/Debug/net6.0/refint/Infrastructure.Shared.dll
+/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/obj/Debug/net6.0/Infrastructure.Shared.pdb
+/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/obj/Debug/net6.0/ref/Infrastructure.Shared.dll

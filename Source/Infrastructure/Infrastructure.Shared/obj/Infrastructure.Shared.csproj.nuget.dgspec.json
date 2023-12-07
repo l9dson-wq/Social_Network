@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/ledson/Desktop/dotnet_projects/socialNetwork/Source/Infrastructure/Infrastructure.Shared/Infrastructure.Shared.csproj": {}
+    "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/Infrastructure.Shared.csproj": {}
   },
   "projects": {
-    "/home/ledson/Desktop/dotnet_projects/socialNetwork/Source/Infrastructure/Infrastructure.Shared/Infrastructure.Shared.csproj": {
+    "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/Infrastructure.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ledson/Desktop/dotnet_projects/socialNetwork/Source/Infrastructure/Infrastructure.Shared/Infrastructure.Shared.csproj",
+        "projectUniqueName": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/Infrastructure.Shared.csproj",
         "projectName": "Infrastructure.Shared",
-        "projectPath": "/home/ledson/Desktop/dotnet_projects/socialNetwork/Source/Infrastructure/Infrastructure.Shared/Infrastructure.Shared.csproj",
-        "packagesPath": "/home/ledson/.nuget/packages/",
-        "outputPath": "/home/ledson/Desktop/dotnet_projects/socialNetwork/Source/Infrastructure/Infrastructure.Shared/obj/",
+        "projectPath": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/Infrastructure.Shared.csproj",
+        "packagesPath": "/Users/ledson/.nuget/packages/",
+        "outputPath": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/ledson/.nuget/NuGet/NuGet.Config"
+          "/Users/ledson/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -48,18 +48,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.25, 6.0.25]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/RuntimeIdentifierGraph.json"
         }
       }
     }

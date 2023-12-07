@@ -1,20 +1,99 @@
 {
   "format": 1,
   "restore": {
-    "/home/ledson/Desktop/dotnet_projects/socialNetwork/Source/WebApp/WebApp.Gui/WebApp.Gui.csproj": {}
+    "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/WebApp.Gui.csproj": {}
   },
   "projects": {
-    "/home/ledson/Desktop/dotnet_projects/socialNetwork/Source/WebApp/WebApp.Gui/WebApp.Gui.csproj": {
+    "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Core/Core.Application/Core.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/ledson/Desktop/dotnet_projects/socialNetwork/Source/WebApp/WebApp.Gui/WebApp.Gui.csproj",
-        "projectName": "WebApp.Gui",
-        "projectPath": "/home/ledson/Desktop/dotnet_projects/socialNetwork/Source/WebApp/WebApp.Gui/WebApp.Gui.csproj",
-        "packagesPath": "/home/ledson/.nuget/packages/",
-        "outputPath": "/home/ledson/Desktop/dotnet_projects/socialNetwork/Source/WebApp/WebApp.Gui/obj/",
+        "projectUniqueName": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Core/Core.Application/Core.Application.csproj",
+        "projectName": "Core.Application",
+        "projectPath": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Core/Core.Application/Core.Application.csproj",
+        "packagesPath": "/Users/ledson/.nuget/packages/",
+        "outputPath": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Core/Core.Application/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/ledson/.nuget/NuGet/NuGet.Config"
+          "/Users/ledson/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Core/Core.Domain/Core.Domain.csproj": {
+                "projectPath": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Core/Core.Domain/Core.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[12.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[6.0.25, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Core/Core.Domain/Core.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Core/Core.Domain/Core.Domain.csproj",
+        "projectName": "Core.Domain",
+        "projectPath": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Core/Core.Domain/Core.Domain.csproj",
+        "packagesPath": "/Users/ledson/.nuget/packages/",
+        "outputPath": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Core/Core.Domain/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ledson/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -26,6 +105,196 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Persistence/Infrastructure.Persistence.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Persistence/Infrastructure.Persistence.csproj",
+        "projectName": "Infrastructure.Persistence",
+        "projectPath": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Persistence/Infrastructure.Persistence.csproj",
+        "packagesPath": "/Users/ledson/.nuget/packages/",
+        "outputPath": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Persistence/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ledson/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Core/Core.Application/Core.Application.csproj": {
+                "projectPath": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Core/Core.Application/Core.Application.csproj"
+              },
+              "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Core/Core.Domain/Core.Domain.csproj": {
+                "projectPath": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Core/Core.Domain/Core.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.InMemory": {
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.25, )"
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[6.0.25, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/Infrastructure.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/Infrastructure.Shared.csproj",
+        "projectName": "Infrastructure.Shared",
+        "projectPath": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/Infrastructure.Shared.csproj",
+        "packagesPath": "/Users/ledson/.nuget/packages/",
+        "outputPath": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ledson/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/WebApp.Gui.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/WebApp.Gui.csproj",
+        "projectName": "WebApp.Gui",
+        "projectPath": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/WebApp.Gui.csproj",
+        "packagesPath": "/Users/ledson/.nuget/packages/",
+        "outputPath": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/ledson/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Core/Core.Application/Core.Application.csproj": {
+                "projectPath": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Core/Core.Application/Core.Application.csproj"
+              },
+              "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Persistence/Infrastructure.Persistence.csproj": {
+                "projectPath": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Persistence/Infrastructure.Persistence.csproj"
+              },
+              "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/Infrastructure.Shared.csproj": {
+                "projectPath": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/Infrastructure/Infrastructure.Shared/Infrastructure.Shared.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -64,16 +333,6 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[6.0.25, 6.0.25]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.linux-x64",
-              "version": "[6.0.25, 6.0.25]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -82,7 +341,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.100/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/RuntimeIdentifierGraph.json"
         }
       }
     }
