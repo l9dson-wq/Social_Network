@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets/css/site.css"
     },
     {
+      "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/css/styles.css",
+      "PackagePath": "staticwebassets/css/styles.css"
+    },
+    {
       "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/favicon.ico",
       "PackagePath": "staticwebassets/favicon.ico"
     },

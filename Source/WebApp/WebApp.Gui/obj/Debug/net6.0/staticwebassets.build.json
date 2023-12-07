@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+8qZ9vQt1/3bZYHFh2aA9LR+O8yd/lGv7P+p3hXPH5M=",
+  "Hash": "QpNf9bP1oJngNVYn6z8aZMC/OSOV7K36Y+dTXYvWbqo=",
   "Source": "WebApp.Gui",
   "BasePath": "_content/WebApp.Gui",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/css/site.css"
+    },
+    {
+      "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/css/styles.css",
+      "SourceId": "WebApp.Gui",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/",
+      "BasePath": "_content/WebApp.Gui",
+      "RelativePath": "css/styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/styles.css"
     },
     {
       "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/favicon.ico",

@@ -551,3 +551,5 @@
 /Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/obj/Debug/net6.0/ref/WebApp.Gui.dll
 /Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/AutoMapper.dll
 /Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/package-lock.json
+/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/package.json
