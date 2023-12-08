@@ -13,5 +13,6 @@ public static class ServiceRegistration
 
     // Injecting services
     services.AddTransient<IUserService, UserService>();
+    services.AddTransient<IUserProfileService, UserProfileService>();
   }
 }

@@ -61,6 +61,62 @@
     </div>
     <!-- Filters -->
 
+    @if (Model.Count != 0 && Model != null)
+    {
+      @foreach (var item in Model)
+      {
+        @foreach (var post in item.Posts)
+        {
+          <!-- POST -->
+          <div class="mt-5 flex items-center justify-center">
+            <div class="w-full mx-auto">
+              <div class="bg-white p-2 flex flex-col items-start w-full mx-auto rounded-md">
+                <div class="flex items-start border-b mb-5">
+                  <div class="font-bold">
+                    <div class="flex items-center justify-center text-xl font-extrabold hover:bg-gray-200 text-gray-500">
+                      <a href="#"><i class="ri-arrow-up-fill"></i></a>
+                    </div>
+                    <div class="flex items-center justify-center text-gray-500">0</div>
+                    <div class="flex items-center justify-center text-xl font-extrabold hover:bg-gray-200 text-gray-500">
+                      <a href="#"><i class="ri-arrow-down-fill"></i></a>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start justify-start flex-col w-fit ms-5">
+                    <div class="w-full flex items-center">
+                      <img src="https://avatarfiles.alphacoders.com/367/367013.jpeg" class="w-9 mr-2 rounded-sm">
+                      <p class="text-sm">Posted by <span class="font-bold">@item.Name</span> <span
+                          class="text-gray-400">@post.Created</span></p>
+                    </div>
+                    <div class="w-fit mt-5 mb-5">
+                      <h4 class="mb-2 text-xl font-bold">@post.Title</h4>
+                      <p class="text-sm">@post.Description</p>
+                    </div>
+                    <div>
+                      <img src="@post.ImagePath" class="w-full" alt="">
+                    </div>
+                    <div class="w-80 flex justify-between flex-row mt-5 font-bold">
+                      <div class="hover:bg-gray-200 p-2 rounded-md text-gray-500"><a href="#"><i
+                            class="ri-message-2-line mr-1"></i>Comments</a>
+                      </div>
+                      <div class="hover:bg-gray-200 p-2 rounded-md text-gray-500"><a href="#"><i
+                            class="ri-share-forward-line mr-1"></i>Share</a></div>
+                      <div class="hover:bg-gray-200 p-2 rounded-md text-gray-500"><a href="#"><i
+                            class="ri-bookmark-line mr-1"></i>Save</a>
+                      </div>
+                      <div class="flex items-center justify-center hover:bg-gray-200 p-2 rounded-md text-gray-500"><a
+                          href="#"><i class="ri-menu-3-line"></i></a></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- POST -->
+        }
+      }
+    }
+
   </div>
   <div class=" w-96 pl-9">
     <div class="w-full">

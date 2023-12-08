@@ -7,16 +7,18 @@ public class UserService : CommonService<SaveUserViewModel, UserViewModel, User>
 {
   private readonly IMapper _mapper;
   private readonly IUserRepository _iUserRepository;
+  private readonly IUserProfileService _iUserProfileService;
 
-  public UserService(IMapper mapper, IUserRepository iUserRepository) : base(iUserRepository, mapper)
+  public UserService(IMapper mapper, IUserRepository iUserRepository, IUserProfileService iUserProfileService) : base(iUserRepository, mapper)
   {
     _mapper = mapper;
     _iUserRepository = iUserRepository;
+    _iUserProfileService = iUserProfileService;
   }
 
   public async Task<List<UserViewModel>> GetAllViewModelWithInclude()
   {
-    List<User> users = await _iUserRepository.GetAllWithIncludeAsync(new List<string> { "UserProfile", "Posts" });
+    var users = await _iUserRepository.GetAllWithIncludeAsync(new List<string> { "UserProfile", "Posts" });
 
     return users.Select(user => new UserViewModel
     {
@@ -27,8 +29,7 @@ public class UserService : CommonService<SaveUserViewModel, UserViewModel, User>
       Gender = user.Gender,
       Country = user.Country,
       City = user.City,
-      UserName = user.UserProfile.UserName,
-      About = user.UserProfile.About,
+      Posts = user.Posts,
     }).ToList();
   }
 }

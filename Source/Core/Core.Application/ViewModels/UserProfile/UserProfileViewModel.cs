@@ -8,4 +8,10 @@ public class UserProfileViewModel
   public string About { get; set; } = string.Empty;
   public string Email { get; set; } = string.Empty;
   public string Phone { get; set; } = string.Empty;
+  public int UserId { get; set; }
+
+  //CUSTOM PROPERTIES
+  public string ProfilePicturePath { get; set; } = string.Empty;
+  public string BackgroundPicturePath { get; set; } = string.Empty;
+
 }

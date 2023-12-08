@@ -16,6 +16,8 @@ public class HomeController : Controller
 
   public async Task<IActionResult> Index()
   {
-    return View(await _iUserService.GetAllViewModelWithInclude());
+    var users = await _iUserService.GetAllViewModelWithInclude();
+
+    return View(users);
   }
 }

@@ -1,4 +1,6 @@
-﻿namespace Core.Application;
+﻿using Core.Domain;
+
+namespace Core.Application;
 
 public class UserViewModel
 {
@@ -11,6 +13,6 @@ public class UserViewModel
   public string City { get; set; } = string.Empty;
 
   //CUSTOM INFORMATION
-  public string UserName { get; set; } = string.Empty;
-  public string About { get; set; }
+  public UserProfileViewModel UserProfile { get; set; }
+  public ICollection<Post> Posts { get; set; }
 }
