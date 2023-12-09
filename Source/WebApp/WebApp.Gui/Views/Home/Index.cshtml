@@ -4,28 +4,64 @@
   ViewData["Title"] = "Home Page";
 }
 
-<div class="flex items-start justify-center mt-5 mx-auto w-3/6">
-  <div class="w-10/12">
+<div class="flex items-start justify-center mt-6 mx-auto min-[1000px]:w-8/12 w-full">
+
+  <!-- LEFT SIDE CONTENT -->
+  <div class="w-96 justify-center h-screen hidden min-[950px]:flex ms-5">
+    <div class="w-fit">
+
+      <!-- Topics, and some other options (mainly when user is not logged) -->
+      <div class="bg-white rounded-md p-5">
+
+        <div class="flex flex-col border-b border-gray-300 p-2 items-start justify-center">
+          <a href="#" class="hover:text-blue-400 font-bold text-gray-500"><i
+              class="ri-home-smile-line text-2xl mr-3"></i>Home</a>
+          <a href="#" class="hover:text-blue-400 font-bold text-gray-500"><i
+              class="ri-fire-line text-2xl mr-3"></i>Popular</a>
+        </div>
+
+        <div class="flex flex-col border-b border-gray-300 p-2 items-start justify-center">
+          <a href="#" class="hover:text-blue-400 font-bold text-gray-500"><i
+              class="ri-gamepad-line text-2xl mr-3"></i>Gaming</a>
+          <a href="#" class="hover:text-blue-400 font-bold text-gray-500"><i
+              class="ri-ping-pong-line text-2xl mr-3"></i>ESports</a>
+          <a href="#" class="hover:text-blue-400 font-bold text-gray-500"><i
+              class="ri-macbook-line text-2xl mr-3"></i>Programming</a>
+        </div>
+
+        <div class="flex flex-col p-2 items-start justify-center">
+          <a href="#" class="hover:text-blue-400 font-bold text-gray-500 text-sm">About Social Network</a>
+          <a href="#" class="hover:text-blue-400 font-bold text-gray-500 text-sm mt-2">Advertise</a>
+          <a href="#" class="hover:text-blue-400 font-bold text-gray-500 text-sm mt-2">Blog</a>
+          <a href="#" class="hover:text-blue-400 font-bold text-gray-500 text-sm mt-2">See more</a>
+        </div>
+
+      </div>
+      <!-- Topics, and some other options (mainly when user is not logged) -->
+
+    </div>
+  </div>
+
+  <!-- CENTRAL CONTENT -->
+  <div class="w-full min-[950px]:w-100 min-[600px]:mr-5 min-[600px]:ms-5 min-[600px]:mb-5 min-[950px]:pl-0">
 
     <!-- Create a post section -->
     <div class="flex justify-start items-center w-full">
       <div class="w-full">
-        <div class="bg-white p-2 flex flex-row justify-evenly items-center w-full mx-auto rounded-md">
-          <div class="w-10 mr-5">
+        <div class="bg-white p-2 flex flex-row justify-evenly items-center w-full mx-auto min-[600px]:rounded-md">
+          <div class="w-fit mr-1">
             <img src="https://i.pinimg.com/736x/b9/b5/fb/b9b5fbe0ce482fb220303222f70fcac0.jpg" alt="pfp"
-              class="w-9 rounded-md">
+              class="w-14 rounded-full">
           </div>
-          <div class="w-full">
-            <a href="#" class="">
-              <div>
-                <input type="search" class="border border-gray-300 bg-stone-100 rounded-md w-full p-1 ps-5"
-                  placeholder="Tell the world what you're thinking on" />
-              </div>
-            </a>
-          </div>
+          <a href="#" class="w-full">
+            <div>
+              <input type="search" class="border border-gray-300 bg-stone-100 rounded-md w-full p-1 ps-5"
+                placeholder="Tell the world what you're thinking on" />
+            </div>
+          </a>
           <div class="w-fit flex flex-row ms-2">
-            <a href="#" class="hover:text-blue-500"><i class="ri-image-line text-2xl"></i></a>
-            <a href="#" class="hover:text-blue-500"><i class="ri-link text-2xl ms-4"></i></a>
+            <a href="#"><i class="ri-image-line text-2xl"></i></a>
+            <a href="#"><i class="ri-link text-2xl ms-4"></i></a>
           </div>
         </div>
       </div>
@@ -33,96 +69,49 @@
     <!-- Create a post section -->
 
     <!-- Filters -->
-    <div class="mt-4 flex justify-start items-center">
+    <div class="mt-5 flex justify-start items-center">
       <div class="w-full mx-auto">
-        <div class="bg-white p-2 flex flex-row items-center w-full mx-auto rounded-md justify-between">
-          <div class="font-bold text-gray-500 flex justify-between items-center w-full">
-            <div class="flex items-center justify-center"><a href="#" class="hover:text-blue-500"><i
-                  class="ri-rocket-2-line"></i>Best</a>
+        <div class="bg-white p-2 flex flex-row items-center w-full mx-auto min-[600px]:rounded-md justify-between">
+          <div class="font-bold text-gray-500 justify-start flex min-[400px]:justify-evenly items-center w-full">
+            <div
+              class="flex items-center justify-center max-[400px]:border p-1 max-[400px]:rounded-full max-[400px]:bg-gray-100 max-[400px]:text-blue-400">
+              <a href="#"><i class="ri-rocket-2-line"></i>Best</a>
             </div>
-            <div class="flex items-center justify-center"><a href="#" class="hover:text-blue-500"><i
+            <div class="hidden min-[400px]:flex items-center justify-center"><a href="#"><i
                   class="ri-fire-line"></i>Hot</a>
             </div>
-            <div class="flex items-center justify-center"><a href="#" class="hover:text-blue-500"><i
+            <div class="hidden min-[400px]:flex items-center justify-center"><a href="#"><i
                   class="ri-error-warning-line"></i>New</a>
             </div>
-            <div class="flex items-center justify-center"><a href="#" class="hover:text-blue-500"><i
+            <div class="hidden min-[400px]:flex items-center justify-center"><a href="#"><i
                   class="ri-arrow-up-double-line"></i>Top</a>
             </div>
-            <div class="flex items-center justify-center"><a href="#" class="hover:text-blue-500"><i
+            <div class="hidden min-[400px]:flex items-center justify-center"><a href="#"><i
                   class="ri-menu-3-line"></i></a></div>
           </div>
-          <div class="font-bold text-gray-500 flex justify-end items-end w-full">
-            <div><a href="#" class="hover:text-blue-500"><i class="ri-checkbox-multiple-blank-line text-2xl"></i></a>
-            </div>
+          <div class="font-bold text-gray-500 hidden min-[400px]:flex justify-end items-end w-40">
+            <div><a href="#"><i class="ri-checkbox-multiple-blank-line text-2xl"></i></a></div>
           </div>
         </div>
       </div>
     </div>
     <!-- Filters -->
 
-    @if (Model.Count != 0 && Model != null)
-    {
-      @foreach (var item in Model)
-      {
-        @foreach (var post in item.Posts)
-        {
-          <!-- POST -->
-          <div class="mt-5 flex items-center justify-center">
-            <div class="w-full mx-auto">
-              <div class="bg-white p-2 flex flex-col items-start w-full mx-auto rounded-md">
-                <div class="flex items-start border-b mb-5">
-                  <div class="font-bold">
-                    <div class="flex items-center justify-center text-xl font-extrabold hover:bg-gray-200 text-gray-500">
-                      <a href="#"><i class="ri-arrow-up-fill"></i></a>
-                    </div>
-                    <div class="flex items-center justify-center text-gray-500">0</div>
-                    <div class="flex items-center justify-center text-xl font-extrabold hover:bg-gray-200 text-gray-500">
-                      <a href="#"><i class="ri-arrow-down-fill"></i></a>
-                    </div>
-                  </div>
-
-                  <div class="flex items-start justify-start flex-col w-fit ms-5">
-                    <div class="w-full flex items-center">
-                      <img src="https://avatarfiles.alphacoders.com/367/367013.jpeg" class="w-9 mr-2 rounded-sm">
-                      <p class="text-sm">Posted by <span class="font-bold">@item.Name</span> <span
-                          class="text-gray-400">@post.Created</span></p>
-                    </div>
-                    <div class="w-fit mt-5 mb-5">
-                      <h4 class="mb-2 text-xl font-bold">@post.Title</h4>
-                      <p class="text-sm">@post.Description</p>
-                    </div>
-                    <div>
-                      <img src="@post.ImagePath" class="w-full" alt="">
-                    </div>
-                    <div class="w-80 flex justify-between flex-row mt-5 font-bold">
-                      <div class="hover:bg-gray-200 p-2 rounded-md text-gray-500"><a href="#"><i
-                            class="ri-message-2-line mr-1"></i>Comments</a>
-                      </div>
-                      <div class="hover:bg-gray-200 p-2 rounded-md text-gray-500"><a href="#"><i
-                            class="ri-share-forward-line mr-1"></i>Share</a></div>
-                      <div class="hover:bg-gray-200 p-2 rounded-md text-gray-500"><a href="#"><i
-                            class="ri-bookmark-line mr-1"></i>Save</a>
-                      </div>
-                      <div class="flex items-center justify-center hover:bg-gray-200 p-2 rounded-md text-gray-500"><a
-                          href="#"><i class="ri-menu-3-line"></i></a></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- POST -->
-        }
-      }
-    }
+    <!-- POST -->
+    <div class="mt-5 flex items-center justify-center">
+      <div class="w-full mx-auto">
+      </div>
+    </div>
+    <!-- POST -->
 
   </div>
-  <div class=" w-96 pl-9">
-    <div class="w-full">
+
+  <!-- RIGHT SIDE CONTENT -->
+  <div class="w-96 h-screen hidden min-[950px]:flex justify-center">
+    <div class="w-fit ml-5 mr-5 min-[1250px]:w-80">
 
       <!-- TRY SOCIAL NETWORK PREMIUM -->
-      <div class="bg-white rounded-sm p-2 flex flex-col">
+      <div class="bg-white rounded-sm p-5 flex flex-col">
         <div class="flex justify-between">
           <i class="ri-service-line text-2xl font-bold"></i>
           <div class="flex flex-col justify-around text-sm ms-2">
@@ -138,8 +127,8 @@
 
       <!-- PERSONAL INTERESTS -->
       <div
-        class="bg-white rounded-sm pt-5 mt-4 bg-[url('https://w0.peakpx.com/wallpaper/106/1007/HD-wallpaper-artistic-pixel-art.jpg')]">
-        <div class="bg-white mt-2 p-2">
+        class="bg-white rounded-sm pt-5 mt-5 bg-[url('https://w0.peakpx.com/wallpaper/106/1007/HD-wallpaper-artistic-pixel-art.jpg')]">
+        <div class="bg-white mt-5 p-2">
           <!-- <div><img src="https://w0.peakpx.com/wallpaper/106/1007/HD-wallpaper-artistic-pixel-art.jpg"
                 class="cotain w-full" alt=""></div> -->
           <div class="flex items-center">
@@ -154,8 +143,7 @@
           </div>
           <div class="flex flex-col justify-around items-center">
             <a href="#" class="border p-1 mt-2 rounded-md bg-blue-500 text-white w-4/5 text-center">Create a post</a>
-            <a href="#"
-              class="border border-blue-500 border-1 p-1 mt-2 rounded-md text-blue-500 w-4/5 text-center mb-2">Create
+            <a href="#" class="border p-1 mt-2 rounded-md bg-blue-500 text-white w-4/5 text-center mb-2">Create
               Comunnity</a>
           </div>
         </div>
@@ -163,7 +151,7 @@
       <!-- PERSONAL INTERESTS -->
 
       <!-- RIGHTS AND USER'S AGREEMNTS -->
-      <div class="bg-white rounded-sm mt-4 p-3">
+      <div class="bg-white rounded-sm mt-5">
         <div class="flex justify-between w-72 mx-auto p-2 border-b-2">
           <div class="text-xs flex flex-col justify-between">
             <a href="#">User agreement</a>
@@ -185,7 +173,7 @@
           </div>
         </div>
         <div class="flex justify-between w-72 mx-auto p-2">
-          <span class="text-gray-500 text-xs">Andelson Lopez, practice website all rights to Reddit Inc.</span>
+          <span class="text-gray-500 text-xs">Andelson Lopez, practice website all Design rights to Reddit Inc.</span>
         </div>
       </div>
       <!-- RIGHTS AND USER"S AGREEMNTS -->

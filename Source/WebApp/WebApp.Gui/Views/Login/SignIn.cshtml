@@ -1,0 +1,59 @@
+﻿@using Core.Application;
+@model GeneralSignInViewModel;
+@{
+  ViewData["Title"] = "Sign In";
+}
+
+<div class="flex items-start max-[1000px]:bg-white justify-center mx-auto min-[1000px]:w-8/12 w-full">
+
+  <!-- SING UP -->
+  <div class="w-[600px] bg-white min-[1000px]:rounded-xl min-[1000px]:w-96 flex justify-between flex-col p-5 mt-7"
+    id="SingUp">
+    <div class="">
+      <p class="text-2xl font-extrabold">Sign Up</p>
+      <span class="text-gray-800 text-sm">By continuing, you agree to our User Agreement and acknowledge that you
+        understand the Privacy Policy. </span>
+    </div>
+
+    <div class="flex flex-col mt-9" id="userInfo">
+      <input type="text" class="p-3 rounded-xl w-full bg-gray-100" placeholder="Name *" requried>
+      <input type="text" class="p-3 rounded-xl w-full mt-3 bg-gray-100" placeholder="Last name *" required>
+      <input type="text" class="p-3 rounded-xl w-full mt-3 bg-gray-100" placeholder="Age *" required>
+      <input type="text" class="p-3 rounded-xl w-full mt-3 bg-gray-100" placeholder="Gender *" required>
+      <input type="text" class="p-3 rounded-xl w-full mt-3 bg-gray-100" placeholder="Country *" required>
+      <input type="text" class="p-3 rounded-xl w-full mt-3 bg-gray-100" placeholder="City *" required>
+    </div>
+
+    <div class="flex flex-col mt-9 hidden" id="UserProfileInfo">
+      <input type="text" class="p-3 rounded-xl w-full bg-gray-100" placeholder="Username *" requried>
+      <input type="text" class="p-3 rounded-xl w-full mt-3 bg-gray-100" placeholder="Password *" required>
+      <input type="text" class="p-3 rounded-xl w-full mt-3 bg-gray-100" placeholder="Confirm password *" required>
+      <input type="text" class="p-3 rounded-xl w-full mt-3 bg-gray-100" placeholder="About *" required>
+      <input type="text" class="p-3 rounded-xl w-full mt-3 bg-gray-100" placeholder="Email *" required>
+      <input type="text" class="p-3 rounded-xl w-full mt-3 bg-gray-100" placeholder="Phone *" required>
+      <label class="mt-3 text-sm">Profile piture</label>
+      <input type="file" class="block w-full text-sm text-slate-500
+              file:mr-4 file:py-2 file:px-4 file:rounded-md
+              file:border-0 file:text-sm file:font-semibold
+              file:bg-blue-50 file:text-blue-700
+              hover:file:bg-blue-100 mt-3 cursor-pointer" placeholder="Profile picture" />
+    </div>
+
+    <div class="mt-5 flex flex-col">
+      <div href="#" class="text-sm">Already a Social Networker? <span id="LogInLink"
+          class="text-blue-500 font-bold cursor-pointer">Log In</span></div>
+    </div>
+
+    <div class="mt-9">
+      <button class="w-full bg-blue-500 text-white p-2 rounded-xl" id="NextButton">Next</button>
+      <button class="w-full bg-gray-500 text-white p-2 rounded-xl hidden" id="BackButton">Back</button>
+      <button class="w-full bg-blue-500 text-white p-2 rounded-xl hidden mt-2" id="SaveButton">Save</button>
+    </div>
+  </div>
+  <!-- SING UP -->
+
+  <div class="bg-white h-screen"></div>
+
+</div>
+
+<script src="~/js/SignIn.js"></script>

@@ -34,5 +34,22 @@ public class GeneralProfile : Profile
       .ForMember(dest => dest.Comments, opt => opt.Ignore())
       .ForMember(dest => dest.FriendShips, opt => opt.Ignore())
       .ForMember(dest => dest.IAmFriend, opt => opt.Ignore());
+
+    CreateMap<UserProfile, UserProfileViewModel>()
+      .ForMember(dest => dest.ProfilePicturePath, opt => opt.Ignore())
+      .ForMember(dest => dest.BackgroundPicturePath, opt => opt.Ignore())
+      .ReverseMap()
+      .ForMember(dest => dest.User, opt => opt.Ignore())
+      .ForMember(dest => dest.UserProfilePicture, opt => opt.Ignore());
+
+    CreateMap<UserProfile, SaveUserProfilePictureViewModel>()
+      .ReverseMap()
+      .ForMember(dest => dest.User, opt => opt.Ignore())
+      .ForMember(dest => dest.UserProfilePicture, opt => opt.Ignore());
+
+    CreateMap<UserProfilePicture, UserProfilePictureViewModel>()
+      .ReverseMap()
+      .ForMember(dest => dest.UserProfile, opt => opt.Ignore())
+      .ForMember(dest => dest.UserProfileId, opt => opt.Ignore());
   }
 }

@@ -10,7 +10,7 @@ public class UserProfile
   public string Phone { get; set; } = string.Empty;
 
   //RELATIONS
-  public int UserId { get; set; }
+  public int? UserId { get; set; }
   public User User { get; set; } // 1:1  
 
   public UserProfilePicture UserProfilePicture { get; set; } // 1:1

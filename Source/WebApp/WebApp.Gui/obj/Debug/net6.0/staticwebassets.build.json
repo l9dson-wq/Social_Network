@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "QpNf9bP1oJngNVYn6z8aZMC/OSOV7K36Y+dTXYvWbqo=",
+  "Hash": "zXP5b/xAiZsvuiqmapPOKzMTa8FLQ0J424rUWfn6HU0=",
   "Source": "WebApp.Gui",
   "BasePath": "_content/WebApp.Gui",
   "Mode": "Default",
@@ -110,6 +110,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/favicon.ico"
+    },
+    {
+      "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/js/SignIn.js",
+      "SourceId": "WebApp.Gui",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/",
+      "BasePath": "_content/WebApp.Gui",
+      "RelativePath": "js/SignIn.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/SignIn.js"
     },
     {
       "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/js/site.js",

@@ -26,5 +26,6 @@ public static class ServiceRegistration
     services.AddTransient(typeof(ICommonRepository<>), typeof(CommonRepository<>));
     services.AddTransient<IUserRepository, UserRepository>();
     services.AddTransient<IUserProfileRepository, UserProfileRepository>();
+    services.AddTransient<IUserProfilePictureRepository, UserProfilePictureRepository>();
   }
 }

@@ -1,5 +1,6 @@
 ﻿using Core.Application;
 using Core.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence;
 
@@ -11,4 +12,5 @@ public class UserProfileRepository : CommonRepository<UserProfile>, IUserProfile
   {
     _dbContext = dbContext;
   }
+
 }

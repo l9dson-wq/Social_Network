@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets/favicon.ico"
     },
     {
+      "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/js/SignIn.js",
+      "PackagePath": "staticwebassets/js/SignIn.js"
+    },
+    {
       "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/js/site.js",
       "PackagePath": "staticwebassets/js/site.js"
     },

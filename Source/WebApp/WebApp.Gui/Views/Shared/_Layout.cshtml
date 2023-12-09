@@ -32,26 +32,28 @@
         </div>
 
         <div class="flex items-center justify-center w-fit">
-          <div class=""><a href="#"><i class="ri-chat-3-line text-2xl"></i></a></div>
+          @* <div class=""><a href="#"><i class="ri-chat-3-line text-2xl"></i></a></div>
           <div class="ms-2"><a href="#"><i class="ri-notification-3-line text-2xl"></i></a>
           </div>
           <div class="ms-2"><a href="#"><i class="ri-add-circle-line text-2xl"></i></a></div>
           <div
-            class="ms-2 bg-gray-200 p-1 w-9 h-9 min-[400px]:w-fit min-[400px]:h-fit rounded-[50%] min-[400px]:rounded-md">
-            <a href="#" class="flex items-center justify-center text-sm"><i class="ri-megaphone-line text-xl"></i><span
-                class="min-[400px]:inline hidden">advertise</span></a>
-          </div>
+          class="ms-2 bg-gray-200 p-1 w-9 h-9 min-[400px]:w-fit min-[400px]:h-fit rounded-[50%] min-[400px]:rounded-md">
+          <a href="#" class="flex items-center justify-center text-sm"><i class="ri-megaphone-line text-xl"></i><span
+          class="min-[400px]:inline hidden">advertise</span></a>
+          </div> *@
           <div class="ms-1">
             <div class="flex items-center justify-evenly p-1">
-              <img src="https://wallpapers-clan.com/wp-content/uploads/2023/05/cool-pfp-02.jpg" alt="profile picture"
-                class="w-10 min-[600px]:mr-2 rounded-full">
+              @* <img src="https://wallpapers-clan.com/wp-content/uploads/2023/05/cool-pfp-02.jpg" alt="profile picture"
+              class="w-10 min-[600px]:mr-2 rounded-full" />
               <div class="flex items-centert flex-col justify-evenly">
-                <p class="hidden min-[950px]:inline text-sm font-bold">l3dson-wq</p>
-                <span class="text-sm hidden 2xl:inline">3 Karma</span>
+              <p class="hidden min-[950px]:inline text-sm font-bold">l3dson-wq</p>
+              <span class="text-sm hidden 2xl:inline">3 Karma</span>
               </div>
               <div class="min-[900px]:ms-5 ms-1 ml-2">
-                <a href="#"><i class="ri-arrow-down-s-line text-xl"></i></a>
-              </div>
+              <a href="#"><i class="ri-arrow-down-s-line text-xl"></i></a>
+              </div> *@
+              <a asp-controller="Login" asp-action="Register"
+                class="p-2 bg-orange-500 text-white cursor-pointer rounded-xl font-bold">Register</a>
             </div>
 
           </div>
@@ -62,7 +64,7 @@
     <!-- NAVBAR -->
   </header>
 
-  <br>
+  <br class="hidden min-[600px]:inline">
   <br>
 
   <main role="main">
