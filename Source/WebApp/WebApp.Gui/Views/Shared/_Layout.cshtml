@@ -9,96 +9,169 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>@ViewData["Title"] - WebApp.Gui</title>
   @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="~/WebApp.Gui.styles.css" asp-append-version="true" /> *@
-  <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
-  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+  <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true"/>
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.6.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 
 <body class=" bg-gray-300">
-  <header>
-    <!-- NAVBAR -->
-    <div class="w-full flex items-center justify-center p-1 bg-white fixed top-0 mb-9 z-40">
-      <div class="w-full flex flex-row justify-between items-center">
+<header>
+  <!-- NAVBAR -->
+  <div class="w-full flex items-center justify-center p-1 bg-white fixed top-0 mb-9 z-40">
+    <div class="w-full flex flex-row justify-between items-center">
 
-        <div class="ml-1 w-fit max-[600px]:w-10 xl:w-96 flex items-center justify-around">
-          <div><a href="#" class="text-xl font-bold">S<span class="hidden lg:inline">ocial</span> <span
-                class="text-orange-500 text-xl">N<span class="hidden lg:inline">etwork</span></span></a></div>
-          <div class="flex justify-center items-center"><a href="#" class="hidden xl:inline"><i
-                class="ri-home-4-line text-xl font-normal"></i>
-              Home</a></div>
+      <div class="ml-1 w-fit max-[600px]:w-10 xl:w-96 flex items-center justify-around">
+        <div>
+          <a href="#" class="text-xl font-bold">
+            S<span class="hidden lg:inline">ocial</span>
+            <span
+              class="text-orange-500 text-xl">
+              N<span class="hidden lg:inline">etwork</span>
+            </span>
+          </a>
         </div>
+        <div class="flex justify-center items-center">
+          <a href="#" class="hidden xl:inline">
+            <i
+              class="ri-home-4-line text-xl font-normal">
+            </i>
+            Home
+          </a>
+        </div>
+      </div>
 
-        @* BUSCADOR *@
-        <div class="w-20 sm:w-72 xl:w-6/12 min-[440px]:w-40 min-[810px]:mr-5 min-[420px]:pr-3:pl-3 flex flex-row">
-          <input type="search" class="hidden min-[600px]:inline bg-transparent border-2 p-1 rounded-full w-full px-9 text-sm" />
-        </div>
-        @* BUSCADOR *@
-        
-        <div class="flex items-center justify-center w-fit">
-          <i class="ri-search-line inline text-3xl min-[600px]:hidden min-[600px]:text-2xl text-gray-400 ms-2 mr-2"></i>
-          @if (userSession != null)
-          {
-            <div class=""><a href="#"><i class="ri-chat-3-line text-3xl min-[600pxl]:text-2xl"></i></a></div>
-            <div class="ms-2"><a href="#"><i class="ri-notification-3-line text-3xl min-[600pxl]:text-2xl"></i></a>
-            </div>
-            <div class="ms-2"><a href="#"><i class="ri-add-circle-line text-3xl min-[600pxl]:text-2xl"></i></a></div>
-            @*<div
+      @* BUSCADOR *@
+      <div class="w-20 sm:w-72 xl:w-6/12 min-[440px]:w-40 min-[810px]:mr-5 min-[420px]:pr-3:pl-3 flex flex-row">
+        <input type="search" class="hidden min-[600px]:inline bg-transparent border-2 border-gray-400 p-1 rounded-full w-full px-9 text-sm"/>
+      </div>
+      @* BUSCADOR *@
+
+      <div class="flex items-center justify-center w-fit">
+        <i class="ri-search-line inline text-3xl min-[600px]:hidden min-[600px]:text-2xl text-gray-400 ms-2 mr-2"></i>
+        @if (userSession != null)
+        {
+          <div class="">
+            <a href="#">
+              <i class="ri-chat-3-line text-3xl min-[600pxl]:text-2xl"></i>
+            </a>
+          </div>
+          <div class="ms-2">
+            <a href="#">
+              <i class="ri-notification-3-line text-3xl min-[600pxl]:text-2xl"></i>
+            </a>
+          </div>
+          <div class="ms-2">
+            <a href="#">
+              <i class="ri-add-circle-line text-3xl min-[600pxl]:text-2xl"></i>
+            </a>
+          </div>
+          @*<div
               class="ms-2 bg-gray-200 p-1 w-9 h-9 min-[400px]:w-fit min-[400px]:h-fit rounded-[50%] min-[400px]:rounded-md">
               <a href="#" class="flex items-center justify-center text-sm"><i class="ri-megaphone-line text-xl"></i><span class="min-[400px]:inline hidden">advertise</span></a>
             </div> *@
-          }
-          <div class="ms-1">
-            <div class="flex items-center justify-evenly p-1">
-              @if (userSession != null)
-              {
-                <img src="@userSession.ProfilePicturePath" alt="profile picture"
-                     class="w-8 ml-2 min-[600px]:mr-2 rounded-md"/>
-                <div class="flex items-center flex-col justify-evenly">
-                  <p class="hidden min-[950px]:inline text-sm font-bold">@userSession.UserName</p>
-                  <span class="text-sm hidden 2xl:inline">0 Karma</span>
+        }
+        <div class="ms-1">
+          <div class="flex items-center justify-evenly p-1">
+            @if (userSession != null)
+            {
+              <img src="@userSession.ProfilePicturePath" alt="profile picture"
+                   class="w-8 ml-2 min-[600px]:mr-2 rounded-md"/>
+              <div class="flex items-center flex-col justify-evenly">
+                <p class="hidden min-[950px]:inline text-sm font-bold">@userSession.UserName</p>
+                <span class="text-sm hidden 2xl:inline">0 Karma</span>
+              </div>
+              
+              <button id="openModal" class="min-[900px]:ms-5 ms-1 ml-2 bg-transparent">
+                <i class="ri-arrow-down-s-line text-xl"></i>
+              </button>
+              
+              <!-- Modal -->
+              <div id="myModal"
+                   class="modal hidden fixed top-10 right-0 m-4 p-4 bg-white border border-gray-300 rounded">
+         
+                <!-- Contenido del modal -->
+                <div class="modal-content">
+
+                  <span id="closeModal" class="modal-close cursor-pointer float-right">
+                    <i class="ri-close-circle-line"></i>
+                  </span>
+
+                  <p>Contenido del modal...</p>
+
                 </div>
-                <div class="min-[900px]:ms-5 ms-1 ml-2">
-                  <a href="#"><i class="ri-arrow-down-s-line text-xl"></i></a>
-                </div>
-              }
-              @if (userSession == null)
-              {
-                @*<a asp-controller="Login" asp-action="Register"
+              </div>
+            }
+            @if (userSession == null)
+            {
+              @*<a asp-controller="Login" asp-action="Register"
                    class="p-2 bg-orange-500 text-white cursor-pointer rounded-full font-bold text-sm">Sign up</a>*@
-                <a asp-controller="Login" asp-action="Index"
-                   class="p-2 ms-2 font-bold bg-transparent text-orange-500 border border-orange-500 cursor-pointer rounded-full text-sm">Log in</a>
-              }
-            </div>
-
+              <a asp-controller="Login" asp-action="Index"
+                 class="p-2 ms-2 font-bold bg-transparent text-orange-500 border border-orange-500 cursor-pointer rounded-full text-sm">
+                Log in
+              </a>
+            }
           </div>
+
         </div>
-
       </div>
-    </div>
-    <!-- NAVBAR -->
-  </header>
-
-  <br class="hidden min-[600px]:inline">
-  <br>
-
-  <main role="main">
-    @RenderBody()
-  </main>
-
-  <footer class="border-top footer text-muted">
-    <div class="container">
 
     </div>
-  </footer>
-  <script src="~/lib/jquery/dist/jquery.min.js"></script>
-  <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="~/js/site.js" asp-append-version="true"></script>
-  @await RenderSectionAsync("Scripts", required: false)
+  </div>
+  <!-- NAVBAR -->
+</header>
+
+<br class="hidden min-[600px]:inline">
+<br>
+
+<main role="main">
+  @RenderBody()
+</main>
+
+<footer class="border-top footer text-muted">
+  <div class="container">
+
+  </div>
+</footer>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous"></script>
+
+<script>
+  var modal = document.getElementById('myModal');
+
+  document.getElementById('openModal').addEventListener('click', function (event) {
+      event.stopPropagation(); // Evitar que el clic llegue al documento y active el cierre del modal
+      modal.classList.remove('hidden');
+      // Agregar un escuchador de clic al documento para cerrar el modal si se hace clic fuera de él
+      document.addEventListener('click', closeModalOutside);
+  });
+
+  document.getElementById('closeModal').addEventListener('click', function () {
+      modal.classList.add('hidden');
+      // Remover el escuchador de clic al cerrar el modal
+      document.removeEventListener('click', closeModalOutside);
+  });
+
+  // Función para cerrar el modal si se hace clic fuera de él
+  function closeModalOutside(event) {
+      if (!modal.contains(event.target)) {
+          modal.classList.add('hidden');
+          document.removeEventListener('click', closeModalOutside);
+      }
+  }
+</script>
+
+
+@await RenderSectionAsync("Scripts", required: false)
 </body>
 
 </html>
