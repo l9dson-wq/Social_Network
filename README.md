@@ -3,5 +3,5 @@ A social network made using ASP .NET Core, C#, Tailwindcss, Nodejs, and some oth
 
 SQL Server is being used as the database for this project.
 
-> Homepage
+### Homepage
 ![Screenshot 2023-12-07 at 1 16 23 PM](https://github.com/l9dson-wq/Social_Network/assets/69158247/2fafcdc0-4712-4b91-ace4-db47597f9e5d)
