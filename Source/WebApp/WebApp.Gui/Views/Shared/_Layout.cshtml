@@ -13,16 +13,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>@ViewData["Title"] - WebApp.Gui</title>
   @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
   <link rel="stylesheet" href="~/WebApp.Gui.styles.css" asp-append-version="true" /> *@
   <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.6.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 
 <body class=" bg-gray-300">
   <header>
     <!-- NAVBAR -->
-    <div class="w-full flex items-center justify-center border border-1 boder-blue-600 bg-white fixed top-0 mb-9 z-40">
+    <div class="w-full flex items-center justify-center p-1 bg-white fixed top-0 mb-9 z-40">
       <div class="w-full flex flex-row justify-between items-center">
 
         <div class="ml-1 w-fit max-[600px]:w-10 xl:w-96 flex items-center justify-around">
@@ -33,43 +33,45 @@
               Home</a></div>
         </div>
 
-        <div class="w-20 sm:w-72 xl:w-6/12 min-[440px]:w-40 min-[810px]:mr-5 min-[420px]:pr-3:pl-3">
-          <i class="ri-search-line absolute text-2xl top-2 text-gray-400 ms-2"></i>
-          <input type="search" class="bg-transparent border-2 p-1 rounded-full w-full px-9 text-sm" />
+        @* BUSCADOR *@
+        <div class="w-20 sm:w-72 xl:w-6/12 min-[440px]:w-40 min-[810px]:mr-5 min-[420px]:pr-3:pl-3 flex flex-row">
+          <input type="search" class="hidden min-[600px]:inline bg-transparent border-2 p-1 rounded-full w-full px-9 text-sm" />
         </div>
-
+        @* BUSCADOR *@
+        
         <div class="flex items-center justify-center w-fit">
-          @if ( userSession != null )
+          <i class="ri-search-line inline text-3xl min-[600px]:hidden min-[600px]:text-2xl text-gray-400 ms-2 mr-2"></i>
+          @if (userSession != null)
           {
-            <div class=""><a href="#"><i class="ri-chat-3-line text-2xl"></i></a></div>
-            <div class="ms-2"><a href="#"><i class="ri-notification-3-line text-2xl"></i></a>
+            <div class=""><a href="#"><i class="ri-chat-3-line text-3xl min-[600pxl]:text-2xl"></i></a></div>
+            <div class="ms-2"><a href="#"><i class="ri-notification-3-line text-3xl min-[600pxl]:text-2xl"></i></a>
             </div>
-            <div class="ms-2"><a href="#"><i class="ri-add-circle-line text-2xl"></i></a></div>
-            <div
+            <div class="ms-2"><a href="#"><i class="ri-add-circle-line text-3xl min-[600pxl]:text-2xl"></i></a></div>
+            @*<div
               class="ms-2 bg-gray-200 p-1 w-9 h-9 min-[400px]:w-fit min-[400px]:h-fit rounded-[50%] min-[400px]:rounded-md">
               <a href="#" class="flex items-center justify-center text-sm"><i class="ri-megaphone-line text-xl"></i><span class="min-[400px]:inline hidden">advertise</span></a>
-            </div> 
+            </div> *@
           }
           <div class="ms-1">
             <div class="flex items-center justify-evenly p-1">
-              @if ( userSession != null )
+              @if (userSession != null)
               {
                 <img src="@userSession.ProfilePicturePath" alt="profile picture"
-                     class="w-10 min-[600px]:mr-2 rounded-md" />
+                     class="w-10 ml-2 min-[600px]:mr-2 rounded-md"/>
                 <div class="flex items-center flex-col justify-evenly">
                   <p class="hidden min-[950px]:inline text-sm font-bold">@userSession.UserName</p>
                   <span class="text-sm hidden 2xl:inline">0 Karma</span>
                 </div>
                 <div class="min-[900px]:ms-5 ms-1 ml-2">
                   <a href="#"><i class="ri-arrow-down-s-line text-xl"></i></a>
-                </div> 
+                </div>
               }
               @if (userSession == null)
               {
-                <a asp-controller="Login" asp-action="Register"
-                   class="p-2 bg-orange-500 text-white cursor-pointer rounded-full font-bold">Sign up</a>
+                @*<a asp-controller="Login" asp-action="Register"
+                   class="p-2 bg-orange-500 text-white cursor-pointer rounded-full font-bold text-sm">Sign up</a>*@
                 <a asp-controller="Login" asp-action="Index"
-                   class="p-2 ms-2 font-bold bg-transparent text-orange-500 border border-orange-500 cursor-pointer rounded-full">Log in</a>
+                   class="p-2 ms-2 font-bold bg-transparent text-orange-500 border border-orange-500 cursor-pointer rounded-full text-sm">Log in</a>
               }
             </div>
 
