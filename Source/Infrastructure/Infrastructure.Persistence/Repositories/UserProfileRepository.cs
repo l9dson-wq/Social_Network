@@ -13,4 +13,18 @@ public class UserProfileRepository : CommonRepository<UserProfile>, IUserProfile
     _dbContext = dbContext;
   }
 
+  public override async Task<UserProfile> AddAsync(UserProfile userProfile)
+  {
+    userProfile.Password = PasswordEncryption.ComputeSha256Hash(userProfile.Password);
+    return await base.AddAsync(userProfile);
+  }
+
+  public async Task<UserProfile> LoginAsync(LoginViewModel loginViewModel)
+  {
+    string passwordEncrypt = PasswordEncryption.ComputeSha256Hash(loginViewModel.Password);
+
+    UserProfile userProfile = await _dbContext.Set<UserProfile>().FirstOrDefaultAsync(userProfile => userProfile.UserName == loginViewModel.Username && userProfile.Password == passwordEncrypt);
+
+    return userProfile;
+  }
 }

@@ -1,4 +1,6 @@
-﻿namespace Core.Application;
+﻿using Core.Domain;
+
+namespace Core.Application;
 
 public class UserProfileViewModel
 {
@@ -11,7 +13,6 @@ public class UserProfileViewModel
   public int UserId { get; set; }
 
   //CUSTOM PROPERTIES
-  public string ProfilePicturePath { get; set; } = string.Empty;
-  public string BackgroundPicturePath { get; set; } = string.Empty;
-
+  public string ProfilePicturePath { get; set; }
+  public string BackgroundPicturePath { get; set; }
 }

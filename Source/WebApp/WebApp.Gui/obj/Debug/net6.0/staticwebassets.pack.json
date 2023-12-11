@@ -5,6 +5,18 @@
       "PackagePath": "staticwebassets/WebApp.Gui.bundle.scp.css"
     },
     {
+      "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/4/0fb82b32-35aa-4be7-a495-4a4985fb2a4a.png",
+      "PackagePath": "staticwebassets/Images/Users/4/0fb82b32-35aa-4be7-a495-4a4985fb2a4a.png"
+    },
+    {
+      "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/5/993664e3-a096-4a46-962a-fc7e1c3c6644.png",
+      "PackagePath": "staticwebassets/Images/Users/5/993664e3-a096-4a46-962a-fc7e1c3c6644.png"
+    },
+    {
+      "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/6/a5251f19-df62-4ca4-9a36-81645c88733d.png",
+      "PackagePath": "staticwebassets/Images/Users/6/a5251f19-df62-4ca4-9a36-81645c88733d.png"
+    },
+    {
       "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },

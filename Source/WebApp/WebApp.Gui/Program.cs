@@ -1,13 +1,18 @@
 using Infrastructure.Persistence;
 using Core.Application;
+using WebApp.Gui.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSession(); // Adding sessions
 
 builder.Services.AddPersistenceInfrastructure(builder.Configuration);
 builder.Services.AddApplicationLayer(builder.Configuration);
+
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddSingleton<ValidateUserSession, ValidateUserSession>();
 
 var app = builder.Build();
 
@@ -19,6 +24,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+app.UseSession();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 

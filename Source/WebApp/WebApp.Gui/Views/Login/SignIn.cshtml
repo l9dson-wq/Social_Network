@@ -49,12 +49,12 @@
               file:mr-4 file:py-2 file:px-4 file:rounded-md
               file:border-0 file:text-sm file:font-semibold
               file:bg-blue-50 file:text-blue-700
-              hover:file:bg-blue-100 mt-3 cursor-pointer" placeholder="Profile picture" />
+              hover:file:bg-blue-100 mt-3 cursor-pointer" placeholder="Profile picture" required />
       </div>
 
       <div class="mt-5 flex flex-col">
-        <div href="#" class="text-sm">Already a Social Networker? <span id="LogInLink"
-            class="text-blue-500 font-bold cursor-pointer">Log In</span></div>
+        <div href="#" class="text-sm">Already a Social Networker? <a id="LogInLink"
+            class="text-blue-500 font-bold cursor-pointer" asp-controller="Login" asp-action="Index">Log In</a></div>
       </div>
 
       <div class="mt-9">

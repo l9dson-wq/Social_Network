@@ -1,4 +1,11 @@
 ﻿@using Core.Application;
+@using Microsoft.AspNetCore.Http;
+@using static Core.Application.SessionHelper;
+@using Core.Application;
+@inject IHttpContextAccessor iHttpContext;
+@{
+  UserProfileViewModel userSession = iHttpContext.HttpContext.Session.Get<UserProfileViewModel>("userProfile");
+}
 @model List<UserViewModel>
 @{
   ViewData["Title"] = "Home Page";
@@ -9,35 +16,38 @@
   <!-- LEFT SIDE CONTENT -->
   <div class="w-96 justify-center h-screen hidden min-[950px]:flex ms-5">
     <div class="w-fit">
+      
+      @if ( userSession == null )
+      {
+        <!-- Topics, and some other options (mainly when user is not logged) -->
+        <div class="bg-white rounded-md p-5">
 
-      <!-- Topics, and some other options (mainly when user is not logged) -->
-      <div class="bg-white rounded-md p-5">
+          <div class="flex flex-col border-b border-gray-300 p-2 items-start justify-center">
+            <a href="#" class="hover:text-blue-400 font-bold text-gray-500"><i
+                class="ri-home-smile-line text-2xl mr-3"></i>Home</a>
+            <a href="#" class="hover:text-blue-400 font-bold text-gray-500"><i
+                class="ri-fire-line text-2xl mr-3"></i>Popular</a>
+          </div>
 
-        <div class="flex flex-col border-b border-gray-300 p-2 items-start justify-center">
-          <a href="#" class="hover:text-blue-400 font-bold text-gray-500"><i
-              class="ri-home-smile-line text-2xl mr-3"></i>Home</a>
-          <a href="#" class="hover:text-blue-400 font-bold text-gray-500"><i
-              class="ri-fire-line text-2xl mr-3"></i>Popular</a>
+          <div class="flex flex-col border-b border-gray-300 p-2 items-start justify-center">
+            <a href="#" class="hover:text-blue-400 font-bold text-gray-500"><i
+                class="ri-gamepad-line text-2xl mr-3"></i>Gaming</a>
+            <a href="#" class="hover:text-blue-400 font-bold text-gray-500"><i
+                class="ri-ping-pong-line text-2xl mr-3"></i>ESports</a>
+            <a href="#" class="hover:text-blue-400 font-bold text-gray-500"><i
+                class="ri-macbook-line text-2xl mr-3"></i>Programming</a>
+          </div>
+
+          <div class="flex flex-col p-2 items-start justify-center">
+            <a href="#" class="hover:text-blue-400 font-bold text-gray-500 text-sm">About Social Network</a>
+            <a href="#" class="hover:text-blue-400 font-bold text-gray-500 text-sm mt-2">Advertise</a>
+            <a href="#" class="hover:text-blue-400 font-bold text-gray-500 text-sm mt-2">Blog</a>
+            <a href="#" class="hover:text-blue-400 font-bold text-gray-500 text-sm mt-2">See more</a>
+          </div>
+
         </div>
-
-        <div class="flex flex-col border-b border-gray-300 p-2 items-start justify-center">
-          <a href="#" class="hover:text-blue-400 font-bold text-gray-500"><i
-              class="ri-gamepad-line text-2xl mr-3"></i>Gaming</a>
-          <a href="#" class="hover:text-blue-400 font-bold text-gray-500"><i
-              class="ri-ping-pong-line text-2xl mr-3"></i>ESports</a>
-          <a href="#" class="hover:text-blue-400 font-bold text-gray-500"><i
-              class="ri-macbook-line text-2xl mr-3"></i>Programming</a>
-        </div>
-
-        <div class="flex flex-col p-2 items-start justify-center">
-          <a href="#" class="hover:text-blue-400 font-bold text-gray-500 text-sm">About Social Network</a>
-          <a href="#" class="hover:text-blue-400 font-bold text-gray-500 text-sm mt-2">Advertise</a>
-          <a href="#" class="hover:text-blue-400 font-bold text-gray-500 text-sm mt-2">Blog</a>
-          <a href="#" class="hover:text-blue-400 font-bold text-gray-500 text-sm mt-2">See more</a>
-        </div>
-
-      </div>
-      <!-- Topics, and some other options (mainly when user is not logged) -->
+        <!-- Topics, and some other options (mainly when user is not logged) -->
+      }
 
     </div>
   </div>
@@ -46,30 +56,33 @@
   <div class="w-full min-[950px]:w-100 min-[600px]:mr-5 min-[600px]:ms-5 min-[600px]:mb-5 min-[950px]:pl-0">
 
     <!-- Create a post section -->
-    <div class="flex justify-start items-center w-full">
-      <div class="w-full">
-        <div class="bg-white p-2 flex flex-row justify-evenly items-center w-full mx-auto min-[600px]:rounded-md">
-          <div class="w-fit mr-1">
-            <img src="https://i.pinimg.com/736x/b9/b5/fb/b9b5fbe0ce482fb220303222f70fcac0.jpg" alt="pfp"
-              class="w-14 rounded-full">
-          </div>
-          <a href="#" class="w-full">
-            <div>
-              <input type="search" class="border border-gray-300 bg-stone-100 rounded-md w-full p-1 ps-5"
-                placeholder="Tell the world what you're thinking on" />
+    @if ( userSession != null )
+    {
+      <div class="flex justify-start items-center w-full mb-5">
+        <div class="w-full">
+          <div class="bg-white p-2 flex flex-row justify-evenly items-center w-full mx-auto min-[600px]:rounded-md">
+            <div class="w-fit mr-1">
+              <img src="@userSession.ProfilePicturePath" alt="pfp"
+                   class="w-14 rounded-full">
             </div>
-          </a>
-          <div class="w-fit flex flex-row ms-2">
-            <a href="#"><i class="ri-image-line text-2xl"></i></a>
-            <a href="#"><i class="ri-link text-2xl ms-4"></i></a>
+            <a href="#" class="w-full">
+              <div>
+                <input type="search" class="border border-gray-300 bg-stone-100 rounded-md w-full p-1 ps-5"
+                       placeholder="Tell the world what you're thinking on" />
+              </div>
+            </a>
+            <div class="w-fit flex flex-row ms-2">
+              <a href="#"><i class="ri-image-line text-2xl"></i></a>
+              <a href="#"><i class="ri-link text-2xl ms-4"></i></a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    }
     <!-- Create a post section -->
 
     <!-- Filters -->
-    <div class="mt-5 flex justify-start items-center">
+    <div class="flex justify-start items-center">
       <div class="w-full mx-auto">
         <div class="bg-white p-2 flex flex-row items-center w-full mx-auto min-[600px]:rounded-md justify-between">
           <div class="font-bold text-gray-500 justify-start flex min-[400px]:justify-evenly items-center w-full">
@@ -120,34 +133,37 @@
           </div>
         </div>
         <div class="w-full text-center mt-2 flex">
-          <a href="#" class="p-1 bg-orange-500 text-white rounded-xl w-full">Something</a>
+          <a href="#" class="p-1 bg-orange-500 text-white rounded-xl w-full">Try it now!</a>
         </div>
       </div>
       <!-- TRY SOCIAL NETWORK PREMIUM -->
 
       <!-- PERSONAL INTERESTS -->
-      <div
-        class="bg-white rounded-sm pt-5 mt-5 bg-[url('https://w0.peakpx.com/wallpaper/106/1007/HD-wallpaper-artistic-pixel-art.jpg')]">
-        <div class="bg-white mt-5 p-2">
-          <!-- <div><img src="https://w0.peakpx.com/wallpaper/106/1007/HD-wallpaper-artistic-pixel-art.jpg"
-                class="cotain w-full" alt=""></div> -->
-          <div class="flex items-center">
-            <img src="https://i.pinimg.com/736x/b9/b5/fb/b9b5fbe0ce482fb220303222f70fcac0.jpg" alt="pfp"
-              class="w-12 rounded-md mr-2 mt-2 mb-2">
-            <span>Home</span>
-          </div>
-          <div class="border-b-2">
-            <p class="text-sm text-gray-500">Your personal Social Network frontpage. Come here to check in with your
-              favorite
-              communities.</p>
-          </div>
-          <div class="flex flex-col justify-around items-center">
-            <a href="#" class="border p-1 mt-2 rounded-md bg-blue-500 text-white w-4/5 text-center">Create a post</a>
-            <a href="#" class="border p-1 mt-2 rounded-md bg-blue-500 text-white w-4/5 text-center mb-2">Create
-              Comunnity</a>
+      @if ( userSession != null )
+      {
+        <div
+          class="bg-white rounded-sm pt-5 mt-5 bg-[url('https://w0.peakpx.com/wallpaper/106/1007/HD-wallpaper-artistic-pixel-art.jpg')]">
+          <div class="bg-white mt-5 p-2">
+            <!-- <div><img src="https://w0.peakpx.com/wallpaper/106/1007/HD-wallpaper-artistic-pixel-art.jpg"
+                           class="cotain w-full" alt=""></div> -->
+            <div class="flex items-center">
+              <img src="@userSession.ProfilePicturePath" alt="pfp"
+                   class="w-12 rounded-md mr-2 mt-2 mb-2">
+              <span>@userSession.UserName</span>
+            </div>
+            <div class="border-b-2">
+              <p class="text-sm text-gray-500">Your personal Social Network frontpage. Come here to check in with your
+                favorite
+                communities.</p>
+            </div>
+            <div class="flex flex-col justify-around items-center">
+              <a href="#" class="p-1 mt-2 rounded-md bg-blue-500 text-white w-4/5 text-center">Create a post</a>
+              <a href="#" class="border border-blue-500 p-1 mt-2 rounded-md bg-transparent text-blue-500 w-4/5 text-center mb-2">Create
+                Comunnity</a>
+            </div>
           </div>
         </div>
-      </div>
+      }
       <!-- PERSONAL INTERESTS -->
 
       <!-- RIGHTS AND USER'S AGREEMNTS -->

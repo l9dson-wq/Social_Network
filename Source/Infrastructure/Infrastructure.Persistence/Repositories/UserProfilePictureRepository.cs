@@ -11,4 +11,6 @@ public class UserProfilePictureRepository : CommonRepository<UserProfilePicture>
   {
     _dbContext = dbContext;
   }
+  
+  
 }

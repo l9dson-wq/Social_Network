@@ -19,10 +19,32 @@ public class LoginController : Controller
 
   public IActionResult Index()
   {
-    return View();
+    return View(new LoginViewModel()); // pass a loginViewModel to the view
   }
 
-  public IActionResult Register()
+  [HttpPost]
+  public async Task<IActionResult> Login(LoginViewModel loginViewModel)
+  {
+    if (!ModelState.IsValid)
+    {
+      return View("Index", loginViewModel);
+    }
+    
+    UserProfileViewModel userProfileViewModel = await _iUserProfileService.Login(loginViewModel);
+    
+    // Get the user photos
+
+    if (userProfileViewModel != null)
+    {
+      UserProfileViewModel userProfileVM = await _iUserProfileService.GetViewModelWithInclude(userProfileViewModel.Id);
+      HttpContext.Session.Set("userProfile", userProfileVM); // Register the user to the session
+      return RedirectToRoute(new { controller = "Home", action = "Index" });
+    }
+    
+    return View("Index");
+  }
+
+  public async Task<IActionResult> Register()
   {
     return View("SignIn");
   }
