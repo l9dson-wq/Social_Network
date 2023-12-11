@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using Core.Application;
+using Core.Application.ViewModels.Home;
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Gui.Models;
 
@@ -8,16 +9,19 @@ namespace WebApp.Gui.Controllers;
 public class HomeController : Controller
 {
   private readonly IUserService _iUserService;
+  private readonly IPostService _iPostService;
 
-  public HomeController(IUserService iUserService)
+  public HomeController(IUserService iUserService, IPostService iPostService)
   {
     _iUserService = iUserService;
+    _iPostService = iPostService;
   }
 
   public async Task<IActionResult> Index()
   {
-    var users = await _iUserService.GetAllViewModelWithInclude();
+    HomeViewModel homeViewModel = new HomeViewModel();
+    homeViewModel.PostViewModels = await _iPostService.GetAllViewModelWithInclude();
 
-    return View(users);
+    return View(homeViewModel);
   }
 }

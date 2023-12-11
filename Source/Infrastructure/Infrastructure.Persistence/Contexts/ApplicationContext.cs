@@ -83,6 +83,9 @@ public class ApplicationContext : DbContext
 
       post.HasMany(p => p.Comments).WithOne(c => c.Post).HasForeignKey(c => c.PostId).OnDelete(DeleteBehavior.Cascade);
       post.HasMany(p => p.Likes).WithOne(l => l.Post).HasForeignKey(l => l.PostId).OnDelete(DeleteBehavior.NoAction);
+
+      post.Property(p => p.Description).IsRequired(false);
+      post.Property(p => p.ImagePath).IsRequired(false);
     });
 
     //Comment
