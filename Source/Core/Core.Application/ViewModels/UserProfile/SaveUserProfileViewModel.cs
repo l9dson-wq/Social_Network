@@ -11,12 +11,12 @@ public class SaveUserProfileViewModel
   public string UserName { get; set; } = string.Empty;
 
   [Required(ErrorMessage = "You must put a password")]
-  [DataType(DataType.Text)]
+  [DataType(DataType.Password)]
   public string Password { get; set; } = string.Empty;
 
   [Compare(nameof(Password), ErrorMessage = "Passwords must match each other")]
   [Required(ErrorMessage = "You must put a password")]
-  [DataType(DataType.Text)]
+  [DataType(DataType.Password)]
   public string ConfirmPassword { get; set; } = string.Empty;
 
   [Required(ErrorMessage = "You must put a description")]

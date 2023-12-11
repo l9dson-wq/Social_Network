@@ -283,7 +283,7 @@ namespace Infrastructure.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserName")
@@ -294,7 +294,8 @@ namespace Infrastructure.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("UserId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("UserProfiles", (string)null);
                 });
@@ -308,20 +309,19 @@ namespace Infrastructure.Persistence.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("BackgroundPicturePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProfilePicturePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserProfileId")
+                    b.Property<int?>("UserProfileId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserProfileId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[UserProfileId] IS NOT NULL");
 
                     b.ToTable("UserProfilePictures");
                 });
@@ -430,8 +430,7 @@ namespace Infrastructure.Persistence.Migrations
                     b.HasOne("Core.Domain.User", "User")
                         .WithOne("UserProfile")
                         .HasForeignKey("Core.Domain.UserProfile", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("User");
                 });
@@ -441,8 +440,7 @@ namespace Infrastructure.Persistence.Migrations
                     b.HasOne("Core.Domain.UserProfile", "UserProfile")
                         .WithOne("UserProfilePicture")
                         .HasForeignKey("Core.Domain.UserProfilePicture", "UserProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("UserProfile");
                 });

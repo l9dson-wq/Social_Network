@@ -35,6 +35,11 @@ public class GeneralProfile : Profile
       .ForMember(dest => dest.FriendShips, opt => opt.Ignore())
       .ForMember(dest => dest.IAmFriend, opt => opt.Ignore());
 
+    CreateMap<UserProfile, SaveUserProfileViewModel>()
+      .ReverseMap()
+      .ForMember(dest => dest.User, opt => opt.Ignore())
+      .ForMember(dest => dest.UserProfilePicture, opt => opt.Ignore());
+
     CreateMap<UserProfile, UserProfileViewModel>()
       .ForMember(dest => dest.ProfilePicturePath, opt => opt.Ignore())
       .ForMember(dest => dest.BackgroundPicturePath, opt => opt.Ignore())
@@ -42,10 +47,10 @@ public class GeneralProfile : Profile
       .ForMember(dest => dest.User, opt => opt.Ignore())
       .ForMember(dest => dest.UserProfilePicture, opt => opt.Ignore());
 
-    CreateMap<UserProfile, SaveUserProfilePictureViewModel>()
+    CreateMap<UserProfilePicture, SaveUserProfilePictureViewModel>()
+      .ForMember(dest => dest.PictureFile, opt => opt.Ignore())
       .ReverseMap()
-      .ForMember(dest => dest.User, opt => opt.Ignore())
-      .ForMember(dest => dest.UserProfilePicture, opt => opt.Ignore());
+      .ForMember(dest => dest.UserProfile, opt => opt.Ignore());
 
     CreateMap<UserProfilePicture, UserProfilePictureViewModel>()
       .ReverseMap()

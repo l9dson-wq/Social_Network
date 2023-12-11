@@ -71,6 +71,7 @@ public class ApplicationContext : DbContext
       userProfile.HasOne(up => up.UserProfilePicture).WithOne(upp => upp.UserProfile).HasForeignKey<UserProfilePicture>(upp => upp.UserProfileId).OnDelete(DeleteBehavior.Cascade);
 
       userProfile.Property(up => up.UserName).HasMaxLength(100);
+      userProfile.Property(up => up.UserId).IsRequired(false);
     });
 
     //Post
@@ -94,5 +95,12 @@ public class ApplicationContext : DbContext
       comment.HasMany(c => c.Likes).WithOne(l => l.Comment).HasForeignKey(l => l.CommentId).OnDelete(DeleteBehavior.Cascade);
     });
 
+    //UserProfilePicture
+    modelBuilder.Entity<UserProfilePicture>(userProfilePicture =>
+    {
+      userProfilePicture.Property(upp => upp.UserProfileId).IsRequired(false);
+      userProfilePicture.Property(upp => upp.ProfilePicturePath).IsRequired(false);
+      userProfilePicture.Property(upp => upp.BackgroundPicturePath).IsRequired(false);
+    });
   }
 }
