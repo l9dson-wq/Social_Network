@@ -4,327 +4,336 @@
 @using Core.Application;
 @inject IHttpContextAccessor iHttpContext;
 @{
-    var userSession = iHttpContext.HttpContext.Session.Get<UserProfileViewModel>("userProfile");
+  var userSession = iHttpContext.HttpContext.Session.Get<UserProfileViewModel>("userProfile");
 }
 @model Core.Application.ViewModels.Home.HomeViewModel;
 @{
-    ViewData["Title"] = "Home Page";
+  ViewData["Title"] = "Home Page";
 }
 
 <div class="flex items-start justify-center mt-6 mx-auto min-[1350px]:w-10/12 min-[1800px]:w-8/12 max-[1350px]:w-full">
 
-    <!-- LEFT SIDE CONTENT -->
-    <div class="w-96 h-screen ml-5 max-[1150px]:hidden min-[1150px]:flex justify-center">
-        <div class="w-fit text-sm">
+<!-- LEFT SIDE CONTENT -->
+<div class="w-96 h-screen ml-5 max-[1150px]:hidden min-[1150px]:flex justify-center">
+  <div class="w-fit text-sm">
 
-            @if (userSession == null)
-            {
-                <!-- Topics, and some other options (mainly when user is not logged) -->
-                <div class="bg-white rounded-md p-5">
+    @if (userSession == null)
+    {
+      <!-- Topics, and some other options (mainly when user is not logged) -->
+      <div class="bg-white rounded-md p-5">
 
-                    <div class="flex flex-col border-b border-gray-300 p-2 items-start justify-center">
-                        <a href="#" class="hover:text-blue-400 font-bold text-gray-500">
-                            <i
-                                class="ri-home-smile-line text-xl mr-3">
-                            </i>Home
-                        </a>
-                        <a href="#" class="hover:text-blue-400 font-bold text-gray-500">
-                            <i
-                                class="ri-fire-line text-xl mr-3">
-                            </i>Popular
-                        </a>
-                    </div>
-
-                    <div class="flex flex-col border-b border-gray-300 p-2 items-start justify-center">
-                        <a href="#" class="hover:text-blue-400 font-bold text-gray-500">
-                            <i
-                                class="ri-gamepad-line text-xl mr-3">
-                            </i>Gaming
-                        </a>
-                        <a href="#" class="hover:text-blue-400 font-bold text-gray-500">
-                            <i
-                                class="ri-ping-pong-line text-xl mr-3">
-                            </i>ESports
-                        </a>
-                        <a href="#" class="hover:text-blue-400 font-bold text-gray-500">
-                            <i
-                                class="ri-macbook-line text-xl mr-3">
-                            </i>Code
-                        </a>
-                    </div>
-
-                    <div class="flex flex-col p-2 items-start justify-center">
-                        <a href="#" class="hover:text-blue-400 font-bold text-gray-500 text-sm">About Social Network</a>
-                        <a href="#" class="hover:text-blue-400 font-bold text-gray-500 text-sm mt-2">Advertise</a>
-                        <a href="#" class="hover:text-blue-400 font-bold text-gray-500 text-sm mt-2">Blog</a>
-                        <a href="#" class="hover:text-blue-400 font-bold text-gray-500 text-sm mt-2">See more</a>
-                    </div>
-
-                </div>
-                <!-- Topics, and some other options (mainly when user is not logged) -->
-                <!-- LEFT SIDE CONTENT -->
-                
-            }
-
+        <div class="flex flex-col border-b border-gray-300 p-2 items-start justify-center">
+          <a href="#" class="hover:text-blue-400 font-bold text-gray-500">
+            <i
+              class="ri-home-smile-line text-xl mr-3">
+            </i>Home
+          </a>
+          <a href="#" class="hover:text-blue-400 font-bold text-gray-500">
+            <i
+              class="ri-fire-line text-xl mr-3">
+            </i>Popular
+          </a>
         </div>
-    </div>
 
-    <!-- CENTRAL CONTENT -->
-    <div class="w-full min-[950px]:w-100 min-[600px]:mr-5 min-[600px]:ms-5 min-[600px]:mb-5 min-[950px]:pl-0">
-        <!-- Create a post section -->
-        @if (userSession != null)
+        <div class="flex flex-col border-b border-gray-300 p-2 items-start justify-center">
+          <a href="#" class="hover:text-blue-400 font-bold text-gray-500">
+            <i
+              class="ri-gamepad-line text-xl mr-3">
+            </i>Gaming
+          </a>
+          <a href="#" class="hover:text-blue-400 font-bold text-gray-500">
+            <i
+              class="ri-ping-pong-line text-xl mr-3">
+            </i>ESports
+          </a>
+          <a href="#" class="hover:text-blue-400 font-bold text-gray-500">
+            <i
+              class="ri-macbook-line text-xl mr-3">
+            </i>Code
+          </a>
+        </div>
+
+        <div class="flex flex-col p-2 items-start justify-center">
+          <a href="#" class="hover:text-blue-400 font-bold text-gray-500 text-sm">About</a>
+          <a href="#" class="hover:text-blue-400 font-bold text-gray-500 text-sm mt-2">Advertise</a>
+          <a href="#" class="hover:text-blue-400 font-bold text-gray-500 text-sm mt-2">Blog</a>
+          <a href="#" class="hover:text-blue-400 font-bold text-gray-500 text-sm mt-2">See more</a>
+        </div>
+
+      </div>
+      <!-- Topics, and some other options (mainly when user is not logged) -->
+      <!-- LEFT SIDE CONTENT -->
+    }
+
+  </div>
+</div>
+
+<!-- CENTRAL CONTENT -->
+<div class="w-full min-[950px]:w-100 min-[600px]:mr-5 min-[600px]:ms-5 min-[600px]:mb-5 min-[950px]:pl-0">
+  <!-- Create a post section -->
+  @if (userSession != null)
+  {
+    <div class="flex justify-start items-center w-96 mb-5">
+      <div class="w-full">
+        <div class="bg-white p-2 flex flex-row justify-evenly items-center w-full mx-auto min-[600px]:rounded-md">
+          <div class="w-fit mr-1">
+            <img src="@userSession.ProfilePicturePath" alt="pfp"
+                 class="w-8 rounded-md">
+          </div>
+          <a href="#" class="w-full">
+            <div>
+              <input type="search" class="border border-gray-300 bg-stone-100 rounded-md w-full p-1 ps-5"
+                     placeholder="Tell the world what you're thinking on"/>
+            </div>
+          </a>
+          <div class="w-fit flex flex-row ms-2">
+            <a href="#">
+              <i class="ri-image-line text-2xl"></i>
+            </a>
+            <a href="#">
+              <i class="ri-link text-2xl ms-4"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+  <!-- Create a post section -->
+
+  <!-- Filters -->
+  <div class="flex justify-start items-center">
+    <div class="w-full mx-auto">
+      <div class="bg-white p-2 flex flex-row items-center w-full mx-auto min-[600px]:rounded-md justify-between">
+        <div class="font-bold text-gray-500 justify-start flex min-[400px]:justify-evenly items-center w-full">
+          <div
+            class="flex items-center justify-center max-[400px]:w-24 max-[400px]:border p-1 max-[400px]:rounded-full max-[400px]:bg-gray-100 max-[400px]:text-blue-400">
+            <a href="#"><i class="ri-rocket-2-line"></i>Best</a>
+          </div>
+          <div class="hidden min-[400px]:flex items-center justify-center">
+            <a href="#">
+              <i
+                class="ri-fire-line">
+              </i>Hot
+            </a>
+          </div>
+          <div class="hidden min-[400px]:flex items-center justify-center">
+            <a href="#">
+              <i
+                class="ri-error-warning-line">
+              </i>New
+            </a>
+          </div>
+          <div class="hidden min-[400px]:flex items-center justify-center">
+            <a href="#">
+              <i
+                class="ri-arrow-up-double-line">
+              </i>Top
+            </a>
+          </div>
+          <div class="hidden min-[400px]:flex items-center justify-center">
+            <a href="#">
+              <i
+                class="ri-menu-3-line">
+              </i>
+            </a>
+          </div>
+        </div>
+        <div class="font-bold text-gray-500 hidden min-[400px]:flex justify-end items-end w-40">
+          <div>
+            <a href="#">
+              <i class="ri-checkbox-multiple-blank-line text-2xl"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Filters -->
+
+  @if (Model.PostViewModels.Count != 0)
+  {
+    foreach (var post in Model.PostViewModels)
+    {
+      foreach (var userProfile in Model.UserProfileViewModels)
+      {
+        if (userProfile.Id == post.UserId)
         {
-            <div class="flex justify-start items-center w-full mb-5">
-                <div class="w-full">
-                    <div class="bg-white p-2 flex flex-row justify-evenly items-center w-full mx-auto min-[600px]:rounded-md">
-                        <div class="w-fit mr-1">
-                            <img src="@userSession.ProfilePicturePath" alt="pfp"
-                                 class="w-14 rounded-md">
-                        </div>
-                        <a href="#" class="w-full">
-                            <div>
-                                <input type="search" class="border border-gray-300 bg-stone-100 rounded-md w-full p-1 ps-5"
-                                       placeholder="Tell the world what you're thinking on"/>
-                            </div>
+          <!-- POST -->
+          <div class="mt-2 flex items-center justify-center">
+            <div class="w-full mx-auto">
+              <div class="bg-white box-border m-2 flex flex-col items-start w-full mx-auto hover:outline hover:outline-1 hover:outline-gray-500">
+                <div class="flex items-stretch justify-start flex-row w-full">
+                  
+                  <div class="font-bold w-10 border-r border-gray-400 hidden min-[500px]:inline p-2">
+                    <div>
+                      <div class="flex items-center justify-center text-xl font-extrabold hover:bg-gray-200 text-gray-500">
+                        <a href="#">
+                          <i class="ri-arrow-up-fill"></i>
                         </a>
-                        <div class="w-fit flex flex-row ms-2">
-                            <a href="#">
-                                <i class="ri-image-line text-2xl"></i>
-                            </a>
-                            <a href="#">
-                                <i class="ri-link text-2xl ms-4"></i>
-                            </a>
-                        </div>
+                      </div>
+                      <div class="flex items-center justify-center text-gray-500">0</div>
+                      <div class="flex items-center justify-center text-xl font-extrabold hover:bg-gray-200 text-gray-500">
+                        <a href="#">
+                          <i class="ri-arrow-down-fill"></i>
+                        </a>
+                      </div>
                     </div>
+                  </div>
+
+                  <div class="flex items-start justify-start flex-col w-fit ms-5 p-2">
+                    <div class="w-full flex items-center">
+                      <img src="@userProfile.ProfilePicturePath" class="w-9 mr-2 rounded-sm" alt="pfp"/>
+                      <p class="text-sm">
+                        Posted by <span class="font-bold">u/@userProfile.UserName</span>
+                        <span class="text-gray-400">
+                          1 month ago
+                        </span>
+                      </p>
+                    </div>
+                    <div class="w-full mt-5 mb-5">
+                      <h4 class="mb-2 text-xl font-bold">@post.Title</h4>
+                      <p class="text-sm w-full">
+                        @post.Description
+                      </p>
+                    </div>
+                    <div>
+                      <img
+                        src="@post.ImagePath"
+                        class="w-fit"/>
+                    </div>
+                    <div class="w-fit flex justify-between flex-row mt-5 font-bold">
+                      <div class="flex w-fit min-[500px]:hidden">
+                        <div class="flex items-center justify-center text-xl font-extrabold mr-3 text-gray-500">
+                          <a href="#">
+                            <i class="ri-arrow-up-fill"></i>
+                          </a>
+                        </div>
+                        <div class="flex items-center justify-center text-gray-500">0</div>
+                        <div class="flex items-center justify-center text-xl font-extrabold ms-3 text-gray-500">
+                          <a href="#">
+                            <i class="ri-arrow-down-fill"></i>
+                          </a>
+                        </div>
+                      </div>
+                      <div class="flex items-center hover:bg-gray-200 p-2 rounded-md text-gray-500 hover:cursor-pointer text-sm min-[400px]:text-base"
+                           id="CommentsDiv">
+                        <div class="text-xs font-extrabold w-6 h-6 text-center text-white bg-red-500 p-1 rounded-md mr-1">
+                          @post.Comments.Count
+                        </div>
+                        Comments
+                      </div>
+                      <div class="p-2 text-sm min-[400px]:text-base rounded-md text-gray-500">
+                        <a href="#">
+                          <i
+                            class="ri-share-forward-line mr-1">
+                          </i>Share
+                        </a>
+                      </div>
+                      <div class="p-2 rounded-md text-gray-500 hidden min-[500px]:inline">
+                        <a href="#">
+                          <i
+                            class="ri-bookmark-line mr-1">
+                          </i>Save
+                        </a>
+                      </div>
+                      <div class="hidden min-[500px]:flex items-center justify-center p-2 rounded-md text-gray-500">
+                        <a href="#">
+                          <i class="ri-menu-3-line"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+                @*<div class="w-full h-fit border-b border-gray-500"></div>*@
+              </div>
             </div>
+          </div>
+          <!-- POST -->
         }
-        <!-- Create a post section -->
+      }
+    }
+  }
+</div>
 
-        <!-- Filters -->
-        <div class="flex justify-start items-center">
-            <div class="w-full mx-auto">
-                <div class="bg-white p-2 flex flex-row items-center w-full mx-auto min-[600px]:rounded-md justify-between">
-                    <div class="font-bold text-gray-500 justify-start flex min-[400px]:justify-evenly items-center w-full">
-                        <div
-                            class="flex items-center justify-center max-[400px]:w-24 max-[400px]:border p-1 max-[400px]:rounded-full max-[400px]:bg-gray-100 max-[400px]:text-blue-400">
-                            <a href="#"><i class="ri-rocket-2-line"></i>Best</a>
-                        </div>
-                        <div class="hidden min-[400px]:flex items-center justify-center">
-                            <a href="#">
-                                <i
-                                    class="ri-fire-line">
-                                </i>Hot
-                            </a>
-                        </div>
-                        <div class="hidden min-[400px]:flex items-center justify-center">
-                            <a href="#">
-                                <i
-                                    class="ri-error-warning-line">
-                                </i>New
-                            </a>
-                        </div>
-                        <div class="hidden min-[400px]:flex items-center justify-center">
-                            <a href="#">
-                                <i
-                                    class="ri-arrow-up-double-line">
-                                </i>Top
-                            </a>
-                        </div>
-                        <div class="hidden min-[400px]:flex items-center justify-center">
-                            <a href="#">
-                                <i
-                                    class="ri-menu-3-line">
-                                </i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="font-bold text-gray-500 hidden min-[400px]:flex justify-end items-end w-40">
-                        <div>
-                            <a href="#">
-                                <i class="ri-checkbox-multiple-blank-line text-2xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- RIGHT SIDE CONTENT -->
+<div class="w-96 h-screen max-[750px]:hidden min-[1150px]:flex justify-center">
+  <div class="w-fit mr-5 min-[1250px]:w-80">
+
+    <!-- TRY SOCIAL NETWORK PREMIUM -->
+    <div class="bg-white rounded-sm p-5 flex flex-col">
+      <div class="flex justify-between">
+        <i class="ri-service-line text-2xl font-bold"></i>
+        <div class="flex flex-col justify-around text-sm ms-2">
+          <p class="text-gray-500 font-bold">Social Network Premium</p>
+          <span class="text-gray-600">The best Social Network Experience.</span>
         </div>
-        <!-- Filters -->
-
-        <!-- POST -->
-        <div class="mt-5 flex items-center justify-center">
-            <div class="w-full mx-auto">
-                <div class="bg-white p-2 flex flex-col items-start w-full mx-auto min-[600px]:rounded-md">
-                    <div class="flex items-start border-b mb-5">
-                        <div class="font-bold hidden min-[500px]:inline">
-                            <div class="flex items-center justify-center text-xl font-extrabold hover:bg-gray-200 text-gray-500">
-                                <a href="#">
-                                    <i class="ri-arrow-up-fill"></i>
-                                </a>
-                            </div>
-                            <div class="flex items-center justify-center text-gray-500">0</div>
-                            <div class="flex items-center justify-center text-xl font-extrabold hover:bg-gray-200 text-gray-500">
-                                <a href="#">
-                                    <i class="ri-arrow-down-fill"></i>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start justify-start flex-col w-fit ms-5">
-                            <div class="w-full flex items-center">
-                                <img src="https://avatarfiles.alphacoders.com/367/367013.jpeg" class="w-9 mr-2 rounded-sm" alt="pfp" />
-                                <p class="text-sm">
-                                    Posted by <span class="font-bold">u/l3dson-wq</span>
-                                    <span class="text-gray-400">
-                                        1
-                                        year
-                                        ago
-                                    </span>
-                                </p>
-                            </div>
-                            <div class="w-fit mt-5 mb-5">
-                                <h4 class="mb-2 text-xl font-bold">Running down a Dream</h4>
-                                <p class="text-sm">
-                                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam inventore
-                                    distinctio soluta ducimus
-                                    placeat sunt, corrupti, rerum minus illo aut eligendi excepturi ex nam ipsa neque cum porro
-                                    quaerat
-                                    sequi.
-                                </p>
-                            </div>
-                            <div>
-                                <img
-                                    src="https://www.wallpaperup.com/uploads/wallpapers/2016/10/03/1022508/d0e8261447060e5f59dbb6005633a5e7-700.jpg"
-                                    class="w-fit" alt="Post image" />
-                            </div>
-                            <div class="w-fit flex justify-between flex-row mt-5 font-bold">
-                                <div class="flex w-fit min-[500px]:hidden">
-                                    <div class="flex items-center justify-center text-xl font-extrabold mr-3 text-gray-500">
-                                        <a href="#">
-                                            <i class="ri-arrow-up-fill"></i>
-                                        </a>
-                                    </div>
-                                    <div class="flex items-center justify-center text-gray-500">0</div>
-                                    <div class="flex items-center justify-center text-xl font-extrabold ms-3 text-gray-500">
-                                        <a href="#">
-                                            <i class="ri-arrow-down-fill"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="flex items-center hover:bg-gray-200 p-2 rounded-md text-gray-500 hover:cursor-pointer text-sm min-[400px]:text-base"
-                                     id="CommentsDiv">
-                                    <div class="text-xs font-extrabold w-6 h-6 text-center text-white bg-red-500 p-1 rounded-md mr-1">
-                                        3
-                                    </div>
-                                    Comments
-                                </div>
-                                <div class="p-2 text-sm min-[400px]:text-base rounded-md text-gray-500">
-                                    <a href="#">
-                                        <i
-                                            class="ri-share-forward-line mr-1">
-                                        </i>Share
-                                    </a>
-                                </div>
-                                <div class="p-2 rounded-md text-gray-500 hidden min-[500px]:inline">
-                                    <a href="#">
-                                        <i
-                                            class="ri-bookmark-line mr-1">
-                                        </i>Save
-                                    </a>
-                                </div>
-                                <div class="hidden min-[500px]:flex items-center justify-center p-2 rounded-md text-gray-500">
-                                    <a href="#">
-                                        <i class="ri-menu-3-line"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- POST -->
+      </div>
+      <div class="w-full text-center mt-2 flex">
+        <a href="#" class="p-1 bg-orange-500 text-white rounded-xl w-full">Try it now!</a>
+      </div>
     </div>
+    <!-- TRY SOCIAL NETWORK PREMIUM -->
 
-    <!-- RIGHT SIDE CONTENT -->
-    <div class="w-96 h-screen max-[1150px]:hidden min-[1150px]:flex justify-center">
-        <div class="w-fit mr-5 min-[1250px]:w-80">
-
-            <!-- TRY SOCIAL NETWORK PREMIUM -->
-            <div class="bg-white rounded-sm p-5 flex flex-col">
-                <div class="flex justify-between">
-                    <i class="ri-service-line text-2xl font-bold"></i>
-                    <div class="flex flex-col justify-around text-sm ms-2">
-                        <p class="text-gray-500 font-bold">Social Network Premium</p>
-                        <span class="text-gray-600">The best Social Network Experience.</span>
-                    </div>
-                </div>
-                <div class="w-full text-center mt-2 flex">
-                    <a href="#" class="p-1 bg-orange-500 text-white rounded-xl w-full">Try it now!</a>
-                </div>
-            </div>
-            <!-- TRY SOCIAL NETWORK PREMIUM -->
-
-            <!-- PERSONAL INTERESTS -->
-            @if (userSession != null)
-            {
-                <div
-                    class="bg-white rounded-sm pt-5 mt-5 bg-[url('https://w0.peakpx.com/wallpaper/106/1007/HD-wallpaper-artistic-pixel-art.jpg')]">
-                    <div class="bg-white mt-5 p-2">
-                        <!-- <div><img src="https://w0.peakpx.com/wallpaper/106/1007/HD-wallpaper-artistic-pixel-art.jpg"
-                                       class="cotain w-full" alt=""></div> -->
-                        <div class="flex items-center">
-                            <img src="@userSession.ProfilePicturePath" alt="pfp"
-                                 class="w-12 rounded-md mr-2 mt-2 mb-2">
-                            <span>@userSession.UserName</span>
-                        </div>
-                        <div class="border-b-2">
-                            <p class="text-sm text-gray-500">
-                                Your personal Social Network frontpage. Come here to check in with your
-                                favorite
-                                communities.
-                            </p>
-                        </div>
-                        <div class="flex flex-col justify-around items-center">
-                            <a href="#" class="p-1 mt-2 rounded-md bg-blue-500 text-white w-4/5 text-center">Create a post</a>
-                            <a href="#" class="border border-blue-500 p-1 mt-2 rounded-md bg-transparent text-blue-500 w-4/5 text-center mb-2">
-                                Create
-                                Comunnity
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            }
-            <!-- PERSONAL INTERESTS -->
-
-            <!-- RIGHTS AND USER'S AGREEMNTS -->
-            <div class="bg-white rounded-sm mt-5">
-                <div class="flex justify-between w-72 mx-auto p-2 border-b-2">
-                    <div class="text-xs flex flex-col justify-between">
-                        <a href="#">User agreement</a>
-                        <a href="#" class="">Privacy Policy</a>
-                    </div>
-                    <div class="text-xs ms-2 flex flex-col justify-between h-12">
-                        <a href="#">Content Policy</a>
-                        <a href="#">Moderator Code of Conduct</a>
-                    </div>
-                </div>
-                <div class="flex justify-between w-72 mx-auto p-2 border-b-2">
-                    <div class="text-xs flex flex-col justify-between">
-                        <a href="#">English</a>
-                        <a href="#" class="">Mario bros</a>
-                    </div>
-                    <div class="text-xs ms-2 flex flex-col justify-between h-12">
-                        <a href="#">Spanish</a>
-                        <a href="#">Brutalis</a>
-                    </div>
-                </div>
-                <div class="flex justify-between w-72 mx-auto p-2">
-                    <span class="text-gray-500 text-xs">Andelson Lopez, practice website all Design rights to Reddit Inc.</span>
-                </div>
-            </div>
-            <!-- RIGHTS AND USER"S AGREEMNTS -->
-
+    <!-- PERSONAL INTERESTS -->
+    @if (userSession != null)
+    {
+      <div
+        class="bg-white rounded-sm pt-5 mt-5 bg-[url('https://w0.peakpx.com/wallpaper/106/1007/HD-wallpaper-artistic-pixel-art.jpg')]">
+        <div class="bg-white mt-5 p-2">
+          <!-- <div><img src="https://w0.peakpx.com/wallpaper/106/1007/HD-wallpaper-artistic-pixel-art.jpg"
+                         class="cotain w-full" alt=""></div> -->
+          <div class="flex items-center">
+            <img src="@userSession.ProfilePicturePath" alt="pfp"
+                 class="w-12 rounded-md mr-2 mt-2 mb-2">
+            <span>@userSession.UserName</span>
+          </div>
+          <div class="border-b-2">
+            <p class="text-sm text-gray-500">
+              Your personal Social Network frontpage. Come here to check in with your
+              favorite
+              communities.
+            </p>
+          </div>
+          <div class="flex flex-col justify-around items-center">
+            <a href="#" class="p-1 mt-2 rounded-md bg-blue-500 text-white w-4/5 text-center">Create a post</a>
+            <a href="#" class="border border-blue-500 p-1 mt-2 rounded-md bg-transparent text-blue-500 w-4/5 text-center mb-2">
+              Create
+              Comunnity
+            </a>
+          </div>
         </div>
+      </div>
+    }
+    <!-- PERSONAL INTERESTS -->
+
+    <!-- RIGHTS AND USER'S AGREEMNTS -->
+    <div class="bg-white rounded-sm mt-5">
+      <div class="flex justify-between w-72 mx-auto p-2 border-b-2">
+        <div class="text-xs flex flex-col justify-between">
+          <a href="#">User agreement</a>
+          <a href="#" class="">Privacy Policy</a>
+        </div>
+        <div class="text-xs ms-2 flex flex-col justify-between h-12">
+          <a href="#">Content Policy</a>
+          <a href="#">Moderator Code of Conduct</a>
+        </div>
+      </div>
+      <div class="flex justify-between w-72 mx-auto p-2 border-b-2">
+        <div class="text-xs flex flex-col justify-between">
+          <a href="#">English</a>
+          <a href="#" class="">Mario bros</a>
+        </div>
+        <div class="text-xs ms-2 flex flex-col justify-between h-12">
+          <a href="#">Spanish</a>
+          <a href="#">Brutalis</a>
+        </div>
+      </div>
+      <div class="flex justify-between w-72 mx-auto p-2">
+        <span class="text-gray-500 text-xs">Andelson Lopez, practice website all Design rights to Reddit Inc.</span>
+      </div>
     </div>
+    <!-- RIGHTS AND USER"S AGREEMNTS -->
+
+  </div>
+</div>
 </div>

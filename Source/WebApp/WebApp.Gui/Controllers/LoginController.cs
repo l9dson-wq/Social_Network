@@ -61,14 +61,12 @@ public class LoginController : Controller
     var user = await _iUserService.AddAsync(generalSignInViewModel.SaveUserViewModel);
 
     //Add user profile
+    generalSignInViewModel.SaveUserProfileViewModel.UserId = user.Id;
     var userProfile = await _iUserProfileService.AddAsync(generalSignInViewModel.SaveUserProfileViewModel);
-    userProfile.UserId = user.Id;
-    await _iUserProfileService.Update(userProfile, userProfile.Id);
 
     //Add user Profile Picture
+    generalSignInViewModel.SaveUserProfilePictureViewModel.UserProfileId = userProfile.Id;
     var userProfilePicture = await _iUserProfilePictureService.AddAsync(generalSignInViewModel.SaveUserProfilePictureViewModel);
-    userProfilePicture.UserProfileId = userProfile.Id;
-    await _iUserProfilePictureService.Update(userProfilePicture, userProfilePicture.Id);
 
     // Adding the image
     if (userProfilePicture != null && userProfilePicture.Id != 0)
