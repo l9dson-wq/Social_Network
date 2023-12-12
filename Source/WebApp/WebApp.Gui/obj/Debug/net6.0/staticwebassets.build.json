@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uWTEbTVPuo8FZKgwsRGupU//Tbzw8zXxuRAODXiazIQ=",
+  "Hash": "FR9gnkENvLhBKwTh8glJ8Ozz4H8gvZBISYsmzBytMFY=",
   "Source": "WebApp.Gui",
   "BasePath": "_content/WebApp.Gui",
   "Mode": "Default",
@@ -150,6 +150,25 @@
       "OriginalItemSpec": "wwwroot/Images/Users/2/394a1989-96f8-4078-9687-288be0bf7cce.jpg"
     },
     {
+      "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/3/858adb24-0781-4977-bf22-0ce8c8495191.jpg",
+      "SourceId": "WebApp.Gui",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/",
+      "BasePath": "_content/WebApp.Gui",
+      "RelativePath": "Images/Users/3/858adb24-0781-4977-bf22-0ce8c8495191.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Images/Users/3/858adb24-0781-4977-bf22-0ce8c8495191.jpg"
+    },
+    {
       "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/4/0fb82b32-35aa-4be7-a495-4a4985fb2a4a.png",
       "SourceId": "WebApp.Gui",
       "SourceType": "Discovered",
@@ -167,6 +186,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/Images/Users/4/0fb82b32-35aa-4be7-a495-4a4985fb2a4a.png"
+    },
+    {
+      "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/4/cc96a836-448e-473d-912d-3dd8ce0a7ba9.jpg",
+      "SourceId": "WebApp.Gui",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/",
+      "BasePath": "_content/WebApp.Gui",
+      "RelativePath": "Images/Users/4/cc96a836-448e-473d-912d-3dd8ce0a7ba9.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Images/Users/4/cc96a836-448e-473d-912d-3dd8ce0a7ba9.jpg"
     },
     {
       "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/5/993664e3-a096-4a46-962a-fc7e1c3c6644.png",

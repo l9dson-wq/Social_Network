@@ -85,23 +85,38 @@
                 <p class="hidden min-[950px]:inline text-sm font-bold">@userSession.UserName</p>
                 <span class="text-sm hidden 2xl:inline">0 Karma</span>
               </div>
-              
+
               <button id="openModal" class="min-[900px]:ms-5 ms-1 ml-2 bg-transparent">
                 <i class="ri-arrow-down-s-line text-xl"></i>
               </button>
-              
+
               <!-- Modal -->
               <div id="myModal"
                    class="modal hidden fixed top-10 right-0 m-4 p-4 bg-white border border-gray-300 rounded">
-         
+
+                <span id="closeModal" class="modal-close cursor-pointer float-right">
+                  <i class="ri-close-circle-line text-2xl"></i>
+                </span>
+
                 <!-- Contenido del modal -->
                 <div class="modal-content">
 
-                  <span id="closeModal" class="modal-close cursor-pointer float-right">
-                    <i class="ri-close-circle-line"></i>
-                  </span>
-
-                  <p>Contenido del modal...</p>
+                  <div class="">
+                    <div class="border-b pb-2 border-1  border-gray-500">
+                      <a class="hover:text-blue-400 font-bold text-gray-700" asp-controller="Home" asp-action="Index">
+                        <i class="ri-home-smile-line text-xl mr-3"></i>Home
+                      </a>
+                      <a href="#" class="hover:text-blue-400 font-bold text-gray-700">
+                        <i class="ri-fire-line text-xl mr-3"></i>Popular
+                      </a>
+                    </div>
+                    <div class="flex flex-col p-2 items-start justify-center">
+                      <a href="#" class="hover:text-blue-400 font-bold text-gray-700 text-sm">About</a>
+                      <a href="#" class="hover:text-blue-400 font-bold text-gray-700 text-sm mt-2">Advertise</a>
+                      <a href="#" class="hover:text-blue-400 font-bold text-gray-700 text-sm mt-2">Blog</a>
+                      <a href="#" class="hover:text-blue-400 font-bold text-gray-700 text-sm mt-2">See more</a>
+                    </div>
+                  </div>
 
                 </div>
               </div>
@@ -110,8 +125,7 @@
             {
               @*<a asp-controller="Login" asp-action="Register"
                    class="p-2 bg-orange-500 text-white cursor-pointer rounded-full font-bold text-sm">Sign up</a>*@
-              <a asp-controller="Login" asp-action="Index"
-                 class="p-2 ms-2 font-bold bg-transparent text-orange-500 border border-orange-500 cursor-pointer rounded-full text-sm">
+              <a class="p-2 ms-2 font-bold bg-transparent text-orange-500 border border-orange-500 cursor-pointer rounded-full text-sm" asp-controller="Login" asp-action="Index">
                 Log in
               </a>
             }
@@ -140,11 +154,10 @@
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
 <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   var modal = document.getElementById('myModal');
 
@@ -169,8 +182,7 @@
       }
   }
 </script>
-
-
+<script src="~/js/site.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", required: false)
 </body>
 

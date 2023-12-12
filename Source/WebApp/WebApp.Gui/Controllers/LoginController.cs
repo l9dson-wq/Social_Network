@@ -34,19 +34,20 @@ public class LoginController : Controller
     
     // Get the user photos
 
-    if (userProfileViewModel != null)
+    if (userProfileViewModel == null)
     {
-      UserProfileViewModel userProfileVM = await _iUserProfileService.GetViewModelWithInclude(userProfileViewModel.Id);
-      HttpContext.Session.Set("userProfile", userProfileVM); // Register the user to the session
-      return RedirectToRoute(new { controller = "Home", action = "Index" });
+      return View("Index");
     }
     
-    return View("Index");
+    UserProfileViewModel userProfileVM = await _iUserProfileService.GetViewModelWithInclude(userProfileViewModel.Id);
+    HttpContext.Session.Set("userProfile", userProfileVM); // Register the user to the session
+    
+    return RedirectToRoute(new { controller = "Home", action = "Index" });
   }
 
   public async Task<IActionResult> Register()
   {
-    return View("SignIn");
+    return View("SignIn", new GeneralSignInViewModel());
   }
 
   [HttpPost]
@@ -57,14 +58,14 @@ public class LoginController : Controller
       return View("SignIn", generalSignInViewModel);
     }
 
-    //Add the user
+    //Add the user first of all
     var user = await _iUserService.AddAsync(generalSignInViewModel.SaveUserViewModel);
 
-    //Add user profile
+    //Then we can use the user Id to submit our UserProfile with all the important that such as the previous user Id
     generalSignInViewModel.SaveUserProfileViewModel.UserId = user.Id;
     var userProfile = await _iUserProfileService.AddAsync(generalSignInViewModel.SaveUserProfileViewModel);
 
-    //Add user Profile Picture
+    //Here we are doing the exact thing using the UserProfileId in the UserProfilePicture
     generalSignInViewModel.SaveUserProfilePictureViewModel.UserProfileId = userProfile.Id;
     var userProfilePicture = await _iUserProfilePictureService.AddAsync(generalSignInViewModel.SaveUserProfilePictureViewModel);
 
@@ -75,7 +76,9 @@ public class LoginController : Controller
       await _iUserProfilePictureService.Update(userProfilePicture, userProfilePicture.Id);
     }
 
-    return RedirectToAction("Index");
+    generalSignInViewModel.failed = false;
+
+    return View("SignIn", generalSignInViewModel);
   }
 
   private string UploadFile(IFormFile file, int id, bool editMode, string imageUrl = "")
