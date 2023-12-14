@@ -25,7 +25,7 @@
 
       <div class="ml-1 w-fit flex items-center justify-around flex-1">
         <div class="flex-1">
-          <a href="#" class="text-xl font-bold">
+          <a class="text-xl font-bold" asp-controller="Home" asp-action="Index">
             S<span class="hidden lg:inline">ocial</span>
             <span class="text-orange-500 text-xl">
               N<span class="hidden lg:inline">etwork</span>
@@ -44,37 +44,32 @@
         </div>
       </div>
 
-      @* BUSCADOR *@
+      @* Search bar *@
       <div class="w-20 sm:w-72 xl:w-6/12 min-[810px]:mr-5 min-[420px]:pr-3:pl-3 flex-1 hidden min-[600px]:inline">
         <input type="search" class="bg-gray-100 p-2 rounded-full w-full px-3 text-sm" />
       </div>
-      @* BUSCADOR *@
+      @* Search bar *@
 
       <div class="flex items-center justify-end w-fit flex-1 p-1">
-        <a class="inline mx-2" asp-controller="Home" asp-action="Index"><i
-            class="ri-search-line min-[600px]:text-2xl text-3xl"></i></a>
+        <a class="min-[600px]:hidden inline mx-2" asp-controller="Home" asp-action="Index"><i
+            class="ri-search-line  text-3xl"></i></a>
         @if (userSession != null)
         {
           <div class="">
             <a href="#">
-              <i class="ri-chat-3-line text-3xl min-[600pxl]:text-2xl"></i>
+              <i class="ri-chat-3-line text-3xl"></i>
             </a>
           </div>
           <div class="ms-2">
             <a href="#">
-              <i class="ri-notification-3-line text-3xl min-[600pxl]:text-2xl"></i>
+              <i class="ri-notification-3-line text-3xl"></i>
             </a>
           </div>
           <div class="ms-2">
             <a href="#">
-              <i class="ri-add-circle-line text-3xl min-[600pxl]:text-2xl"></i>
+              <i class="ri-add-circle-line text-3xl"></i>
             </a>
           </div>
-          @*<div
-        class="ms-2 bg-gray-200 p-1 w-9 h-9 min-[400px]:w-fit min-[400px]:h-fit rounded-[50%] min-[400px]:rounded-md">
-        <a href="#" class="flex items-center justify-center text-sm"><i class="ri-megaphone-line text-xl"></i><span
-        class="min-[400px]:inline hidden">advertise</span></a>
-        </div> *@
         }
         <div class="ms-1">
           <div class="flex items-center justify-evenly p-1">
@@ -115,6 +110,8 @@
                       <a href="#" class="hover:text-blue-400 font-bold text-gray-700 text-sm mt-2">Advertise</a>
                       <a href="#" class="hover:text-blue-400 font-bold text-gray-700 text-sm mt-2">Blog</a>
                       <a href="#" class="hover:text-blue-400 font-bold text-gray-700 text-sm mt-2">See more</a>
+                      <a class="hover:text-red-400 font-bold text-gray-700 text-sm mt-2" asp-controller="Login"
+                        asp-action="LogOut">Log out</a>
                     </div>
                   </div>
 

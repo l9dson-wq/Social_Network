@@ -25,23 +25,25 @@ public class LoginController : Controller
   [HttpPost]
   public async Task<IActionResult> Login(LoginViewModel loginViewModel)
   {
+    // Validate if the Viewmodel has all the information that we must have.
     if (!ModelState.IsValid)
     {
       return View("Index", loginViewModel);
     }
-    
-    UserProfileViewModel userProfileViewModel = await _iUserProfileService.Login(loginViewModel);
-    
-    // Get the user photos
 
+    // Search the user in te database
+    UserProfileViewModel userProfileViewModel = await _iUserProfileService.Login(loginViewModel);
+
+    // If the user credentials were not found in the database we are going to return the user to the login again.
     if (userProfileViewModel == null)
     {
+      ViewBag.NotFound = "The user was not found, please try again";
       return View("Index");
     }
-    
+
     UserProfileViewModel userProfileVM = await _iUserProfileService.GetViewModelWithInclude(userProfileViewModel.Id);
     HttpContext.Session.Set("userProfile", userProfileVM); // Register the user to the session
-    
+
     return RedirectToRoute(new { controller = "Home", action = "Index" });
   }
 
@@ -79,6 +81,14 @@ public class LoginController : Controller
     generalSignInViewModel.failed = false;
 
     return View("SignIn", generalSignInViewModel);
+  }
+
+  // So this action basically is going  to help us to log out the user from the session
+  // We are going to add an option on the view and redirect the user to this action.
+  public async Task<IActionResult> LogOut()
+  {
+    HttpContext.Session.Remove("userProfile");
+    return RedirectToAction("Index");
   }
 
   private string UploadFile(IFormFile file, int id, bool editMode, string imageUrl = "")

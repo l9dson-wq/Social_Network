@@ -7,28 +7,37 @@
 <div class="flex items-start max-[1000px]:bg-white justify-center mx-auto min-[1000px]:w-8/12 w-full">
 
   <!-- LOG IN -->
-  <div class="w-[600px] bg-white min-[1000px]:rounded-xl min-[1000px]:w-96 flex justify-between flex-col p-5 mt-7" id="LogIn">
+  <div class="w-[600px] bg-white min-[1000px]:rounded-xl min-[1000px]:w-96 flex justify-between flex-col p-5 mt-7"
+    id="LogIn">
     <form method="POST" asp-controller="Login" asp-action="Login">
       <div class="">
         <p class="text-2xl font-extrabold">Log In</p>
-        <span class="text-gray-800 text-sm">By continuing, you agree to our User Agreement and acknowledge that you understand the Privacy Policy. </span>
+        <span class="text-gray-800 text-sm">By continuing, you agree to our User Agreement and acknowledge that you
+          understand the Privacy Policy. </span>
       </div>
-      
-      <div class="flex flex-col mt-9">
-        
+
+      <div class="flex flex-col mt-5">
+
+        @if (ViewBag.NotFound != null)
+        {
+          <span class="mb-3 text-red-700 p-1 rounded-md text-center bg-red-200 font-bold text-sm mx-auto"
+            id="UserNotFound">@ViewBag.NotFound</span>
+        }
+
         <input asp-for="Username" class="p-3 rounded-xl w-full bg-gray-100" placeholder="Username *">
-        <span asp-validation-for="Username" class="text-xs text-red-500 mb-2"></span>
+        <span asp-validation-for="Username" class="text-xs text-red-500 mb-2" id="userName"></span>
 
         <input asp-for="Password" class="p-3 rounded-xl w-full mt-5 bg-gray-100" placeholder="Password *">
         <span asp-validation-for="Password" class="text-xs text-red-500"></span>
-        
+
       </div>
-      
+
       <div class="mt-5 flex flex-col">
         <a href="#" class="text-sm text-blue-500 mb-2 font-bold">Forgot password?</a>
-        <div class="text-sm">New to Social Network? <a class="text-blue-500 font-bold cursor-pointer" asp-controller="Login" asp-action="Register">Sign Up</a></div>
+        <div class="text-sm">New to Social Network? <a class="text-blue-500 font-bold cursor-pointer" id="Password"
+            asp-controller="Login" asp-action="Register">Sign Up</a></div>
       </div>
-      
+
       <div class="mt-9">
         <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded-xl">Log in</button>
       </div>
@@ -37,5 +46,19 @@
   <!-- LOG IN -->
 
   <div class="bg-white h-screen"></div>
-    
+
 </div>
+
+<script>
+  const inputUsername = document.getElementById('Username');
+  const inputPassword = document.getElementById('Password');
+  const UserNotFound = document.getElementById('UserNotFound');
+
+  inputUsername.addEventListener('click', () => {
+    UserNotFound.classList.add('hidden');
+  });
+
+  inputPassword.addEventListener('click', () => {
+    UserNotFound.classList.add('hidden');
+  });
+</script>
