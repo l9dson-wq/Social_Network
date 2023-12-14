@@ -158,21 +158,24 @@
                   class="bg-white min-[600px]:rounded-md border box-border m-2 flex flex-col items-start w-full mx-auto hover:outline hover:outline-1 hover:outline-gray-500">
                   <div class="flex items-stretch justify-start flex-row w-full rounded-md">
 
-                    <div class="font-bold w-10 bg-slate-100 hidden min-[500px]:inline p-2">
-                      <div class="">
-                        <div class="flex items-center justify-center text-xl font-extrabold hover:bg-gray-200 text-gray-500">
-                          <a href="#">
-                            <i class="ri-arrow-up-fill"></i>
-                          </a>
-                        </div>
-                        <div class="flex items-center justify-center text-gray-500">0</div>
-                        <div class="flex items-center justify-center text-xl font-extrabold hover:bg-gray-200 text-gray-500">
-                          <a href="#">
-                            <i class="ri-arrow-down-fill"></i>
-                          </a>
+                    @if (userSession != null)
+                    {
+                      <div class="font-bold w-10 bg-slate-100 hidden min-[500px]:inline p-2">
+                        <div class="">
+                          <div class="flex items-center justify-center text-xl font-extrabold hover:bg-gray-200 text-gray-500">
+                            <a asp-controller="Likes" asp-action="Like" asp-route-postId="@post.Id">
+                              <i class="ri-arrow-up-fill"></i>
+                            </a>
+                          </div>
+                          <div class="flex items-center justify-center text-gray-500">@post.Likes.Count</div>
+                          <div class="flex items-center justify-center text-xl font-extrabold hover:bg-gray-200 text-gray-500">
+                            <a href="#">
+                              <i class="ri-arrow-down-fill"></i>
+                            </a>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    }
 
                     <div class="flex items-start justify-start flex-col w-full">
                       <div class="w-full flex items-center pl-2 pt-2">
@@ -271,8 +274,6 @@
         <div
           class="bg-white rounded-md pt-5 mt-5 bg-[url('https://w0.peakpx.com/wallpaper/106/1007/HD-wallpaper-artistic-pixel-art.jpg')]">
           <div class="bg-white mt-5 p-2">
-            <!-- <div><img src="https://w0.peakpx.com/wallpaper/106/1007/HD-wallpaper-artistic-pixel-art.jpg"
-                                                                               class="cotain w-full" alt=""></div> -->
             <div class="flex items-center">
               <img src="@userSession.ProfilePicturePath" alt="pfp" class="w-12 rounded-md mr-2 mt-2 mb-2">
               <span>@userSession.UserName</span>

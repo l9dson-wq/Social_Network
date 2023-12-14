@@ -105,5 +105,12 @@ public class ApplicationContext : DbContext
       userProfilePicture.Property(upp => upp.ProfilePicturePath).IsRequired(false);
       userProfilePicture.Property(upp => upp.BackgroundPicturePath).IsRequired(false);
     });
+
+    //Likes
+    modelBuilder.Entity<Like>(like =>
+    {
+      like.Property(l => l.CommentId).IsRequired(false);
+      like.Property(l => l.PostId).IsRequired(false);
+    });
   }
 }

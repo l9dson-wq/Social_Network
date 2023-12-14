@@ -63,7 +63,7 @@ public class GeneralProfile : Profile
       .ForMember(dest => dest.UserProfile, opt => opt.Ignore())
       .ForMember(dest => dest.UserProfileId, opt => opt.Ignore());
     #endregion
-    
+
     #region Post
 
     CreateMap<Post, PostViewModel>()
@@ -72,7 +72,7 @@ public class GeneralProfile : Profile
       .ForMember(dest => dest.CreatedBy, opt => opt.Ignore())
       .ForMember(dest => dest.LastModified, opt => opt.Ignore())
       .ForMember(dest => dest.LastModifiedBy, opt => opt.Ignore());
-    
+
     CreateMap<Post, SavePostViewModel>()
       .ForMember(dest => dest.ImageFile, opt => opt.Ignore())
       .ReverseMap()
@@ -85,6 +85,23 @@ public class GeneralProfile : Profile
       .ForMember(dest => dest.Comments, opt => opt.Ignore())
       .ForMember(dest => dest.Likes, opt => opt.Ignore());
 
+    #endregion
+
+    #region Likes
+    CreateMap<Like, LikeViewModel>()
+      .ReverseMap()
+      .ForMember(dest => dest.UserId, opt => opt.Ignore())
+      .ForMember(dest => dest.User, opt => opt.Ignore())
+      .ForMember(dest => dest.PostId, opt => opt.Ignore())
+      .ForMember(dest => dest.Post, opt => opt.Ignore())
+      .ForMember(dest => dest.CommentId, opt => opt.Ignore())
+      .ForMember(dest => dest.Comment, opt => opt.Ignore());
+
+    CreateMap<Like, SaveLikeViewModel>()
+      .ReverseMap()
+      .ForMember(dest => dest.User, opt => opt.Ignore())
+      .ForMember(dest => dest.Post, opt => opt.Ignore())
+      .ForMember(dest => dest.Comment, opt => opt.Ignore());
     #endregion
   }
 }

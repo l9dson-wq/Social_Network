@@ -9,7 +9,7 @@ public class PostService : CommonService<SavePostViewModel, PostViewModel, Post>
   private readonly IMapper _mapper;
   private readonly IPostRepository _iPostRepository;
 
-  public PostService(IMapper mapper, IPostRepository iPostRepository ) : base( iPostRepository, mapper )
+  public PostService(IMapper mapper, IPostRepository iPostRepository) : base(iPostRepository, mapper)
   {
     _mapper = mapper;
     _iPostRepository = iPostRepository;
@@ -29,7 +29,7 @@ public class PostService : CommonService<SavePostViewModel, PostViewModel, Post>
       UserId = post.UserId,
       User = post.User,
       Comments = post.Comments,
-      Likes = post.Likes,
+      Likes = post.Likes.Where(like => like.IsLike == true).ToList(),
     }).ToList();
   }
 }
