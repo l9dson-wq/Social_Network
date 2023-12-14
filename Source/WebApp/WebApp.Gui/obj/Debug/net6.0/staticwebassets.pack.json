@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets/WebApp.Gui.bundle.scp.css"
     },
     {
+      "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/1/8fbaef2d-7f79-46f9-a48d-cc3f999a04f8.jpg",
+      "PackagePath": "staticwebassets/Images/Users/1/8fbaef2d-7f79-46f9-a48d-cc3f999a04f8.jpg"
+    },
+    {
       "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/1/cbb8a2b5-016d-433a-b703-f3f78199edac.jpg",
       "PackagePath": "staticwebassets/Images/Users/1/cbb8a2b5-016d-433a-b703-f3f78199edac.jpg"
     },

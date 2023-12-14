@@ -11,7 +11,8 @@
   ViewData["Title"] = "Home Page";
 }
 
-<div class="flex items-stretch justify-center mt-4 mx-auto min-[1350px]:w-10/12 min-[1800px]:w-8/12 max-[1350px]:w-full">
+<div
+  class="flex items-stretch justify-center mt-4 mx-auto min-[1350px]:w-10/12 min-[1800px]:w-8/12 max-[1350px]:w-full">
 
   <!-- LEFT SIDE CONTENT -->
   <div class="w-96 ml-5 max-[1150px]:hidden min-[1150px]:flex justify-center self-stretch">
@@ -24,31 +25,26 @@
 
           <div class="flex flex-col border-b border-gray-300 p-2 items-start justify-center">
             <a href="#" class="hover:text-blue-400 font-bold text-gray-500">
-              <i
-                class="ri-home-smile-line text-xl mr-3">
+              <i class="ri-home-smile-line text-xl mr-3">
               </i>Home
             </a>
             <a href="#" class="hover:text-blue-400 font-bold text-gray-500">
-              <i
-                class="ri-fire-line text-xl mr-3">
+              <i class="ri-fire-line text-xl mr-3">
               </i>Popular
             </a>
           </div>
 
           <div class="flex flex-col border-b border-gray-300 p-2 items-start justify-center">
             <a href="#" class="hover:text-blue-400 font-bold text-gray-500">
-              <i
-                class="ri-gamepad-line text-xl mr-3">
+              <i class="ri-gamepad-line text-xl mr-3">
               </i>Gaming
             </a>
             <a href="#" class="hover:text-blue-400 font-bold text-gray-500">
-              <i
-                class="ri-ping-pong-line text-xl mr-3">
+              <i class="ri-ping-pong-line text-xl mr-3">
               </i>ESports
             </a>
             <a href="#" class="hover:text-blue-400 font-bold text-gray-500">
-              <i
-                class="ri-macbook-line text-xl mr-3">
+              <i class="ri-macbook-line text-xl mr-3">
               </i>Code
             </a>
           </div>
@@ -82,7 +78,7 @@
             <a href="#" class="w-full">
               <div>
                 <input type="search" class="border border-gray-300 bg-stone-100 rounded-md w-full p-1 ps-5"
-                       placeholder="Tell the world what you're thinking on"/>
+                  placeholder="Tell the world what you're thinking on" />
               </div>
             </a>
             <div class="w-fit flex flex-row ms-2">
@@ -110,29 +106,25 @@
             </div>
             <div class="hidden min-[400px]:flex items-center justify-center">
               <a href="#">
-                <i
-                  class="ri-fire-line">
+                <i class="ri-fire-line">
                 </i>Hot
               </a>
             </div>
             <div class="hidden min-[400px]:flex items-center justify-center">
               <a href="#">
-                <i
-                  class="ri-error-warning-line">
+                <i class="ri-error-warning-line">
                 </i>New
               </a>
             </div>
             <div class="hidden min-[400px]:flex items-center justify-center">
               <a href="#">
-                <i
-                  class="ri-arrow-up-double-line">
+                <i class="ri-arrow-up-double-line">
                 </i>Top
               </a>
             </div>
             <div class="hidden min-[400px]:flex items-center justify-center">
               <a href="#">
-                <i
-                  class="ri-menu-3-line">
+                <i class="ri-menu-3-line">
                 </i>
               </a>
             </div>
@@ -162,9 +154,10 @@
             <!-- POST -->
             <div class="mt-2 flex items-center justify-center">
               <div class="w-full mx-auto">
-                <div class="bg-white box-border m-2 flex flex-col items-start w-full mx-auto hover:outline hover:outline-1 hover:outline-gray-500">
+                <div
+                  class="bg-white box-border m-2 flex flex-col items-start w-full mx-auto hover:outline hover:outline-1 hover:outline-gray-500">
                   <div class="flex items-stretch justify-start flex-row w-full">
-                    
+
                     <div class="font-bold w-10 bg-slate-100 hidden min-[500px]:inline p-2">
                       <div>
                         <div class="flex items-center justify-center text-xl font-extrabold hover:bg-gray-200 text-gray-500">
@@ -183,7 +176,7 @@
 
                     <div class="flex items-start justify-start flex-col w-full">
                       <div class="w-full flex items-center pl-2 pt-2">
-                        <img src="@userProfile.ProfilePicturePath" class="w-9 mr-2 rounded-sm" alt="pfp"/>
+                        <img src="@userProfile.ProfilePicturePath" class="w-9 mr-2 rounded-sm" alt="pfp" />
                         <p class="text-sm">
                           Posted by <span class="font-bold">u/@userProfile.UserName</span>
                           <span class="text-gray-400">
@@ -198,11 +191,9 @@
                         </p>
                       </div>
                       <div class="pl-2">
-                        <img
-                          src="@post.ImagePath"
-                          class="w-fit"/>
+                        <img src="@post.ImagePath" class="w-fit" />
                       </div>
-                      <div class="w-full flex justify-around flex-row mt-5 font-bold border-t border-gray-500">
+                      <div class="w-full flex justify-around flex-row mt-5 font-bold border-t border-slate-100">
                         <div class="flex w-fit min-[500px]:hidden">
                           <div class="flex items-center justify-center text-xl font-extrabold mr-3 text-gray-500">
                             <a href="#">
@@ -216,8 +207,9 @@
                             </a>
                           </div>
                         </div>
-                        <div class="flex items-center hover:bg-gray-200 p-2 rounded-md text-gray-500 hover:cursor-pointer text-sm min-[400px]:text-base"
-                             id="CommentsDiv">
+                        <div
+                          class="flex items-center hover:bg-gray-200 p-2 rounded-md text-gray-500 hover:cursor-pointer text-sm min-[400px]:text-base"
+                          id="CommentsDiv">
                           <div class="text-xs font-extrabold w-6 h-6 text-center text-white bg-red-500 p-1 rounded-md mr-1">
                             @post.Comments.Count
                           </div>
@@ -225,15 +217,13 @@
                         </div>
                         <div class="p-2 text-sm min-[400px]:text-base rounded-md text-gray-500">
                           <a href="#">
-                            <i
-                              class="ri-share-forward-line mr-1">
+                            <i class="ri-share-forward-line mr-1">
                             </i>Share
                           </a>
                         </div>
                         <div class="p-2 rounded-md text-gray-500 hidden min-[500px]:inline">
                           <a href="#">
-                            <i
-                              class="ri-bookmark-line mr-1">
+                            <i class="ri-bookmark-line mr-1">
                             </i>Save
                           </a>
                         </div>
@@ -282,10 +272,9 @@
           class="bg-white rounded-sm pt-5 mt-5 bg-[url('https://w0.peakpx.com/wallpaper/106/1007/HD-wallpaper-artistic-pixel-art.jpg')]">
           <div class="bg-white mt-5 p-2">
             <!-- <div><img src="https://w0.peakpx.com/wallpaper/106/1007/HD-wallpaper-artistic-pixel-art.jpg"
-                           class="cotain w-full" alt=""></div> -->
+                             class="cotain w-full" alt=""></div> -->
             <div class="flex items-center">
-              <img src="@userSession.ProfilePicturePath" alt="pfp"
-                   class="w-12 rounded-md mr-2 mt-2 mb-2">
+              <img src="@userSession.ProfilePicturePath" alt="pfp" class="w-12 rounded-md mr-2 mt-2 mb-2">
               <span>@userSession.UserName</span>
             </div>
             <div class="border-b-2">
@@ -297,7 +286,8 @@
             </div>
             <div class="flex flex-col justify-around items-center">
               <a href="#" class="p-1 mt-2 rounded-md bg-blue-500 text-white w-4/5 text-center">Create a post</a>
-              <a href="#" class="border border-blue-500 p-1 mt-2 rounded-md bg-transparent text-blue-500 w-4/5 text-center mb-2">
+              <a href="#"
+                class="border border-blue-500 p-1 mt-2 rounded-md bg-transparent text-blue-500 w-4/5 text-center mb-2">
                 Create
                 Comunnity
               </a>

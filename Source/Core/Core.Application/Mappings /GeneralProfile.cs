@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using Core.Application.ViewModels.Post;
 using Core.Domain;
 
