@@ -23,8 +23,8 @@
   <div class="w-full flex items-center justify-center border border-1 bg-white sticky top-0 z-40">
     <div class="w-full flex flex-row justify-between items-center">
 
-      <div class="ml-1 w-fit max-[600px]:w-10 xl:w-96 flex items-center justify-around flex-1 bg-orange-200">
-        <div class="bg-yellow-500">
+      <div class="ml-1 w-fit flex items-center justify-around flex-1">
+        <div class="flex-1">
           <a href="#" class="text-xl font-bold">
             S<span class="hidden lg:inline">ocial</span>
             <span class="text-orange-500 text-xl">
@@ -32,26 +32,27 @@
             </span>
           </a>
         </div>
-        <div class="flex justify-center items-center bg-red-500">
-          <a href="#" class="hidden xl:inline">
+        <div
+          class="mr-3 p-1 justify-between items-center flex-1 hover:outline outline-1 outline-slate-300 hidden xl:flex">
+          <a href="#" class="">
             <i class="ri-home-4-line text-xl font-normal">
             </i>
             Home
           </a>
+          <a class="inline mx-2" asp-controller="Home" asp-action="Index"><i
+              class="ri-arrow-down-s-line min-[600px]:text-2xl text-3xl"></i></a>
         </div>
       </div>
 
       @* BUSCADOR *@
-      <div
-        class="w-20 sm:w-72 xl:w-6/12 min-[440px]:w-40 min-[810px]:mr-5 min-[420px]:pr-3:pl-3 flex-1 hidden min-[600pxl]:inline">
-        <i class="ri-search-line absolute text-2xl top-2 text-gray-400 ms-2"></i>
-        <input type="search" class="bg-transparent border-2 p-1 rounded-full w-full pl-9 text-sm" />
+      <div class="w-20 sm:w-72 xl:w-6/12 min-[810px]:mr-5 min-[420px]:pr-3:pl-3 flex-1 hidden min-[600px]:inline">
+        <input type="search" class="bg-gray-100 p-2 rounded-full w-full px-3 text-sm" />
       </div>
       @* BUSCADOR *@
 
-      <div class="flex items-center justify-center w-fit flex-1 p-1">
+      <div class="flex items-center justify-end w-fit flex-1 p-1">
         <a class="inline mx-2" asp-controller="Home" asp-action="Index"><i
-            class="ri-search-line min-[600pxl]:text-2xl text-3xl"></i></a>
+            class="ri-search-line min-[600px]:text-2xl text-3xl"></i></a>
         @if (userSession != null)
         {
           <div class="">
