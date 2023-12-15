@@ -7,6 +7,7 @@ public interface ICommonService<SaveViewModel, ViewModel, Entity>
 {
   Task<SaveViewModel> AddAsync(SaveViewModel svm);
   Task Update(SaveViewModel svm, int id);
+  Task Delete(int id);
   Task<List<ViewModel>> GetAllViewModel();
   Task<SaveViewModel> GetSaveViewModel(int id);
 }

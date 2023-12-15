@@ -42,5 +42,12 @@ namespace WebApp.Gui.Controllers
       // return the user to the Home route
       return RedirectToRoute(new { controller = "Home", action = "Index" });
     }
+
+    public async Task<IActionResult> Dislike(int id)
+    {
+      await _iLikeService.Delete(id);
+
+      return RedirectToRoute(new { controller = "Home", action = "Index" });
+    }
   }
 }

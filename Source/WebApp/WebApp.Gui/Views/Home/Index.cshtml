@@ -1,10 +1,9 @@
 ﻿@using Core.Application;
 @using Microsoft.AspNetCore.Http;
 @using static Core.Application.SessionHelper;
-@using Core.Application;
 @inject IHttpContextAccessor iHttpContext;
 @{
-  var userSession = iHttpContext.HttpContext.Session.Get<UserProfileViewModel>("userProfile");
+  var userSession = iHttpContext?.HttpContext?.Session.Get<UserProfileViewModel>("userProfile");
 }
 @model Core.Application.ViewModels.Home.HomeViewModel;
 @{
@@ -142,7 +141,7 @@
     <!-- Filters -->
 
     <!-- Check if we have post in the database to show them -->
-    @if (Model.PostViewModels.Count != 0)
+    @if (Model.PostViewModels != null && Model.PostViewModels.Count != 0)
     {
       foreach (var post in Model.PostViewModels)
       {
@@ -168,11 +167,15 @@
                             </a>
                           </div>
                           <div class="flex items-center justify-center text-gray-500">@post.Likes.Count</div>
-                          <div class="flex items-center justify-center text-xl font-extrabold hover:bg-gray-200 text-gray-500">
-                            <a href="#">
-                              <i class="ri-arrow-down-fill"></i>
-                            </a>
-                          </div>
+                          @if (post.Likes.Any(like => like.UserId == userSession.Id))
+                          {
+                            <div class="flex items-center justify-center text-xl font-extrabold hover:bg-gray-200 text-gray-500">
+                              <a asp-controller="Likes" asp-action="Dislike"
+                                asp-route-id="@post.Likes.First(like => like.UserId == userSession.Id).Id">
+                                <i class="ri-arrow-down-fill"></i>
+                              </a>
+                            </div>
+                          }
                         </div>
                       </div>
                     }
@@ -197,19 +200,28 @@
                         <img src="@post.ImagePath" class="w-fit" />
                       </div>
                       <div class="w-full flex justify-around flex-row mt-5 font-bold border-t border-slate-100">
-                        <div class="flex w-fit min-[500px]:hidden">
-                          <div class="flex items-center justify-center text-xl font-extrabold mr-3 text-gray-500">
-                            <a href="#">
-                              <i class="ri-arrow-up-fill"></i>
-                            </a>
-                          </div>
-                          <div class="flex items-center justify-center text-gray-500">0</div>
-                          <div class="flex items-center justify-center text-xl font-extrabold ms-3 text-gray-500">
-                            <a href="#">
-                              <i class="ri-arrow-down-fill"></i>
-                            </a>
-                          </div>
-                        </div>
+                        @if (userSession != null)
+                        {
+                          @foreach (var like in post.Likes)
+                          {
+                            <div class="flex w-fit min-[500px]:hidden">
+                              <div class="flex items-center justify-center text-xl font-extrabold mr-3 text-gray-500">
+                                <a asp-controller="Likes" asp-action="Like" asp-route-postId="@post.Id">
+                                  <i class="ri-arrow-up-fill"></i>
+                                </a>
+                              </div>
+                              <div class="flex items-center justify-center text-gray-500">0</div>
+                              <div class="flex items-center justify-center text-xl font-extrabold ms-3 text-gray-500">
+                                @if (like.UserId == userSession.Id && like.PostId == post.Id)
+                                {
+                                  <a asp-controller="Likes" asp-action="Dislike" asp-route-id="@like.Id">
+                                    <i class="ri-arrow-down-fill"></i>
+                                  </a>
+                                }
+                              </div>
+                            </div>
+                          }
+                        }
                         <div
                           class="flex items-center hover:bg-gray-200 p-2 rounded-md text-gray-500 hover:cursor-pointer text-sm min-[400px]:text-base"
                           id="CommentsDiv">
