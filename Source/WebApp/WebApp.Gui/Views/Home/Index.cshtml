@@ -167,7 +167,7 @@
                             </a>
                           </div>
                           <div class="flex items-center justify-center text-gray-500">@post.Likes.Count</div>
-                          @if (post.Likes.Any(like => like.UserId == userSession.Id))
+                          @if (post.Likes.Any(like => like.UserId == userSession.Id && like.IsLike == true))
                           {
                             <div class="flex items-center justify-center text-xl font-extrabold hover:bg-gray-200 text-gray-500">
                               <a asp-controller="Likes" asp-action="Dislike"
@@ -192,7 +192,7 @@
                       </div>
                       <div class="w-full mt-5 mb-5 pl-2">
                         <h4 class="mb-2 text-xl font-bold">@post.Title</h4>
-                        <p class="text-sm w-full">
+                        <p class="text-sm w-full p-2">
                           @post.Description
                         </p>
                       </div>
