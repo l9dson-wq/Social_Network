@@ -6,6 +6,8 @@ namespace Core.Application.ViewModels.Post;
 public class SavePostViewModel
 {
     public int Id { get; set; }
+    
+    [DataType(DataType.Text)]
     public string? ImagePath { get; set; } = string.Empty;
     
     [DataType(DataType.Upload)]

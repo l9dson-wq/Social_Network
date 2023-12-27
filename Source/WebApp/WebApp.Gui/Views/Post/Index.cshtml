@@ -1,4 +1,12 @@
 @model Core.Application.ViewModels.Post.SavePostViewModel
+@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using static Core.Application.SessionHelper;
+@using Core.Application
+@inject IHttpContextAccessor iHttpContext;
+@{
+  var userSession = iHttpContext?.HttpContext?.Session.Get<UserProfileViewModel>("userProfile");
+}
 @{
   ViewData["Title"] = "Create a post";
 }
@@ -59,11 +67,13 @@
           </div>
         </div>
 
-        <form method="post" asp-controller="Post" asp-action="Send" id="postForm" enctype="multipart/form-data" class="w-full">
+        <form method="POST" asp-controller="Post" asp-action="Send" id="postForm" enctype="multipart/form-data" class="w-full">
+          <!-- This is for the UserId -->
+          <input type="hidden" asp-for="UserId" value="@userSession.Id">
           <!-- TITLE AND DESCRIPTION -->
           <div class="w-full">
             <div class="px-5 pt-5 mb-2">
-              <input asp-for="Title" type="text" class="font-light border border-2 w-full p-2 rounded-sm" placeholder="Title">
+              <input asp-for="Title" type="text" class="font-light border-2 w-full p-2 rounded-sm" placeholder="Title">
             </div>
             <div class="px-5" id="postDescription">
               <div class="bg-gray-200">
@@ -72,21 +82,19 @@
                 <a href="#" class="text-xl mx-4">C</a>
                 <a href="#" class="text-xl mx-4">D</a>
               </div>
-              <textarea name="" id="" cols="30" rows="10" asp-for="Description"
+              <textarea cols="30" rows="10" name="Description"
                             class="border-2 w-full p-2 rounded-sm resize-none font-light"
                             placeholder="Text-optional"></textarea>
             </div>
             <!-- INSERT IMAGE -->
             <div class="px-5 w-full p-5 hidden" id="imgPostContainer">
-              <label for="postImg"
-                class="hover:cursor-pointer text-blue-600 border border-blue-600 px-4 py-2 border-2 rounded-full ml-1 font-bold">
+              <label for="ImageFile"
+                     class="hover:cursor-pointer text-blue-600 border-blue-600 px-4 py-2 border-2 rounded-full ml-1 font-bold">
                 Add Image
               </label>
-              <input type="file" name="" id="postImg" class="hidden" onchange="addImage(this)">
-              <div
-                class="mt-5 min-[500px]:pl-10 mx-auto flex flex-wrap justify-center min-[500px]:justify-start items-start"
-                id="imgPreviewContainer">
-                <!-- Aquí se mostrarán las miniaturas de las imágenes -->
+              <input type="file" class="hidden" asp-for="ImageFile" id="ImageFile" onchange="previewImage(this)"/>
+              <div class="mt-5 min-[500px]:pl-10 mx-auto flex flex-wrap justify-center min-[500px]:justify-start items-start"
+                   id="imgPreviewContainer">
               </div>
             </div>
             <!-- INSERT IMAGE -->
@@ -221,8 +229,9 @@
     form.submit();
   }
 </script>
+
 <script>
-  function addImage(input) {
+  function previewImage(input) {
     const imgPreviewContainer = document.getElementById('imgPreviewContainer');
     const file = input.files[0];
 
@@ -235,18 +244,9 @@
         imgElement.alt = 'Uploaded Image';
         imgElement.classList.add('min-[400px]:w-48', 'flex-1', 'w-full', 'max-h-full', 'mr-2', 'mb-2', 'p-2', 'border');
 
+        // Limpiar el contenedor de vistas previas antes de agregar una nueva imagen
+        imgPreviewContainer.innerHTML = '';
         imgPreviewContainer.appendChild(imgElement);
-        input.value = ''; // Clear input value
-
-        // Add a new input for the next image
-        const newInput = document.createElement('input');
-        newInput.type = 'file';
-        newInput.name = '';
-        newInput.classList.add('hidden');
-        newInput.onchange = function () {
-          addImage(newInput);
-        };
-        document.getElementById('imgPostContainer').appendChild(newInput);
       };
 
       reader.readAsDataURL(file);
