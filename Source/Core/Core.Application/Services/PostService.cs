@@ -19,7 +19,7 @@ public class PostService : CommonService<SavePostViewModel, PostViewModel, Post>
   {
     var posts = await _iPostRepository.GetAllWithIncludeAsync(new List<string> { "User", "Comments", "Likes" });
 
-    return posts.Select(post => new PostViewModel()
+    return posts.OrderByDescending(post => post.Created).Select(post => new PostViewModel()
     {
       Id = post.Id,
       ImagePath = post.ImagePath,

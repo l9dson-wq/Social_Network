@@ -1,11 +1,20 @@
-﻿using Core.Domain;
+﻿using Core.Application;
+using Core.Domain;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence;
 
 public class ApplicationContext : DbContext
 {
-  public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options) { }
+  private readonly IHttpContextAccessor _iHttpContextAccessor;
+  private readonly UserProfileViewModel _userProfileViewModel;
+  
+  public ApplicationContext(DbContextOptions<ApplicationContext> options, IHttpContextAccessor iHttpContextAccessor) : base(options)
+  {
+    _iHttpContextAccessor = iHttpContextAccessor;
+    _userProfileViewModel = _iHttpContextAccessor?.HttpContext?.Session.Get<UserProfileViewModel>("userProfile");
+  }
 
   //sets
   public DbSet<User> Users { get; set; }
@@ -26,11 +35,11 @@ public class ApplicationContext : DbContext
       {
         case EntityState.Added:
           entry.Entity.Created = DateTime.Now;
-          entry.Entity.CreatedBy = "DefaultAppUser";
+          entry.Entity.CreatedBy = _userProfileViewModel == null ? "DefaultAppUser" : _userProfileViewModel.UserName;
           break;
         case EntityState.Modified:
           entry.Entity.LastModified = DateTime.Now;
-          entry.Entity.LastModifiedBy = "DefaultAppUser";
+          entry.Entity.LastModifiedBy = _userProfileViewModel == null ? "DefaultAppUser" : _userProfileViewModel.UserName;
           break;
       }
     }
