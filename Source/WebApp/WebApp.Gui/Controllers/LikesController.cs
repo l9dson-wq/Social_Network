@@ -22,7 +22,7 @@ namespace WebApp.Gui.Controllers
     {
       SaveLikeViewModel saveLikeViewModel = new SaveLikeViewModel();
 
-      //if we send the user here it means is a like and not a dislike
+      //if we send the user here it means is a like
       //lets set the isLike to true
       saveLikeViewModel.IsLike = true;
 

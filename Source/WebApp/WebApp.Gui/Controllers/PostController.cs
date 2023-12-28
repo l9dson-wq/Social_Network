@@ -31,20 +31,26 @@ public class PostController : Controller
   [HttpPost]
   public async Task<IActionResult> Send(SavePostViewModel savePostViewModel)
   {
-    var post = await _iPostService.AddAsync(savePostViewModel);
-
+    // if the user choose an image
     if ( savePostViewModel.ImageFile != null )
     {
+      // let's create a guid for the image folder
+      Guid guidId = Guid.NewGuid();
+      
       // We use the uplodFile function to get the correct imageUrl
-      post.ImagePath = UploadFile( savePostViewModel.ImageFile, post.Id, false );
-      // then we update the post with the new info about the imageUrl
-      await _iPostService.Update(post, post.Id);
+      savePostViewModel.ImagePath = UploadFile( savePostViewModel.ImageFile, guidId, false );
+      
+      await _iPostService.AddAsync(savePostViewModel);
+    }
+    else
+    {
+      var post = await _iPostService.AddAsync(savePostViewModel);
     }
     
     return RedirectToRoute(new { controller = "Home", action = "Index" });
   }
   
-  private string UploadFile(IFormFile file, int id, bool editMode, string imageUrl = "")
+  private string UploadFile(IFormFile file, Guid id, bool editMode, string imageUrl = "")
   {
     if (editMode && file == null)
     {

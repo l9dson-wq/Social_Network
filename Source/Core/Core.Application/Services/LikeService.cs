@@ -21,13 +21,13 @@ public class LikeService : CommonService<SaveLikeViewModel, LikeViewModel, Like>
 
   public override async Task<SaveLikeViewModel> AddAsync(SaveLikeViewModel saveLikeViewModel)
   {
-    // Check if the user already has a like to the same post
+    // get all the likes in the database to Check if the user already has a like to the same post
     var getUserLike = await _iLikeRepository.GetAllAsync();
 
     // Get the likes where the user Id and the post or comment Id are the same
     // So we know if the user already gave a like to the same post
     var alreadyLiked = getUserLike.Where(like => like.UserId == _userProfileViewModel.UserId && like.PostId == saveLikeViewModel.PostId).ToList();
-
+    
     if (alreadyLiked.Count != 0)
     {
       return saveLikeViewModel;

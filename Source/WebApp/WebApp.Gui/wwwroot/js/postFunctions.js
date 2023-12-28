@@ -20,14 +20,10 @@ imgPostButton.addEventListener("click", () => {
     imgPostButton.classList.add("bg-blue-100");
   }
 
-  if (postButton.classList.contains("border-b")) {
-    postButton.classList.remove("border-b");
-    postButton.classList.remove("border-b-blue-500");
-    postButton.classList.remove("border-b-2");
-    imgPostButton.classList.add("border-b");
-    imgPostButton.classList.add("border-b-blue-500");
-    imgPostButton.classList.add("border-b-2");
-  }
+  //if (postButton.classList.contains("border-b")) {
+  //  postButton.classList.remove("border-b","border-b-blue-500","border-b-2");
+  //  imgPostButton.classList.add("border-b","border-b-blue-500","border-b-2");
+  //}
 
 });
 
@@ -43,13 +39,9 @@ postButton.addEventListener("click", () => {
     imgPostButton.classList.remove("bg-blue-100");
   }
 
-  if (!postButton.classList.contains("border-b")) {
-    postButton.classList.add("border-b");
-    postButton.classList.add("border-b-blue-500");
-    postButton.classList.add("border-b-2");
-    imgPostButton.classList.remove("border-b");
-    imgPostButton.classList.remove("border-b-blue-500");
-    imgPostButton.classList.remove("border-b-2");
-  }
+  //if (!postButton.classList.contains("border-b")) {
+  //  postButton.classList.add("border-b","border-b-blue-500","border-b-2");
+  //  imgPostButton.classList.remove("border-b","border-b-blue-500","border-b-2");
+  //}
 
 });
