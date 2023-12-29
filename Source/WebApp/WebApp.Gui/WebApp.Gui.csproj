@@ -26,6 +26,21 @@
     <UpToDateCheckBuilt Include="tailwind.config.js" Set="Css" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\Images\Users\00000000-0000-0000-0000-000000000000\b4d19073-a5d8-4834-abca-24576b523699.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\Images\Users\01c58ee6-a247-4fe2-8fec-a38d9026b067\5a3ac241-4b1f-4102-956c-990ae1eb0ee9.jpeg" />
+    <_ContentIncludedByDefault Remove="wwwroot\Images\Users\3\0c507da0-7b79-4d5a-90c9-337e1ee55acb.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\Images\Users\3\25bec551-02cb-4263-865a-5b84ce7fc17a.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\Images\Users\3\858adb24-0781-4977-bf22-0ce8c8495191.jpg" />
+    <_ContentIncludedByDefault Remove="wwwroot\Images\Users\5\72b36545-6cbe-4c0b-abaf-121afcae61a1.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\Images\Users\5\993664e3-a096-4a46-962a-fc7e1c3c6644.png" />
+    <_ContentIncludedByDefault Remove="wwwroot\Images\Users\7\8d3869f7-b6d2-4793-9aeb-3cc35d5d033d.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\Users\" />
+  </ItemGroup>
+
   <Target Name="Tailwind" BeforeTargets="Build">
     <Exec Command="npm run css:build" />
   </Target> 

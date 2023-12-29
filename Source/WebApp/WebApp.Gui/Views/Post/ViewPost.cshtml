@@ -1,0 +1,112 @@
+@model Core.Application.ViewModels.Home.HomeViewModel
+@{
+  ViewData["Title"] = "View post";
+}
+
+<div class="flex items-stretch justify-start mx-auto min-[1350px]:w-10/12 min-[1800px]:w-8/12 max-[1350px]:w-full">
+
+  <!-- Left side content -->
+  <div class="bg-white flex-1 mx-auto min-[950px]:p-4">
+    <!-- pfp, forum's name, time ago, username, 3 dots -->
+    <div class="p-2 flex flex-row">
+      <img
+        src="~/@Model.UserProfileViewModel.ProfilePicturePath"
+        alt="" class="w-10 rounded-full mr-2">
+      <div class="flex justify-between w-full items-start">
+        <div>
+          <div class="flex flex-row items-center">
+            <p class="text-sm font-bold mr-2">Foro's name</p>
+            <span class="text-sm">3 hours ago</span>
+          </div>
+          <p class="text-sm font-extralight">@Model.UserProfileViewModel.UserName</p>
+        </div>
+        <span class="font-bold text-xl">...</span>
+      </div>
+    </div>
+    <!-- Tags -->
+    <div class="p-2">
+      <p class="font-semibold text-md">@Model.PostViewModel.Title</p>
+    </div>
+    <!-- Description -->
+    <div class="px-2">
+      <span class="bg-green-400 font-light text-xs px-1 rounded-full"> SUCCESS</span>
+      <p class="text-sm font-light p-1">
+        @Model.PostViewModel.Description
+      </p>
+    </div>
+    <!-- Image -->
+    <img
+      src="~/@Model.PostViewModel.ImagePath"
+      alt="" class="w-full" />
+    <!-- Like and dislike, comments, share -->
+    <div class="p-2 m-2 flex flex-row">
+      <!-- likes and dislike -->
+      <div class="flex flex-row items-center bg-gray-200 px-2 rounded-full w-fit">
+        <span class="mr-2"><i class="ri-arrow-up-fill text-xl"></i></span>
+        <p>@Model.PostViewModel.Likes.Count</p>
+        <span class="ml-2"><i class="ri-arrow-down-fill text-xl"></i></span>
+      </div>
+      <!-- Comments -->
+      <div class="flex flex-row bg-gray-200 items-center px-2 rounded-full w-fit ml-4">
+        <span class="p-1"><i class="ri-message-2-fill mr-2 text-xl"></i> @Model.PostViewModel.Comments.Count</span>
+      </div>
+      <!-- Share button -->
+      <div class="flex flex-row bg-gray-200 items-center px-2 rounded-full w-fit ml-4">
+        <span class="p-1"><i class="ri-share-2-line text-xl"></i></span>
+      </div>
+    </div>
+    <!-- Add a comment section -->
+    <div class="p-2 m-2">
+      <div class="flex justify-center items-center border border-gray-500 rounded-full px-2 py-1">
+        <span><i class="ri-add-line mr-2 text-xl"></i>Add a comment</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT SIDE CONTENT -->
+  <div class="w-96 bg-white h-screen hidden min-[950px]:flex justify-center flex-2">
+    <div class="w-fit mr-5 min-[1250px]:w-80">
+
+      <!-- TRY SOCIAL NETWORK PREMIUM -->
+      <div class="bg-gray-100 rounded-sm p-5 mt-5 flex flex-col">
+        <!-- forum's name and join button -->
+        <div class="flex items-center justify-between">
+          <p class="font-bold">r/Hackintosh</p>
+          <a href="#" class="border border-gray-500 rounded-full px-4 py-1">Joined</a>
+        </div>
+        <!-- Forum's description -->
+        <div class="mt-4 w-fit">
+          <span class="text-sm font-semibold">Hackintosh</span>
+          <p class="text-sm font-light text-gray-700">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A,
+            labore ea.
+            Vel
+            qui eius
+            commodi! Ipsa
+            debitis est, accusamus praesentium excepturi porro exercitationem laudantium explicabo. Itaque aliquam
+            eligendi sit quo?</p>
+        </div>
+        <!-- Forums's stats -->
+        <div class="mt-3 w-full flex flex-row justify-between">
+          <!-- Members number -->
+          <div class="flex flex-col">
+            <p class="font-semibold text-md">186k</p>
+            <span class="text-sm font-light text-gray-600">Members</span>
+          </div>
+          <!-- online members -->
+          <div class="flex flex-col">
+            <p class="font-semibold text-md">288</p>
+            <span class="text-sm font-light text-gray-600"><i class="ri-circle-fill text-green-400"></i> Online</span>
+          </div>
+          <!-- Forum's rank -->
+          <div class="flex flex-col">
+            <p class="font-semibold text-md">Top 1%</p>
+            <span class="text-sm font-light text-gray-600">Rank by size</span>
+          </div>
+        </div>
+      </div>
+      <!-- TRY SOCIAL NETWORK PREMIUM -->
+
+    </div>
+  </div>
+  
+</div>

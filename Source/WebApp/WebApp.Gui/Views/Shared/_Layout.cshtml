@@ -75,7 +75,7 @@
           <div class="flex items-center justify-evenly p-1">
             @if (userSession != null)
             {
-              <img src="@userSession.ProfilePicturePath" alt="profile picture"
+              <img src="~/@userSession.ProfilePicturePath" alt="profile picture"
                 class="w-8 ml-2 min-[600px]:mr-2 rounded-md" />
               <div class="flex items-center flex-col justify-evenly">
                 <p class="hidden min-[950px]:inline text-sm font-bold">@userSession.UserName</p>
@@ -149,29 +149,37 @@
 
   <script src="~/lib/jquery/dist/jquery.min.js"></script>
   <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-    crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script>
     var modal = document.getElementById('myModal');
+    var openModalButton = document.getElementById('openModal');
+    var closeModalButton = document.getElementById('closeModal');
 
-    document.getElementById('openModal').addEventListener('click', function (event) {
-      event.stopPropagation(); // Evitar que el clic llegue al documento y active el cierre del modal
-      modal.classList.remove('hidden');
-      // Agregar un escuchador de clic al documento para cerrar el modal si se hace clic fuera de él
-      document.addEventListener('click', closeModalOutside);
-    });
+    if (openModalButton) {
+      openModalButton.addEventListener('click', function (event) {
+        event.stopPropagation(); // Evitar que el clic llegue al documento y active el cierre del modal
+        if (modal) {
+          modal.classList.remove('hidden');
+          // Agregar un escuchador de clic al documento para cerrar el modal si se hace clic fuera de él
+          document.addEventListener('click', closeModalOutside);
+        }
+      });
+    }
 
-    document.getElementById('closeModal').addEventListener('click', function () {
-      modal.classList.add('hidden');
-      // Remover el escuchador de clic al cerrar el modal
-      document.removeEventListener('click', closeModalOutside);
-    });
+    if (closeModalButton) {
+      closeModalButton.addEventListener('click', function () {
+        if (modal) {
+          modal.classList.add('hidden');
+          // Remover el escuchador de clic al cerrar el modal
+          document.removeEventListener('click', closeModalOutside);
+        }
+      });
+    }
 
     // Función para cerrar el modal si se hace clic fuera de él
     function closeModalOutside(event) {
-      if (!modal.contains(event.target)) {
+      if (modal && !modal.contains(event.target)) {
         modal.classList.add('hidden');
         document.removeEventListener('click', closeModalOutside);
       }

@@ -1,4 +1,5 @@
 using Core.Application;
+using Core.Application.ViewModels.Home;
 using Core.Application.ViewModels.Post;
 using Microsoft.AspNetCore.Mvc;
 using WebApp.Gui.Middlewares;
@@ -9,12 +10,14 @@ public class PostController : Controller
 {
   private readonly ValidateUserSession _validateUserSession;
   private readonly IPostService _iPostService;
+  private readonly IUserProfileService _iUserProfileService;
 
   // Constructor
-  public PostController(ValidateUserSession validateUserSession, IPostService iPostService)
+  public PostController(ValidateUserSession validateUserSession, IPostService iPostService, IUserProfileService iUserProfileService)
   {
     _validateUserSession = validateUserSession;
     _iPostService = iPostService;
+    _iUserProfileService = iUserProfileService;
   }
 
   // GET
@@ -35,9 +38,9 @@ public class PostController : Controller
     if ( savePostViewModel.ImageFile != null )
     {
       // let's create a guid for the image folder
-      Guid guidId = Guid.NewGuid();
+      var guidId = Guid.NewGuid();
       
-      // We use the uplodFile function to get the correct imageUrl
+      // We use the upload File function to get the correct imageUrl
       savePostViewModel.ImagePath = UploadFile( savePostViewModel.ImageFile, guidId, false );
       
       await _iPostService.AddAsync(savePostViewModel);
@@ -48,6 +51,16 @@ public class PostController : Controller
     }
     
     return RedirectToRoute(new { controller = "Home", action = "Index" });
+  }
+
+  [HttpGet]
+  public async Task<IActionResult> ViewPost(int postId, int userId)
+  {
+    HomeViewModel homeViewModel = new HomeViewModel();
+    homeViewModel.PostViewModel = await _iPostService.GetViewModelWithIncludeById(postId);
+    homeViewModel.UserProfileViewModel = await _iUserProfileService.GetViewModelWithInclude(userId);
+
+    return View(homeViewModel);
   }
   
   private string UploadFile(IFormFile file, Guid id, bool editMode, string imageUrl = "")

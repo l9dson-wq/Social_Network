@@ -1,5 +1,7 @@
 /Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/appsettings.Development.json
 /Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/appsettings.json
+/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/package-lock.json
+/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/package.json
 /Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/WebApp.Gui.staticwebassets.runtime.json
 /Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/WebApp.Gui
 /Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/WebApp.Gui.deps.json
@@ -288,6 +290,8 @@
 /Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/refs/System.Xml.XPath.dll
 /Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/refs/System.Xml.XPath.XDocument.dll
 /Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/refs/WindowsBase.dll
+/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/AutoMapper.dll
+/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 /Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/Humanizer.dll
 /Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/MessagePack.dll
 /Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/MessagePack.Annotations.dll
@@ -549,7 +553,3 @@
 /Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/obj/Debug/net6.0/WebApp.Gui.pdb
 /Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/obj/Debug/net6.0/WebApp.Gui.genruntimeconfig.cache
 /Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/obj/Debug/net6.0/ref/WebApp.Gui.dll
-/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/AutoMapper.dll
-/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
-/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/package-lock.json
-/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/bin/Debug/net6.0/package.json
