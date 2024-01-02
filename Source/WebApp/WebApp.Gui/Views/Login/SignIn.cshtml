@@ -108,20 +108,7 @@
   const modelToJS = @Html.Raw(JsonSerializer.Serialize(Model));
   console.log(modelToJS["failed"]);
   
-  //Now after the user send to the controller all the information to register him
-  //The controller is going to send me back the information in the "failed" property of the model of this view
-  //in order to show up the message and redirect the user to the Login view.
   if (!modelToJS["failed"]){
-    Swal.fire({
-      title: 'Welcome to the family!',
-      text: 'We are so exciting to have you around us, click in the button bellow to login into your new account',
-      confirmButtonTest: 'Continue',
-    }).then((result) => {
-      // if the user press the "Continue" button it will be redirected to the login view
-      if (result.isConfirmed) {
-        // with this we are going to send the customer to the login view.
-        window.location.href = '@Url.Action("Index", "Login")';
-      }
-    })
+    window.location.href = '@Url.Action("RegisterSuccess", "Messages")';
   }
 </script>
