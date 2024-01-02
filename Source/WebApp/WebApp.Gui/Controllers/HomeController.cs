@@ -8,22 +8,29 @@ namespace WebApp.Gui.Controllers;
 
 public class HomeController : Controller
 {
-  private readonly IUserService _iUserService;
   private readonly IPostService _iPostService;
   private readonly IUserProfileService _iUserProfileService;
+  private readonly ISavedService _iSavedService;
 
-  public HomeController(IUserService iUserService, IPostService iPostService, IUserProfileService iUserProfileService)
+  public HomeController(
+    IPostService iPostService, 
+    IUserProfileService iUserProfileService,
+    ISavedService iSavedService
+    )
   {
-    _iUserService = iUserService;
     _iPostService = iPostService;
     _iUserProfileService = iUserProfileService;
+    _iSavedService = iSavedService;
   }
 
   public async Task<IActionResult> Index()
   {
-    HomeViewModel homeViewModel = new HomeViewModel();
-    homeViewModel.PostViewModels = await _iPostService.GetAllViewModelWithInclude();
-    homeViewModel.UserProfileViewModels = await _iUserProfileService.GetAllViewModelWithInclude();
+    var homeViewModel = new HomeViewModel
+    {
+      PostViewModels = await _iPostService.GetAllViewModelWithInclude(),
+      UserProfileViewModels = await _iUserProfileService.GetAllViewModelWithInclude(),
+      SavedViewModels = await _iSavedService.GetAllViewModel(),
+    };
 
     return View(homeViewModel);
   }

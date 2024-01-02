@@ -1,5 +1,6 @@
 using AutoMapper;
 using Core.Application.ViewModels.Post;
+using Core.Application.ViewModels.Saved;
 using Core.Domain;
 
 namespace Core.Application;
@@ -98,6 +99,22 @@ public class GeneralProfile : Profile
       .ForMember(dest => dest.Comment, opt => opt.Ignore());
 
     CreateMap<Like, SaveLikeViewModel>()
+      .ReverseMap()
+      .ForMember(dest => dest.User, opt => opt.Ignore())
+      .ForMember(dest => dest.Post, opt => opt.Ignore())
+      .ForMember(dest => dest.Comment, opt => opt.Ignore());
+    #endregion
+    
+    #region Saved
+    CreateMap<Saved, SavedViewModel>()
+      .ForMember(dest => dest.User, opt => opt.Ignore())
+      .ForMember(dest => dest.Post, opt => opt.Ignore())
+      .ReverseMap()
+      .ForMember(dest => dest.User, opt => opt.Ignore())
+      .ForMember(dest => dest.Post, opt => opt.Ignore())
+      .ForMember(dest => dest.Comment, opt => opt.Ignore());
+    
+    CreateMap<Saved, SaveSavedViewModel>()
       .ReverseMap()
       .ForMember(dest => dest.User, opt => opt.Ignore())
       .ForMember(dest => dest.Post, opt => opt.Ignore())

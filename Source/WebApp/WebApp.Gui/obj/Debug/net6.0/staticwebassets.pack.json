@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets/Images/Users/5/f35241aa-8747-4dae-a583-47b7ac9a0218.jpg"
     },
     {
+      "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/8fc29092-dee2-4ae7-9650-fd9cf5a481f7/cee5515b-747b-44c4-aa89-db0a233e7174.jpg",
+      "PackagePath": "staticwebassets/Images/Users/8fc29092-dee2-4ae7-9650-fd9cf5a481f7/cee5515b-747b-44c4-aa89-db0a233e7174.jpg"
+    },
+    {
       "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/aad2d676-4236-4f2f-8e61-f38b656156e3/85629b10-9890-41cc-82be-7f9118346363.png",
       "PackagePath": "staticwebassets/Images/Users/aad2d676-4236-4f2f-8e61-f38b656156e3/85629b10-9890-41cc-82be-7f9118346363.png"
     },
@@ -51,6 +55,14 @@
     {
       "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/favicon.ico",
       "PackagePath": "staticwebassets/favicon.ico"
+    },
+    {
+      "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/js/GoUp.js",
+      "PackagePath": "staticwebassets/js/GoUp.js"
+    },
+    {
+      "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/js/LikePost.js",
+      "PackagePath": "staticwebassets/js/LikePost.js"
     },
     {
       "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/js/SignIn.js",

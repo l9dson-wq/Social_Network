@@ -1,6 +1,7 @@
 using Core.Application;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Encodings.Web;
+using WebApp.Gui.Middlewares;
 
 namespace MvcMovie.Controllers;
 
@@ -9,22 +10,41 @@ public class LoginController : Controller
   private readonly IUserService _iUserService;
   private readonly IUserProfileService _iUserProfileService;
   private readonly IUserProfilePictureService _iUserProfilePictureService;
+  private readonly ValidateUserSession _validateUserSession;
 
-  public LoginController(IUserService iUserService, IUserProfileService iUserProfileService, IUserProfilePictureService iUserProfilePictureService)
+  public LoginController(
+    IUserService iUserService, 
+    IUserProfileService iUserProfileService, 
+    IUserProfilePictureService iUserProfilePictureService,
+    ValidateUserSession validateUserSession
+    )
   {
     _iUserService = iUserService;
     _iUserProfileService = iUserProfileService;
     _iUserProfilePictureService = iUserProfilePictureService;
+    _validateUserSession = validateUserSession;
   }
 
   public IActionResult Index()
   {
+    // Validate if the user has been logged so we are going to return him to the Home page/view.
+    if (_validateUserSession.HasUser())
+    {
+      return RedirectToRoute(new { controller = "Home", action = "Index" });
+    }
+    
     return View(new LoginViewModel()); // pass a loginViewModel to the view
   }
 
   [HttpPost]
   public async Task<IActionResult> Login(LoginViewModel loginViewModel)
   {
+    // Validate if the user has been logged so we are going to return him to the Home page/view.
+    if (_validateUserSession.HasUser())
+    {
+      return RedirectToRoute(new { controller = "Home", action = "Index" });
+    }
+    
     // Validate if the Viewmodel has all the information that we must have.
     if (!ModelState.IsValid)
     {
@@ -49,12 +69,24 @@ public class LoginController : Controller
 
   public async Task<IActionResult> Register()
   {
+    // Validate if the user has been logged so we are going to return him to the Home page/view.
+    if (_validateUserSession.HasUser())
+    {
+      return RedirectToRoute(new { controller = "Home", action = "Index" });
+    }
+    
     return View("SignIn", new GeneralSignInViewModel());
   }
 
   [HttpPost]
   public async Task<IActionResult> Register(GeneralSignInViewModel generalSignInViewModel)
   {
+    // Validate if the user has been logged so we are going to return him to the Home page/view.
+    if (_validateUserSession.HasUser())
+    {
+      return RedirectToRoute(new { controller = "Home", action = "Index" });
+    }
+    
     if (!ModelState.IsValid)
     {
       return View("SignIn", generalSignInViewModel);

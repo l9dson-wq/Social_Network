@@ -6,20 +6,28 @@ using System.Threading.Tasks;
 using Core.Application;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using WebApp.Gui.Middlewares;
 
 namespace WebApp.Gui.Controllers
 {
   public class LikesController : Controller
   {
     private readonly ILikeService _iLikeService;
+    private readonly ValidateUserSession _validateUserSession;
 
-    public LikesController(ILikeService iLikeService)
+    public LikesController(ILikeService iLikeService, ValidateUserSession validateUserSession)
     {
       _iLikeService = iLikeService;
+      _validateUserSession = validateUserSession;
     }
-
+    
     public async Task<IActionResult> Like(int? postId, int? commentId)
     {
+      if (!_validateUserSession.HasUser())
+      {
+        return RedirectToRoute(new { controller = "Login", action = "Index"});
+      }
+      
       SaveLikeViewModel saveLikeViewModel = new SaveLikeViewModel();
 
       //if we send the user here it means is a like

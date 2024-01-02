@@ -17,5 +17,6 @@ public static class ServiceRegistration
     services.AddTransient<IUserProfilePictureService, UserProfilePictureService>();
     services.AddTransient<IPostService, PostService>();
     services.AddTransient<ILikeService, LikeService>();
+    services.AddTransient<ISavedService, SavedService>();
   }
 }

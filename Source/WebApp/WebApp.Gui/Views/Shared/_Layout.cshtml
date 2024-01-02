@@ -20,9 +20,10 @@
 <body class="bg-slate-300">
 
   <!-- NAVBAR -->
-  <div class="w-full flex items-center justify-center border border-1 bg-white sticky top-0 z-40">
+  <div class="w-full flex items-center justify-center border border-1 bg-white sticky top-0 z-40 p-1">
     <div class="w-full flex flex-row justify-between items-center">
 
+      @* Logo *@
       <div class="ml-1 w-fit flex items-center justify-around flex-1">
         <div class="flex-1">
           <a class="text-xl font-bold" asp-controller="Home" asp-action="Index">
@@ -46,33 +47,33 @@
 
       @* Search bar *@
       <div class="w-20 sm:w-72 xl:w-6/12 min-[810px]:mr-5 min-[420px]:pr-3:pl-3 flex-1 hidden min-[600px]:inline">
-        <input type="search" class="bg-gray-100 p-2 rounded-full w-full px-3 text-sm" />
+        <input type="search" class="bg-gray-100 py-1 rounded-full w-full px-3 text-sm" />
       </div>
       @* Search bar *@
 
-      <div class="flex items-center justify-end w-fit flex-1 p-1">
+      <div class="flex items-center justify-end w-fit flex-1">
         <a class="min-[600px]:hidden inline mx-2" asp-controller="Home" asp-action="Index"><i
-            class="ri-search-line  text-3xl"></i></a>
+            class="ri-search-line  text-2xl"></i></a>
         @if (userSession != null)
         {
           <div class="">
             <a href="#">
-              <i class="ri-chat-3-line text-3xl"></i>
+              <i class="ri-chat-3-line text-2xl"></i>
             </a>
           </div>
           <div class="ms-2">
             <a href="#">
-              <i class="ri-notification-3-line text-3xl"></i>
+              <i class="ri-notification-3-line text-2xl"></i>
             </a>
           </div>
           <div class="ms-2">
             <a href="#">
-              <i class="ri-add-circle-line text-3xl"></i>
+              <i class="ri-add-circle-line text-2xl"></i>
             </a>
           </div>
         }
         <div class="ms-1">
-          <div class="flex items-center justify-evenly p-1">
+          <div class="flex items-center justify-evenly">
             @if (userSession != null)
             {
               <img src="~/@userSession.ProfilePicturePath" alt="profile picture"
@@ -87,7 +88,7 @@
               </button>
 
               <!-- Modal -->
-              <div id="myModal" class="modal hidden fixed top-7 right-0 m-4 p-4 bg-white border border-gray-500 rounded">
+              <div id="myModal" class="modal hidden fixed top-9 right-0 m-4 p-4 bg-white border border-gray-500 rounded">
 
                 <span id="closeModal" class="modal-close cursor-pointer float-right">
                   <i class="ri-close-circle-line text-2xl"></i>
