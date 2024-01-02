@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2E8K+E57PGs2vvBsL650C3NVHv8hnh1j1qNhnoqfQXU=",
+  "Hash": "/s1/x1wOPgPQJLs8shibb+uTwO03stAvuRW7pAOcmNc=",
   "Source": "WebApp.Gui",
   "BasePath": "_content/WebApp.Gui",
   "Mode": "Default",
@@ -53,6 +53,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/obj/Debug/net6.0/scopedcss/projectbundle/WebApp.Gui.bundle.scp.css"
+    },
+    {
+      "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/css/GoUp.css",
+      "SourceId": "WebApp.Gui",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/",
+      "BasePath": "_content/WebApp.Gui",
+      "RelativePath": "css/GoUp.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/css/GoUp.css"
     },
     {
       "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/css/site.css",

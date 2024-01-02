@@ -49,6 +49,10 @@
       "PackagePath": "staticwebassets/Images/Users/f2793c77-87cc-4a81-b4a7-31b0d22f0c0c/c8e52273-4d8a-46dc-b80d-9015d74b7c96.png"
     },
     {
+      "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/css/GoUp.css",
+      "PackagePath": "staticwebassets/css/GoUp.css"
+    },
+    {
       "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },

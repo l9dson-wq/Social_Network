@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
   <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.6.0/fonts/remixicon.css" rel="stylesheet">
+  <link rel="stylesheet" href="~/css/GoUp.css">
 </head>
 
 <body class="bg-slate-300">
@@ -136,8 +137,7 @@
     </div>
   </div>
   <!-- NAVBAR -->
-
-
+  
   <main role="main">
     @RenderBody()
   </main>
@@ -147,7 +147,11 @@
 
     </div>
   </footer>
+  
+  <!-- BACK TO TOP BUTTON -->
+  <button onclick="volverArriba()" id="volver-arriba">Back to Top</button>
 
+  <script src="~/js/GoUp.js"></script>
   <script src="~/lib/jquery/dist/jquery.min.js"></script>
   <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
