@@ -209,31 +209,12 @@
                       </a>
                       <!-- THIS IS THE DIV THAT CONTAINS COMMENTS, SHARE, SAVE AND OPTION LINKS -->
                       <div class="w-full flex justify-start items-start flex-row font-bold border-t border-slate-100">
-                        <!-- Likes for responsive design [If the user is logged we show them] -->
-                        @foreach (var like in post.Likes)
-                        {
-                          <div class="flex w-fit min-[500px]:hidden">
-                            <div class="flex items-center justify-center text-xl font-extrabold mr-3 text-gray-500">
-                              <a asp-controller="Likes" asp-action="Like" asp-route-postId="@post.Id">
-                                <i class="ri-triangle-line"></i>
-                              </a>
-                            </div>
-                            <div class="flex items-center justify-center text-gray-500">0</div>
-                            <div class="flex items-center justify-center text-xl font-extrabold ms-3 text-gray-500">
-                              @if (like.UserId == userSession?.Id && like.PostId == post.Id)
-                              {
-                                <a asp-controller="Likes" asp-action="Dislike" asp-route-id="@like.Id">
-                                  <i class="ri-triangle-line transform -rotate-180"></i>
-                                </a>
-                              }
-                            </div>
-                          </div>
-                        }
                         <div class="w-fit flex flex-row">
                           <div
                             class="flex items-center hover:bg-gray-200 p-2 text-gray-500 hover:cursor-pointer text-sm min-[400px]:text-base"
                             id="CommentsDiv">
                             <i class="ri-message-2-line mr-1"></i>
+                            @(post.Comments.Count == 0 ? "" : post.Comments.Count)
                             Comments
                           </div>
                           <div class="p-2 text-sm min-[400px]:text-base text-gray-500 hover:bg-gray-200 hover:cursor-pointer">
@@ -274,7 +255,7 @@
 </div>
 
 <!-- RIGHT SIDE CONTENT -->
-<div class="w-96 max-[750px]:hidden min-[1150px]:flex justify-between flex-col self-stretch">
+<div class="w-96 max-[750px]:hidden min-[1150px]:flex justify-between self-stretch">
   <div class="w-fit mr-5">
 
     <!-- TRY SOCIAL NETWORK PREMIUM -->
