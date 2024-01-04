@@ -7,7 +7,7 @@ public class SaveLikeViewModel
   public bool IsLike { get; set; }
 
   // RELATIONS
-  public int UserId { get; set; }
+  public int? UserId { get; set; }
 
   public int? PostId { get; set; }
 

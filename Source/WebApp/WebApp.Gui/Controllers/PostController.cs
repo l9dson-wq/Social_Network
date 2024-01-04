@@ -11,13 +11,19 @@ public class PostController : Controller
   private readonly ValidateUserSession _validateUserSession;
   private readonly IPostService _iPostService;
   private readonly IUserProfileService _iUserProfileService;
+  private readonly ICommentService _iCommentService;
 
   // Constructor
-  public PostController(ValidateUserSession validateUserSession, IPostService iPostService, IUserProfileService iUserProfileService)
+  public PostController(
+    ValidateUserSession validateUserSession, 
+    IPostService iPostService, 
+    IUserProfileService iUserProfileService,
+    ICommentService iCommentService)
   {
     _validateUserSession = validateUserSession;
     _iPostService = iPostService;
     _iUserProfileService = iUserProfileService;
+    _iCommentService = iCommentService;
   }
 
   // GET
@@ -56,9 +62,13 @@ public class PostController : Controller
   [HttpGet]
   public async Task<IActionResult> ViewPost(int postId, int userId)
   {
-    HomeViewModel homeViewModel = new HomeViewModel();
-    homeViewModel.PostViewModel = await _iPostService.GetViewModelWithIncludeById(postId);
-    homeViewModel.UserProfileViewModel = await _iUserProfileService.GetViewModelWithInclude(userId);
+    HomeViewModel homeViewModel = new HomeViewModel
+    {
+      PostViewModel = await _iPostService.GetViewModelWithIncludeById(postId),
+      UserProfileViewModel = await _iUserProfileService.GetViewModelWithInclude(userId),
+      CommentViewModels = await _iCommentService.GetAllViewModel(),
+      UserProfileViewModels = await _iUserProfileService.GetAllViewModelWithInclude(),
+    };
 
     return View(homeViewModel);
   }

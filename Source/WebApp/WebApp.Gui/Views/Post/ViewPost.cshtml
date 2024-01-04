@@ -1,4 +1,13 @@
+@using Core.Domain
 @model Core.Application.ViewModels.Home.HomeViewModel
+@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using static Core.Application.SessionHelper;
+@using Core.Application
+@inject IHttpContextAccessor iHttpContext;
+@{
+  var userSession = iHttpContext?.HttpContext?.Session.Get<UserProfileViewModel>("userProfile");
+}
 @{
   ViewData["Title"] = "View post";
 }
@@ -58,7 +67,7 @@
         <img
           src="~/@Model.PostViewModel.ImagePath"
           alt="" class="w-fit mx-auto"/>
-        <!-- Like and dislike, comments, share -->
+        <!-- Like and dislike count, comments count, share -->
         <div class="p-2 m-2 flex flex-row">
           <!-- likes and dislike -->
           <div class="flex flex-row items-center bg-gray-200 px-2 rounded-full w-fit">
@@ -85,10 +94,90 @@
         </div>
         <!-- Add a comment section -->
         <div class="p-2 m-2">
-          <div class="flex justify-center items-center border border-gray-500 rounded-full px-2 py-1">
-            <span><i class="ri-add-line mr-2 text-xl"></i>Add a comment</span>
-          </div>
+          @if (userSession == null)
+          {
+            <a asp-controller="Login" asp-action="Index" class="flex justify-center items-center border border-gray-500 rounded-full px-2 py-1 hover:cursor-pointer">
+              <span><i class="ri-add-line mr-2 text-xl"></i>Add a comment</span>
+            </a>
+          }
+          else
+          {
+            <form method="post" asp-controller="Comment" asp-action="AddComment">
+              <!-- Section  to write the comment -->
+              <div class="mt-2">
+                <a class="mb-2 text-slate-900 text-sm">Commet as <span class="text-violet-700 text-sm hover:cursor-pointer hover:underline underline-offset-4">u/@userSession.UserName</span></a>
+                <div class="w-full">
+                  <textarea asp-for="@Model.SaveCommentViewModel.Description" rows="4" class="border w-full resize-none p-2 rounded-sm text-sm"></textarea>
+                  <input type="hidden" asp-for="@Model.SaveCommentViewModel.UserId" value="@userSession.UserId">
+                  <input type="hidden" asp-for="@Model.SaveCommentViewModel.PostId" value="@Model.PostViewModel.Id">
+                  <div class="w-full flex justify-end items-center p-1">
+                    <button type="submit" class="text-white py-1 px-4 bg-blue-700 rounded-full text-sm">Comment</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          }
         </div>
+        <!-- COMMENTS -->
+        @foreach (var comment in Model.PostViewModel.Comments)
+        {
+          @foreach (var userProfile in Model.UserProfileViewModels)
+          {
+            if (comment.UserId == userProfile.UserId)
+            {
+              <div class="p-2 m-2 w-fit flex flex-row">
+                <div class="w-[10%] mr-1 flex flex-col items-center justify-between">
+                  <!-- PFP -->
+                  <img src="~/@userProfile.ProfilePicturePath" alt=""
+                       class="w-8 h-8 rounded-full my-1"/>
+                  <div class="w-1 h-full border-l-2 border-gray-300"></div>
+                </div>
+                <div class="flex flex-col">
+                  <div class="">
+                    <!-- USERNAMNE AND TIME AGO-->
+                    <div class="flex flex-row justify-start items-center py-1">
+                      <div class="flex">
+                        <p class="text-xs font-semibold hover:cursor-pointer hover:underline underline-offset-4">
+                          U/@userProfile.UserName
+                        </p>
+                        <span class="text-xs text-gray-600">. 6 min. ago</span>
+                      </div>
+                    </div>
+                    <!-- DESCRIPTION -->
+                    <div class="">
+                      <p class="text-sm text-slate-900 w-fit">
+                        @comment.Description
+                      </p>
+                    </div>
+                    <!-- LIKES, RESPONDS, ETC -->
+                    <div class="flex flex-row mt-1">
+                      <!-- likes and dislike -->
+                      <div class="flex flex-row items-center rounded-full w-fit">
+                        <span class="mr-2">
+                          <i class="ri-arrow-up-fill text-md"></i>
+                        </span>
+                        <p>0</p>
+                        <span class="ml-2">
+                          <i class="ri-arrow-down-fill text-md"></i>
+                        </span>
+                      </div>
+                      <!-- Comments -->
+                      <div class="flex flex-row items-center rounded-full w-fit ml-1">
+                        <span class="p-1"><i class="ri-message-2-fill mr-2 text-md"></i> 0</span>
+                      </div>
+                      <!-- Share button -->
+                      <div class="flex flex-row items-center rounded-full w-fit ml-1">
+                        <span class="p-1">
+                          <i class="ri-share-2-line text-md"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+          }
+        }
       </div>
     </div>
 

@@ -10,8 +10,10 @@ public class SaveCommentViewModel
   [DataType(DataType.Text)]
   public string Description { get; set; }
   
+  public string ImagePath { get; set; }
+  
   [DataType(DataType.Upload)]
-  public IFormFile ImageFile { get; set; }
+  public IFormFile? ImageFile { get; set; }
   
   public int Reported { get; set; }
   

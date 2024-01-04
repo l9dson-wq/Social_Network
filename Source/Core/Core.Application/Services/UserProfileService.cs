@@ -37,6 +37,7 @@ public class UserProfileService : CommonService<SaveUserProfileViewModel, UserPr
       About = user.About,
       Email = user.Email,
       Phone = user.Phone,
+      UserId = user.UserId,
       ProfilePicturePath = user.UserProfilePicture.ProfilePicturePath,
       BackgroundPicturePath = user.UserProfilePicture.BackgroundPicturePath,
     }).ToList();
