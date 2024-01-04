@@ -5,17 +5,17 @@
 
 <div class="flex flex-col items-center justify-center mx-auto w-full bg-slate-600 animate-fade">
   
-  <div class="min-[1350px]:w-10/12 min-[1800px]:w-8/12 max-[1350px]:w-full py-2 px-9 bg-black text-white">
+  <div class="min-[1350px]:w-10/12 min-[1800px]:w-8/12 max-[1350px]:w-full py-2 px-1 min-[520px]:px-9 bg-black text-white">
     <!-- TOP CONTENT -->
     <div class="flex flex-row justify-between sticky">
       <!-- LIKES -->
 
       <!-- Title -->
-      <div class="flex flex-row">
+      <div class="flex flex-row items-center">
         <p class="font-semibold text-md">
-          @(Model.PostViewModel.Title.Length > 50 ? @Model.PostViewModel.Title.Substring(0, 40) + "..." : @Model.PostViewModel.Title)
+          @(Model.PostViewModel.Title.Length > 50 ? @Model.PostViewModel.Title.Substring(0, 20) + "..." : @Model.PostViewModel.Title)
         </p>
-        <span class="ml-2 bg-green-400 font-light text-xs px-1 rounded-full text-black flex justify-center items-center"> SUCCESS</span>
+        <span class="min-[520px]:inline hidden bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">SUCCESS</span>
       </div>
 
       <!-- CLOSE BUTTON -->
@@ -49,7 +49,7 @@
         </div>
         <!-- Description -->
         <div class="px-2">
-          <span class="bg-green-400 font-light text-xs px-1 rounded-full"> SUCCESS</span>
+          <span class="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">SUCCESS</span>
           <p class="text-sm font-light p-1">
             @Model.PostViewModel.Description
           </p>
