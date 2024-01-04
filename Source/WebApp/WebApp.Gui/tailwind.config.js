@@ -5,7 +5,11 @@ module.exports = {
     './Views/**/*.cshtml',
   ],
   theme: {
-    extend: {},
+    extend: {
+      width: {
+        '640': '640px'
+      }
+    },
   },
   plugins: [
     require('tailwindcss-animated')
