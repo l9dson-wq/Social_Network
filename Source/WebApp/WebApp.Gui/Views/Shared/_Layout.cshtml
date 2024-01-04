@@ -57,28 +57,31 @@
             class="ri-search-line  text-2xl"></i></a>
         @if (userSession != null)
         {
+          <!-- Messages -->
           <div class="">
             <a href="#">
               <i class="ri-chat-3-line text-2xl"></i>
             </a>
           </div>
+          <!-- Alerts -->
           <div class="ms-2">
             <a href="#">
               <i class="ri-notification-3-line text-2xl"></i>
             </a>
           </div>
+          <!-- Create a post -->
           <div class="ms-2">
-            <a href="#">
+            <a asp-controller="Post" asp-action="Index">
               <i class="ri-add-circle-line text-2xl"></i>
             </a>
           </div>
         }
-        <div class="ms-1">
+        <div class="ml-1">
           <div class="flex items-center justify-evenly">
             @if (userSession != null)
             {
               <button id="openModal"
-                      class="w-fit min-[900px]:ms-5 ms-1 mr-2 ml-2 bg-transparent flex items-center justify-evenly hover:outline outline-1 outline-slate-300">
+                      class="w-fit px-4 mr-2 bg-transparent flex items-center justify-evenly hover:outline outline-1 outline-slate-300">
 
                 <img src="~/@userSession.ProfilePicturePath" alt="profile picture"
                      class="w-8 ml-2 min-[600px]:mr-2 rounded-full"/>
@@ -106,7 +109,7 @@
                       </a>
                       
                       <a href="#" class="font-semibold text-stone-950 flex items-center hover:bg-slate-100 p-2">
-                        <i class="ri-fire-line text-xl mr-1 ml-4"></i>
+                        <i class="ri-fire-fill text-xl mr-1 ml-4 text-orange-600"></i>
                         <span class="text-sm">Popular</span>
                       </a>
                       
