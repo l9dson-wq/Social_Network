@@ -73,6 +73,10 @@
       "PackagePath": "staticwebassets/js/LikePost.js"
     },
     {
+      "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/js/ShowPostInformation.js",
+      "PackagePath": "staticwebassets/js/ShowPostInformation.js"
+    },
+    {
       "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/js/SignIn.js",
       "PackagePath": "staticwebassets/js/SignIn.js"
     },

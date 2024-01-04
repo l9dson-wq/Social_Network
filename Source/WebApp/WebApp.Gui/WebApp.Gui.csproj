@@ -35,6 +35,7 @@
     <_ContentIncludedByDefault Remove="wwwroot\Images\Users\5\72b36545-6cbe-4c0b-abaf-121afcae61a1.png" />
     <_ContentIncludedByDefault Remove="wwwroot\Images\Users\5\993664e3-a096-4a46-962a-fc7e1c3c6644.png" />
     <_ContentIncludedByDefault Remove="wwwroot\Images\Users\7\8d3869f7-b6d2-4793-9aeb-3cc35d5d033d.png" />
+    <_ContentIncludedByDefault Remove="Views\Shared\Components\TopProfileMenu\Default.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

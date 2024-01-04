@@ -187,7 +187,7 @@
                       <a asp-controller="Post" asp-action="ViewPost" asp-route-postId="@post.Id" asp-route-userId="@userProfile.Id">
                         <!-- USER PFP, USERNAME AND TIME AGO -->
                         <div class="w-full flex items-center pl-2 pt-2">
-                          <img src="@userProfile.ProfilePicturePath" class="w-9 mr-2 rounded-sm" alt="pfp"/>
+                          <img src="@userProfile.ProfilePicturePath" class="w-8 mr-2 rounded-full" alt="pfp"/>
                           <p class="text-sm">
                             Posted by <span class="font-bold">u/@userProfile.UserName</span>
                             <span class="text-gray-400">
@@ -333,4 +333,5 @@
     
   </div>
 </div>
+
 </div>

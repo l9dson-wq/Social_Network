@@ -78,7 +78,7 @@
             @if (userSession != null)
             {
               <img src="~/@userSession.ProfilePicturePath" alt="profile picture"
-                class="w-8 ml-2 min-[600px]:mr-2 rounded-md" />
+                class="w-8 ml-2 min-[600px]:mr-2 rounded-full" />
               <div class="flex items-center flex-col justify-evenly">
                 <p class="hidden min-[950px]:inline text-sm font-bold">@userSession.UserName</p>
                 <span class="text-sm hidden 2xl:inline">0 Karma</span>
@@ -89,32 +89,38 @@
               </button>
 
               <!-- Modal -->
-              <div id="myModal" class="modal hidden fixed top-9 right-0 m-4 p-4 bg-white border border-gray-500 rounded">
-
-                <span id="closeModal" class="modal-close cursor-pointer float-right">
-                  <i class="ri-close-circle-line text-2xl"></i>
-                </span>
+              <div id="myModal" class="modal hidden top-7 fixed min-[1280px]:top-9 right-0 m-4 bg-white border border-gray-200 rounded">
 
                 <!-- Contenido del modal -->
                 <div class="modal-content">
 
-                  <div class="">
-                    <div class="border-b pb-2 border-1  border-gray-500">
-                      <a class="hover:text-blue-400 font-bold text-gray-700" asp-controller="Home" asp-action="Index">
-                        <i class="ri-home-smile-line text-xl mr-3"></i>Home
+                  <div class="w-60">
+                    <div class="border-b pb-2 border-1  border-gray-200 flex flex-col">
+                      
+                      <a class="font-semibold text-stone-950 flex items-center hover:bg-slate-100 p-2" asp-controller="Home" asp-action="Index">
+                        <i class="ri-home-smile-line text-xl mr-1 ml-4"></i>
+                        <span class="text-sm">Home</span>
                       </a>
-                      <a href="#" class="hover:text-blue-400 font-bold text-gray-700">
-                        <i class="ri-fire-line text-xl mr-3"></i>Popular
+                      
+                      <a href="#" class="font-semibold text-stone-950 flex items-center hover:bg-slate-100 p-2">
+                        <i class="ri-fire-line text-xl mr-1 ml-4"></i>
+                        <span class="text-sm">Popular</span>
                       </a>
+                      
+                      <a asp-controller="Profile" asp-action="Index" class="font-semibold text-stone-950 text-sm hover:bg-slate-100 pl-12 p-2">Profile</a>
+                      
                     </div>
-                    <div class="flex flex-col p-2 items-start justify-center">
-                      <a href="#" class="hover:text-blue-400 font-bold text-gray-700 text-sm">About</a>
-                      <a href="#" class="hover:text-blue-400 font-bold text-gray-700 text-sm mt-2">Advertise</a>
-                      <a href="#" class="hover:text-blue-400 font-bold text-gray-700 text-sm mt-2">Blog</a>
-                      <a href="#" class="hover:text-blue-400 font-bold text-gray-700 text-sm mt-2">See more</a>
-                      <a class="hover:text-red-400 font-bold text-gray-700 text-sm mt-2" asp-controller="Login"
-                        asp-action="LogOut">Log out</a>
+                    
+                    <div class="flex flex-col items-start justify-center">
+                      
+                      <a class="font-semibold text-stone-950 flex items-center hover:bg-slate-100 p-2 w-full" asp-controller="Login"
+                         asp-action="LogOut">
+                        <i class="ri-login-box-line text-xl mr-1 ml-4"></i>
+                        <span class="text-sm">Log out</span>
+                      </a>
+                      
                     </div>
+                    
                   </div>
 
                 </div>
