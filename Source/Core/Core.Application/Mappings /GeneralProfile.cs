@@ -1,4 +1,5 @@
 using AutoMapper;
+using Core.Application.ViewModels.Comments;
 using Core.Application.ViewModels.Post;
 using Core.Application.ViewModels.Saved;
 using Core.Domain;
@@ -119,6 +120,31 @@ public class GeneralProfile : Profile
       .ForMember(dest => dest.User, opt => opt.Ignore())
       .ForMember(dest => dest.Post, opt => opt.Ignore())
       .ForMember(dest => dest.Comment, opt => opt.Ignore());
+    #endregion
+    
+    #region Comment
+    CreateMap<Comment, CommentViewModel>()
+      .ForMember(dest => dest.User, opt => opt.Ignore())
+      .ForMember(dest => dest.Post, opt => opt.Ignore())
+      .ForMember(dest => dest.Likes, opt => opt.Ignore())
+      .ReverseMap()
+      .ForMember(dest => dest.Created, opt => opt.Ignore())
+      .ForMember(dest => dest.CreatedBy, opt => opt.Ignore())
+      .ForMember(dest => dest.LastModified, opt => opt.Ignore())
+      .ForMember(dest => dest.LastModifiedBy, opt => opt.Ignore())
+      .ForMember(dest => dest.User, opt => opt.Ignore())
+      .ForMember(dest => dest.Post, opt => opt.Ignore())
+      .ForMember(dest => dest.Likes, opt => opt.Ignore());
+    
+    CreateMap<Comment, SaveCommentViewModel>()
+      .ReverseMap()
+      .ForMember(dest => dest.Created, opt => opt.Ignore())
+      .ForMember(dest => dest.CreatedBy, opt => opt.Ignore())
+      .ForMember(dest => dest.LastModified, opt => opt.Ignore())
+      .ForMember(dest => dest.LastModifiedBy, opt => opt.Ignore())
+      .ForMember(dest => dest.User, opt => opt.Ignore())
+      .ForMember(dest => dest.Post, opt => opt.Ignore())
+      .ForMember(dest => dest.Likes, opt => opt.Ignore());
     #endregion
   }
 }

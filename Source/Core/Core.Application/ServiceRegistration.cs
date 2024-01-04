@@ -18,5 +18,6 @@ public static class ServiceRegistration
     services.AddTransient<IPostService, PostService>();
     services.AddTransient<ILikeService, LikeService>();
     services.AddTransient<ISavedService, SavedService>();
+    services.AddTransient<ICommentService, CommentService>();
   }
 }

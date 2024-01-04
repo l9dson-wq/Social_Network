@@ -30,5 +30,6 @@ public static class ServiceRegistration
     services.AddTransient<IPostRepository, PostRepository>();
     services.AddTransient<ILikeRepository, LikeRepository>();
     services.AddTransient<ISavesRepository, SavedRepository>();
+    services.AddTransient<ICommentRepository, CommentRepository>();
   }
 }
