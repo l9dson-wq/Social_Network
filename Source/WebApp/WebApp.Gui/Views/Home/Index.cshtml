@@ -128,7 +128,7 @@
             </a>
           </div>
         </div>
-        <div class="font-bold text-gray-500 hidden min-[400px]:flex justify-end items-end w-40">
+        <div class="text-gray-500 hidden min-[400px]:flex justify-end items-end w-40">
           <div>
             <a href="#">
               <i class="ri-checkbox-multiple-blank-line text-2xl"></i>
@@ -184,17 +184,17 @@
                     </div>
 
                     <div class="flex items-start justify-start flex-col w-full">
-                      <a asp-controller="Post" asp-action="ViewPost" asp-route-postId="@post.Id" asp-route-userId="@userProfile.Id">
                         <!-- USER PFP, USERNAME AND TIME AGO -->
                         <div class="w-full flex items-center pl-2 pt-2">
                           <img src="@userProfile.ProfilePicturePath" class="w-8 h-8 mr-2 rounded-full" alt="pfp"/>
                           <p class="text-sm">
-                            Posted by <span class="font-bold">u/@userProfile.UserName</span>
-                            <span class="text-gray-400">
+                            <span class="text-gray-700 text-xs">Posted by</span> <a href="#" class="font-bold hover:cursor-pointer hover:underline underline-offset-4">u/@userProfile.UserName</a>
+                            <span class="text-gray-700 text-xs">
                               1 month ago
                             </span>
                           </p>
                         </div>
+                      <a asp-controller="Post" asp-action="ViewPost" asp-route-postId="@post.Id" asp-route-userId="@userProfile.Id">
                         <!-- TITLE AND DESCRIPTION -->
                         <div class="w-full mt-2 mb-2 pl-1">
                           <h4 class="mb-2 text-xl font-bold">@post.Title</h4>
