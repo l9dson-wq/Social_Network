@@ -77,15 +77,18 @@
           <div class="flex items-center justify-evenly">
             @if (userSession != null)
             {
-              <img src="~/@userSession.ProfilePicturePath" alt="profile picture"
-                class="w-8 ml-2 min-[600px]:mr-2 rounded-full" />
-              <div class="flex items-center flex-col justify-evenly">
-                <p class="hidden min-[950px]:inline text-sm font-bold">@userSession.UserName</p>
-                <span class="text-sm hidden 2xl:inline">0 Karma</span>
-              </div>
+              <button id="openModal"
+                      class="w-fit min-[900px]:ms-5 ms-1 mr-2 ml-2 bg-transparent flex items-center justify-evenly hover:outline outline-1 outline-slate-300">
 
-              <button id="openModal" class="min-[900px]:ms-5 ms-1 mr-2 ml-2 bg-transparent">
+                <img src="~/@userSession.ProfilePicturePath" alt="profile picture"
+                     class="w-8 ml-2 min-[600px]:mr-2 rounded-full"/>
+                <div class="flex items-start flex-col justify-evenly mr-2 ">
+                  <p class="hidden min-[950px]:inline text-sm font-bold">@userSession.UserName</p>
+                  <span class="text-sm hidden 2xl:inline">0 Karma</span>
+                </div>
+
                 <i class="ri-arrow-down-s-line text-xl"></i>
+
               </button>
 
               <!-- Modal -->
@@ -128,8 +131,6 @@
             }
             @if (userSession == null)
             {
-              @*<a asp-controller="Login" asp-action="Register"
-            class="p-2 bg-orange-500 text-white cursor-pointer rounded-full font-bold text-sm">Sign up</a>*@
               <a class="p-2 ms-2 font-bold bg-transparent text-orange-500 border border-orange-500 cursor-pointer rounded-full text-sm"
                 asp-controller="Login" asp-action="Index">
                 Log in
@@ -174,11 +175,16 @@
 
     if (openModalButton) {
       openModalButton.addEventListener('click', function (event) {
-        event.stopPropagation(); // Evitar que el clic llegue al documento y active el cierre del modal
+        event.stopPropagation();
         if (modal) {
-          modal.classList.remove('hidden');
-          // Agregar un escuchador de clic al documento para cerrar el modal si se hace clic fuera de él
-          document.addEventListener('click', closeModalOutside);
+          // Si el modal ya está visible, ocultarlo
+          if (!modal.classList.contains('hidden')) {
+            modal.classList.add('hidden');
+          } else {
+            modal.classList.remove('hidden');
+            // Agregar un escuchador de clic al documento para cerrar el modal si se hace clic fuera de él
+            document.addEventListener('click', closeModalOutside);
+          }
         }
       });
     }
@@ -201,6 +207,7 @@
       }
     }
   </script>
+
   <script src="~/js/site.js" asp-append-version="true"></script>
   @await RenderSectionAsync("Scripts", required: false)
 </body>
