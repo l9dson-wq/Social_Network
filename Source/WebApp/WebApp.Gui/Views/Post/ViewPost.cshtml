@@ -41,7 +41,7 @@
         <div class="p-2 flex flex-row">
           <img
             src="~/@Model.UserProfileViewModel.ProfilePicturePath"
-            alt="" class="w-10 rounded-full mr-2">
+            alt="" class="w-10 h-10 object-cover rounded-full mr-2">
           <div class="flex justify-between w-full items-start">
             <div>
               <div class="flex flex-row items-center">
@@ -106,7 +106,7 @@
             <form method="post" asp-controller="Comment" asp-action="AddComment">
               <!-- Section  to write the comment -->
               <div class="mt-2">
-                <a class="mb-2 text-slate-900 text-sm">Commet as <span class="text-violet-700 text-sm hover:cursor-pointer hover:underline underline-offset-4">u/@userSession.UserName</span></a>
+                <a class="mb-2 text-slate-900 text-sm">Comment as <span class="text-violet-700 text-sm hover:cursor-pointer hover:underline underline-offset-4">u/@userSession.UserName</span></a>
                 <div class="w-full">
                   <textarea asp-for="@Model.SaveCommentViewModel.Description" rows="4" class="border w-full resize-none p-2 rounded-sm text-sm"></textarea>
                   <input type="hidden" asp-for="@Model.SaveCommentViewModel.UserId" value="@userSession.UserId">
@@ -130,7 +130,7 @@
                 <div class="w-10 mr-1 flex flex-col items-center justify-between">
                   <!-- PFP -->
                   <img src="~/@userProfile.ProfilePicturePath" alt=""
-                       class="w-8 h-8 rounded-full my-1"/>
+                       class="w-8 h-8 object-cover rounded-full my-1"/>
                   <div class="w-1 h-full border-l-2 border-gray-300"></div>
                 </div>
                 <div class="w-full flex flex-col">
