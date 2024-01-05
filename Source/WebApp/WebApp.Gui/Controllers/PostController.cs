@@ -69,7 +69,7 @@ public class PostController : Controller
     homeViewModel.PostViewModel = postInfo;
     
     homeViewModel.UserProfileViewModel = await _iUserProfileService.GetViewModelWithInclude(postInfo.UserId);
-    homeViewModel.CommentViewModels = await _iCommentService.GetAllViewModel();
+    homeViewModel.CommentViewModels = await _iCommentService.GetAllViewModelWithInclude();
     homeViewModel.UserProfileViewModels = await _iUserProfileService.GetAllViewModelWithInclude();
 
     return View(homeViewModel);

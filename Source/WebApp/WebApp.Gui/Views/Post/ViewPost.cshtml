@@ -155,11 +155,24 @@
                       <!-- likes and dislike -->
                       <div class="flex flex-row items-center rounded-full w-fit text-slate-700">
                         <span class="mr-2">
-                          <i class="ri-arrow-up-fill text-md"></i>
+                          <a asp-controller="Likes" asp-action="Like" asp-route-commentId="@comment.Id">
+                            @{
+                              var postLikes = comment.Likes.Any(like => like.UserId == userSession?.Id && like.IsLike);
+                            }
+                            <i class="@(postLikes ? "ri-triangle-fill text-orange-600" : "ri-triangle-line")"></i>
+                          </a>
                         </span>
-                        <p>0</p>
+                        <p>@comment.Likes.Count</p>
                         <span class="ml-2">
-                          <i class="ri-arrow-down-fill text-md"></i>
+                          @if (comment.Likes.Any(like => like.UserId == userSession?.Id && like.IsLike))
+                          {
+                            <div class="flex items-center justify-center text-gray-500">
+                              <a class="rotate-180" asp-controller="Likes" asp-action="Dislike"
+                                 asp-route-id="@comment.Likes.First(like => like.UserId == userSession?.Id).Id">
+                                <i class="ri-triangle-line rotate-180"></i>
+                              </a>
+                            </div>
+                          }
                         </span>
                       </div>
                       <!-- REPLY -->

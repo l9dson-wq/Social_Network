@@ -5,5 +5,5 @@ namespace Core.Application;
 
 public interface ICommentService : ICommonService<SaveCommentViewModel, CommentViewModel, Comment>
 {
-  
+  Task<List<CommentViewModel>> GetAllViewModelWithInclude();
 }
