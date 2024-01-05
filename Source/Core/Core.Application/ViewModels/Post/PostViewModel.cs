@@ -12,6 +12,12 @@ public class PostViewModel
     public int UserId { get; set; }
 
     public User User { get; set; }
+    //Collections
     public ICollection<Comment> Comments { get; set; }
     public ICollection<Like> Likes { get; set; }
+    
+    // Dates
+    public DateTime Created { get; set; }
+    public DateTime? LastModified { get; set; }
+    public string? RelativeDate { get; set; }
 }

@@ -7,4 +7,5 @@ public interface IPostService : ICommonService<SavePostViewModel, PostViewModel,
 {
   Task<List<PostViewModel>> GetAllViewModelWithInclude();
   Task<PostViewModel> GetViewModelWithIncludeById(int postId);
+  
 }
