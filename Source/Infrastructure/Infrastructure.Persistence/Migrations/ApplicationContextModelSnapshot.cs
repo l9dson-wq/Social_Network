@@ -51,6 +51,9 @@ namespace Infrastructure.Persistence.Migrations
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ParentCommentId")
+                        .HasColumnType("int");
+
                     b.Property<int>("PostId")
                         .HasColumnType("int");
 
@@ -61,6 +64,8 @@ namespace Infrastructure.Persistence.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ParentCommentId");
 
                     b.HasIndex("PostId");
 
@@ -212,8 +217,9 @@ namespace Infrastructure.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
+                    b.Property<string>("Age")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
                         .IsRequired()
@@ -324,6 +330,12 @@ namespace Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Core.Domain.Comment", b =>
                 {
+                    b.HasOne("Core.Domain.Comment", "ParentComment")
+                        .WithMany("Replies")
+                        .HasForeignKey("ParentCommentId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.HasOne("Core.Domain.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
@@ -335,6 +347,8 @@ namespace Infrastructure.Persistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.Navigation("ParentComment");
 
                     b.Navigation("Post");
 
@@ -442,6 +456,8 @@ namespace Infrastructure.Persistence.Migrations
             modelBuilder.Entity("Core.Domain.Comment", b =>
                 {
                     b.Navigation("Likes");
+
+                    b.Navigation("Replies");
                 });
 
             modelBuilder.Entity("Core.Domain.Post", b =>

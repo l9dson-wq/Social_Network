@@ -37,14 +37,22 @@ public class CommonRepository<Entity> : ICommonRepository<Entity> where Entity :
 
   public virtual async Task<List<Entity>> GetAllWithIncludeAsync(List<string> properties)
   {
-    IQueryable<Entity> query = _dbContext.Set<Entity>().AsQueryable();
-
-    foreach (var property in properties)
+    try
     {
-      query = query.Include(property);
-    }
+      IQueryable<Entity> query = _dbContext.Set<Entity>().AsQueryable();
 
-    return await query.ToListAsync();
+      foreach (var property in properties)
+      {
+        query = query.Include(property);
+      }
+
+      return await query.ToListAsync();
+    }
+    catch (Exception ex)
+    {
+      Console.WriteLine($"Error during GetAllWithIncludeAsync: {ex}");
+      throw;
+    }
   }
 
   public virtual async Task<Entity> GetByIdAsync(int id) => await _dbContext.Set<Entity>().FindAsync(id);

@@ -127,6 +127,7 @@ public class GeneralProfile : Profile
       .ForMember(dest => dest.User, opt => opt.Ignore())
       .ForMember(dest => dest.Post, opt => opt.Ignore())
       .ForMember(dest => dest.Likes, opt => opt.Ignore())
+      .ForMember(dest => dest.Replies, opt => opt.Ignore())
       .ReverseMap()
       .ForMember(dest => dest.Created, opt => opt.Ignore())
       .ForMember(dest => dest.CreatedBy, opt => opt.Ignore())
@@ -134,7 +135,8 @@ public class GeneralProfile : Profile
       .ForMember(dest => dest.LastModifiedBy, opt => opt.Ignore())
       .ForMember(dest => dest.User, opt => opt.Ignore())
       .ForMember(dest => dest.Post, opt => opt.Ignore())
-      .ForMember(dest => dest.Likes, opt => opt.Ignore());
+      .ForMember(dest => dest.Likes, opt => opt.Ignore())
+      .ForMember(dest => dest.Replies, opt => opt.Ignore());
     
     CreateMap<Comment, SaveCommentViewModel>()
       .ReverseMap()
@@ -144,7 +146,9 @@ public class GeneralProfile : Profile
       .ForMember(dest => dest.LastModifiedBy, opt => opt.Ignore())
       .ForMember(dest => dest.User, opt => opt.Ignore())
       .ForMember(dest => dest.Post, opt => opt.Ignore())
-      .ForMember(dest => dest.Likes, opt => opt.Ignore());
+      .ForMember(dest => dest.Likes, opt => opt.Ignore())
+      .ForMember(dest => dest.Replies, opt => opt.Ignore())
+      .ForMember(dest => dest.ParentComment, opt => opt.Ignore());
     #endregion
   }
 }

@@ -4,7 +4,7 @@ public class User : AuditableBaseEntity
 {
   public string Name { get; set; } = string.Empty;
   public string LastName { get; set; } = string.Empty;
-  public int Age { get; set; }
+  public string Age { get; set; } = string.Empty;
   public string Gender { get; set; } = string.Empty;
   public string Country { get; set; } = string.Empty;
   public string City { get; set; } = string.Empty;

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20231207005257_Initial")]
-    partial class Initial
+    [Migration("20240105201440_comment_nullable")]
+    partial class comment_nullable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,12 +47,14 @@ namespace Infrastructure.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("LastModified")
+                    b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("LastModifiedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ParentCommentId")
+                        .HasColumnType("int");
 
                     b.Property<int>("PostId")
                         .HasColumnType("int");
@@ -64,6 +66,8 @@ namespace Infrastructure.Persistence.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ParentCommentId");
 
                     b.HasIndex("PostId");
 
@@ -110,14 +114,12 @@ namespace Infrastructure.Persistence.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<int?>("CommentId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<bool>("IsLike")
                         .HasColumnType("bit");
 
                     b.Property<int?>("PostId")
-                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
@@ -150,22 +152,23 @@ namespace Infrastructure.Persistence.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImagePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("LastModified")
+                    b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("LastModifiedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Reported")
                         .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -216,8 +219,9 @@ namespace Infrastructure.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
+                    b.Property<string>("Age")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
                         .IsRequired()
@@ -238,11 +242,10 @@ namespace Infrastructure.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("LastModified")
+                    b.Property<DateTime?>("LastModified")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("LastModifiedBy")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
@@ -284,7 +287,7 @@ namespace Infrastructure.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserId")
+                    b.Property<int?>("UserId")
                         .HasColumnType("int");
 
                     b.Property<string>("UserName")
@@ -295,7 +298,8 @@ namespace Infrastructure.Persistence.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("UserId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("UserProfiles", (string)null);
                 });
@@ -309,26 +313,31 @@ namespace Infrastructure.Persistence.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("BackgroundPicturePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProfilePicturePath")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("UserProfileId")
+                    b.Property<int?>("UserProfileId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("UserProfileId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[UserProfileId] IS NOT NULL");
 
                     b.ToTable("UserProfilePictures");
                 });
 
             modelBuilder.Entity("Core.Domain.Comment", b =>
                 {
+                    b.HasOne("Core.Domain.Comment", "ParentComment")
+                        .WithMany("Replies")
+                        .HasForeignKey("ParentCommentId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
                     b.HasOne("Core.Domain.Post", "Post")
                         .WithMany("Comments")
                         .HasForeignKey("PostId")
@@ -340,6 +349,8 @@ namespace Infrastructure.Persistence.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.Navigation("ParentComment");
 
                     b.Navigation("Post");
 
@@ -370,14 +381,12 @@ namespace Infrastructure.Persistence.Migrations
                     b.HasOne("Core.Domain.Comment", "Comment")
                         .WithMany("Likes")
                         .HasForeignKey("CommentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Core.Domain.Post", "Post")
                         .WithMany("Likes")
                         .HasForeignKey("PostId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.HasOne("Core.Domain.User", "User")
                         .WithMany("Likes")
@@ -431,8 +440,7 @@ namespace Infrastructure.Persistence.Migrations
                     b.HasOne("Core.Domain.User", "User")
                         .WithOne("UserProfile")
                         .HasForeignKey("Core.Domain.UserProfile", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("User");
                 });
@@ -442,8 +450,7 @@ namespace Infrastructure.Persistence.Migrations
                     b.HasOne("Core.Domain.UserProfile", "UserProfile")
                         .WithOne("UserProfilePicture")
                         .HasForeignKey("Core.Domain.UserProfilePicture", "UserProfileId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("UserProfile");
                 });
@@ -451,6 +458,8 @@ namespace Infrastructure.Persistence.Migrations
             modelBuilder.Entity("Core.Domain.Comment", b =>
                 {
                     b.Navigation("Likes");
+
+                    b.Navigation("Replies");
                 });
 
             modelBuilder.Entity("Core.Domain.Post", b =>
