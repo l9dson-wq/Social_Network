@@ -12,9 +12,9 @@
   ViewData["Title"] = "View post";
 }
 
-<div class="flex flex-col items-center justify-center mx-auto w-full bg-slate-600 animate-fade">
+<div class="flex flex-col justify-start mx-auto w-full bg-slate-600 animate-fade items-center">
   
-  <div class="min-[1350px]:w-10/12 min-[1800px]:w-8/12 max-[1350px]:w-full py-2 px-1 min-[520px]:px-9 bg-black text-white">
+  <div class="mx-auto min-[1350px]:w-10/12 min-[1800px]:w-8/12 max-[1350px]:w-full py-2 px-1 min-[520px]:px-9 bg-black text-white">
     <!-- TOP CONTENT -->
     <div class="flex flex-row justify-between sticky">
       <!-- LIKES -->
@@ -32,7 +32,8 @@
     </div>
   </div>
 
-  <div class="flex min-[950px]:px-36 items-stretch min-[1350px]:w-10/12 min-[1800px]:w-8/12 max-[1350px]:w-full bg-slate-300">
+  <div class="mx-auto min-h-screen flex min-[950px]:px-36 min-[1350px]:w-10/12 min-[1800px]:w-8/12 max-[1350px]:w-full bg-slate-300">
+
     <!-- Left side content -->
     <div class="w-full min-[950px]:w-[70%] mx-auto min-[950px]:p-4 h-fit">
       <div class="bg-white rounded-md">
@@ -125,15 +126,15 @@
           {
             if (comment.UserId == userProfile.UserId)
             {
-              <div class="p-2 m-2 w-fit flex flex-row">
-                <div class="w-[10%] mr-1 flex flex-col items-center justify-between">
+              <div class="mt-2 p-4 w-full flex flex-row">
+                <div class="w-10 mr-1 flex flex-col items-center justify-between">
                   <!-- PFP -->
                   <img src="~/@userProfile.ProfilePicturePath" alt=""
                        class="w-8 h-8 rounded-full my-1"/>
                   <div class="w-1 h-full border-l-2 border-gray-300"></div>
                 </div>
-                <div class="flex flex-col">
-                  <div class="">
+                <div class="w-full flex flex-col">
+                  <div class="w-full">
                     <!-- USERNAMNE AND TIME AGO-->
                     <div class="flex flex-row justify-start items-center py-1">
                       <div class="flex">
@@ -144,8 +145,8 @@
                       </div>
                     </div>
                     <!-- DESCRIPTION -->
-                    <div class="">
-                      <p class="text-sm text-slate-900 w-fit">
+                    <div class="px-2">
+                      <p class="text-sm text-slate-900 w-fit descriptionText">
                         @comment.Description
                       </p>
                     </div>
@@ -182,7 +183,7 @@
     </div>
 
     <!-- RIGHT SIDE CONTENT -->
-    <div class="w-[40%] hidden min-[950px]:flex justify-start flex-1 self-stretch">
+    <div class="w-[40%] hidden min-[950px]:flex justify-start flex-1">
       <div class="w-full pt-4">
 
         <!-- COMMUNITY -->
@@ -228,6 +229,9 @@
 
       </div>
     </div>
+
   </div>
 
 </div>
+
+<script src="~/js/ViewPost/ViewMoreComment.js"></script>
