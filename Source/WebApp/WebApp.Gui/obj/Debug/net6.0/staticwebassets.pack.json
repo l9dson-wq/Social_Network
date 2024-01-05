@@ -105,6 +105,10 @@
       "PackagePath": "staticwebassets/js/ViewPost/ViewMoreComment.js"
     },
     {
+      "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/js/ViewPost/replyFunction.js",
+      "PackagePath": "staticwebassets/js/ViewPost/replyFunction.js"
+    },
+    {
       "Id": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/js/postFunctions.js",
       "PackagePath": "staticwebassets/js/postFunctions.js"
     },

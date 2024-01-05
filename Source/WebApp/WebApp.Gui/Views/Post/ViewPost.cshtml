@@ -16,13 +16,13 @@
   
   <div class="mx-auto min-[1350px]:w-10/12 min-[1800px]:w-8/12 max-[1350px]:w-full py-2 px-1 min-[520px]:px-9 bg-black text-white">
     <!-- TOP CONTENT -->
-    <div class="flex flex-row justify-between sticky">
+    <div class="flex flex-row justify-between sticky px-2">
       <!-- LIKES -->
 
       <!-- Title -->
       <div class="flex flex-row items-center">
         <p class="font-semibold text-md">
-          @(Model.PostViewModel.Title.Length > 50 ? @Model.PostViewModel.Title.Substring(0, 20) + "..." : @Model.PostViewModel.Title)
+          @(Model.PostViewModel.Title.Length > 50 ? @Model.PostViewModel.Title.Substring(0, 10) + "..." : @Model.PostViewModel.Title)
         </p>
         <span class="min-[520px]:inline hidden bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">SUCCESS</span>
       </div>
@@ -108,7 +108,7 @@
               <div class="mt-2">
                 <a class="mb-2 text-slate-900 text-sm">Comment as <span class="text-violet-700 text-sm hover:cursor-pointer hover:underline underline-offset-4">u/@userSession.UserName</span></a>
                 <div class="w-full">
-                  <textarea asp-for="@Model.SaveCommentViewModel.Description" rows="4" class="border w-full resize-none p-2 rounded-sm text-sm"></textarea>
+                  <textarea asp-for="@Model.SaveCommentViewModel.Description" rows="4" class="border w-full resize-none p-2 rounded-sm text-sm overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300"></textarea>
                   <input type="hidden" asp-for="@Model.SaveCommentViewModel.UserId" value="@userSession.UserId">
                   <input type="hidden" asp-for="@Model.SaveCommentViewModel.PostId" value="@Model.PostViewModel.Id">
                   <div class="w-full flex justify-end items-center p-1">
@@ -153,7 +153,7 @@
                     <!-- LIKES, RESPONDS, ETC -->
                     <div class="flex flex-row mt-1">
                       <!-- likes and dislike -->
-                      <div class="flex flex-row items-center rounded-full w-fit">
+                      <div class="flex flex-row items-center rounded-full w-fit text-slate-700">
                         <span class="mr-2">
                           <i class="ri-arrow-up-fill text-md"></i>
                         </span>
@@ -162,17 +162,30 @@
                           <i class="ri-arrow-down-fill text-md"></i>
                         </span>
                       </div>
-                      <!-- Comments -->
-                      <div class="flex flex-row items-center rounded-full w-fit ml-1">
-                        <span class="p-1"><i class="ri-message-2-fill mr-2 text-md"></i> 0</span>
-                      </div>
+                      <!-- REPLY -->
+                      <button href="#" class="flex flex-row items-center rounded-full w-fit ml-1 replyButton">
+                        <span class="p-1 text-slate-700 text-sm"><i class="ri-message-2-line"></i> Reply</span>
+                      </button>
                       <!-- Share button -->
-                      <div class="flex flex-row items-center rounded-full w-fit ml-1">
+                      <a href="#" class="flex flex-row items-center rounded-full w-fit ml-1">
                         <span class="p-1">
-                          <i class="ri-share-2-line text-md"></i>
+                          <p class="text-slate-700 text-sm">Share</p>
                         </span>
-                      </div>
+                      </a>
                     </div>
+
+                    <!-- FORM TO SEND A REPLY -->
+                    <form method="post" class="hidden replyForm">
+                      <div class="mt-5 border rounded-sm">
+                        <textarea rows="4" class="!outline-none border-b w-full resize-none p-2 text-sm overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300"></textarea>
+                        <div class="w-full flex justify-end items-center p-1">
+                          <button type="button" class="px-2 text-blue-700 text-sm mr-2 cancelReplyButton">Cancel</button>
+                          <button type="submit" class="text-white py-1 px-4 bg-blue-700 rounded-full text-sm">Comment</button>
+                        </div>
+                      </div>
+                    </form>
+                    <!-- FORM TO SEND A REPLY -->
+                    
                   </div>
                 </div>
               </div>
@@ -235,3 +248,4 @@
 </div>
 
 <script src="~/js/ViewPost/ViewMoreComment.js"></script>
+<script src="~/js/ViewPost/replyFunction.js"></script>

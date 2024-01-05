@@ -196,7 +196,7 @@
                               </span>
                             </p>
                           </div>
-                          <a asp-controller="Post" asp-action="ViewPost" asp-route-postId="@post.Id" asp-route-userId="@userProfile.Id">
+                          <a asp-controller="Post" asp-action="ViewPost" asp-route-postId="@post.Id">
                             <!-- TITLE AND DESCRIPTION -->
                             <div class="w-full mt-2 mb-2 pl-1">
                               <h4 class="mb-2 text-xl font-bold">@post.Title</h4>
@@ -212,7 +212,7 @@
                           <!-- THIS IS THE DIV THAT CONTAINS COMMENTS, SHARE, SAVE AND OPTION LINKS -->
                           <div class="w-full flex justify-start items-start flex-row font-bold border-t border-slate-100">
                             <div class="w-fit flex flex-row">
-                              <a asp-controller="Post" asp-action="ViewPost" asp-route-postId="@post.Id" asp-route-userId="@userProfile.Id"
+                              <a asp-controller="Post" asp-action="ViewPost" asp-route-postId="@post.Id"
                                 class="flex items-center hover:bg-gray-200 p-2 text-gray-500 hover:cursor-pointer text-sm min-[400px]:text-base"
                                 id="CommentsDiv">
                                 <i class="ri-message-2-line mr-1"></i>

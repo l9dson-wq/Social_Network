@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uiVy65EW//P2PbMUJ3Dej4215JA2IUyfRi0075K9/7o=",
+  "Hash": "MgEhmnCldVCWFK3/L6PTFky+9o3f7x5+yINzNkzQNhA=",
   "Source": "WebApp.Gui",
   "BasePath": "_content/WebApp.Gui",
   "Mode": "Default",
@@ -547,6 +547,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/js/site.js"
+    },
+    {
+      "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/js/ViewPost/replyFunction.js",
+      "SourceId": "WebApp.Gui",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/",
+      "BasePath": "_content/WebApp.Gui",
+      "RelativePath": "js/ViewPost/replyFunction.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/js/ViewPost/replyFunction.js"
     },
     {
       "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/js/ViewPost/ViewMoreComment.js",

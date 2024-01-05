@@ -60,15 +60,17 @@ public class PostController : Controller
   }
 
   [HttpGet]
-  public async Task<IActionResult> ViewPost(int postId, int userId)
+  [Route("Post/ViewPost/{postId}")]
+  public async Task<IActionResult> ViewPost(int postId)
   {
-    HomeViewModel homeViewModel = new HomeViewModel
-    {
-      PostViewModel = await _iPostService.GetViewModelWithIncludeById(postId),
-      UserProfileViewModel = await _iUserProfileService.GetViewModelWithInclude(userId),
-      CommentViewModels = await _iCommentService.GetAllViewModel(),
-      UserProfileViewModels = await _iUserProfileService.GetAllViewModelWithInclude(),
-    };
+    HomeViewModel homeViewModel = new HomeViewModel();
+
+    var postInfo = await _iPostService.GetViewModelWithIncludeById(postId);
+    homeViewModel.PostViewModel = postInfo;
+    
+    homeViewModel.UserProfileViewModel = await _iUserProfileService.GetViewModelWithInclude(postInfo.UserId);
+    homeViewModel.CommentViewModels = await _iCommentService.GetAllViewModel();
+    homeViewModel.UserProfileViewModels = await _iUserProfileService.GetAllViewModelWithInclude();
 
     return View(homeViewModel);
   }

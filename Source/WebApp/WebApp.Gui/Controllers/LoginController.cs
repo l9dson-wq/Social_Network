@@ -61,7 +61,7 @@ public class LoginController : Controller
       return View("Index");
     }
 
-    UserProfileViewModel userProfileVM = await _iUserProfileService.GetViewModelWithInclude(userProfileViewModel.Id);
+    UserProfileViewModel userProfileVM = await _iUserProfileService.GetViewModelWithInclude(userProfileViewModel.UserId);
     HttpContext.Session.Set("userProfile", userProfileVM); // Register the userProfile to the session
 
     return RedirectToRoute(new { controller = "Home", action = "Index" });

@@ -37,7 +37,7 @@ public class UserProfileService : CommonService<SaveUserProfileViewModel, UserPr
       About = user.About,
       Email = user.Email,
       Phone = user.Phone,
-      UserId = user.UserId,
+      UserId = (int)user.UserId,
       ProfilePicturePath = user.UserProfilePicture.ProfilePicturePath,
       BackgroundPicturePath = user.UserProfilePicture.BackgroundPicturePath,
     }).ToList();
@@ -48,7 +48,7 @@ public class UserProfileService : CommonService<SaveUserProfileViewModel, UserPr
     List<UserProfile> users =
       await _iUserProfileRepository.GetAllWithIncludeAsync(new List<string> { "UserProfilePicture" });
 
-    UserProfile userProfile = users.FirstOrDefault(user => user.Id == id );
+    UserProfile userProfile = users.FirstOrDefault(user => user.UserId == id );
 
     UserProfileViewModel userProfileViewModel = _iMapper.Map<UserProfileViewModel>(userProfile);
     userProfileViewModel.ProfilePicturePath = userProfile.UserProfilePicture.ProfilePicturePath;
