@@ -42,7 +42,7 @@
                   U/@Model.UserProfile.UserName
                 </p>
                 <span class="text-xs text-gray-600">. 6 min. ago</span>
-                <span class="text-xs text-gray-600"> - Replied to @comment.ParentComment?.Id</span>
+                <span class="text-xs text-gray-600"> - Replied to [username]</span>
               </div>
             </div>
             <!-- DESCRIPTION -->
@@ -54,6 +54,28 @@
             <!-- LIKES, RESPONDS, ETC -->
             <div class="flex flex-row mt-1">
               <!-- likes and dislike -->
+              <div class="flex flex-row items-center text-sm ml-1 w-fit">
+                <span class="mr-1">
+                  <a asp-controller="Likes" asp-action="Like" asp-route-commentId="@comment.Id">
+                    @{
+                      var postLikes = comment.Likes.Any(like => like.UserId == userSession?.Id && like.IsLike);
+                    }
+                    <i class="@(postLikes ? "ri-triangle-fill text-orange-600" : "text-slate-700 ri-triangle-line")"></i>
+                  </a>
+                </span>
+                <p>@comment.Likes.Count</p>
+                <span class="ml-1">
+                  @if (comment.Likes.Any(like => like.UserId == userSession?.Id && like.IsLike))
+                  {
+                    <div class="flex items-center justify-center font-extrabold hover:bg-gray-200 text-gray-500">
+                      <a class="rotate-180" asp-controller="Likes" asp-action="Dislike"
+                         asp-route-id="@comment.Likes.First(like => like.UserId == userSession?.Id).Id">
+                        <i class="ri-triangle-line rotate-180 text-slate-700"></i>
+                      </a>
+                    </div>
+                  }
+                </span>
+              </div>
               <!-- REPLY -->
               <button href="#" class="flex flex-row items-center rounded-full w-fit ml-1 replyButton">
                 <span class="p-1 text-slate-700 text-sm">
@@ -88,7 +110,7 @@
           <!-- Check if there are replies to this comment -->
           @if (comment.Replies != null && comment.Replies.Any())
           {
-            <div class="replies-container hidden bg-green-100">
+            <div class="replies-container hidden">
               @foreach (var reply in comment?.Replies)
               {
                 var replyPartialModel = new CommentPartialViewModel
