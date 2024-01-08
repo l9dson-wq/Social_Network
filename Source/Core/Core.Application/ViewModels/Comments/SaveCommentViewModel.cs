@@ -21,4 +21,5 @@ public class SaveCommentViewModel
   
   public int? PostId { get; set; }
   public int? ParentCommentId { get; set; }
+  public int? PrincipalPostCommentId { get; set; }
 }

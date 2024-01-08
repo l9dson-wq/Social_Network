@@ -35,13 +35,16 @@ public class CommentController : Controller
   }
 
   [HttpPost]
-  public async Task<IActionResult> AddReply(HomeViewModel? homeViewModel, int commentId, CommentPartialViewModel? commentViewModel)
+  public async Task<IActionResult> AddReply(
+    HomeViewModel? homeViewModel, 
+    int commentId,
+    int? principalCommentId,
+    CommentPartialViewModel? commentViewModel)
   {
     // almaceno la url de la vista en la que se encontraba el usuario antes de llegar aqui.
     var returnUrl = Request.Headers["Referer"].ToString();
 
     // almaceno la descripcion dependiendo de cual de mis ViewModels sea nulo el valor. 
-    // !TODO arreglar con simplemente obteniendo la descripcion en las propiedades.
     var replyDescription = homeViewModel.ReplyDescription ?? commentViewModel.SaveComment.Description;
     var UserId = _userProfileViewModel.Id;
     
@@ -59,6 +62,7 @@ public class CommentController : Controller
       Description = replyDescription,
       ParentCommentId = commentId,
       UserId = UserId,
+      PrincipalPostCommentId = principalCommentId
     };
     
     // Guardo la respusta

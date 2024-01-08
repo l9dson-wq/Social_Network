@@ -27,7 +27,7 @@
           <i class="@(comment.Replies.Any() ? "ri-add-circle-line hover:cursor-pointer showMore" : "hidden")"></i>
           <div class="w-1 h-full border-l border-gray-300"></div>
         </div>
-        
+
         <!-- COMMENTS AND REPLIES -->
         <div class="w-full flex flex-col commentReplies">
           <!-- COMMENT -->
@@ -40,7 +40,7 @@
                 </p>
                 @*<span class="text-xs text-gray-600">. 6 min. ago</span>*@
                 <span class="@(comment.ParentComment == null ? "hidden" : "inline") text-xs ml-1 text-gray-600 rounded-full px-2 bg-slate-200">
-                  <span class="hidden min-[500px]:inline">Replied to</span> @(comment.ParentCommentUsername)
+                  <span class="">Replied to</span> @(comment.ParentCommentUsername)
                 </span>
               </div>
             </div>
@@ -92,10 +92,13 @@
             </div>
 
             <!-- FORM TO SEND A REPLY -->
-            <form method="post" class="hidden replyForm" asp-controller="Comment" asp-action="AddReply" asp-route-commentId="@Model.Comment.Id">
+            <form method="post" class="hidden replyForm" asp-controller="Comment" asp-action="AddReply"
+                  asp-route-principalCommentId="@comment.Id"
+                  asp-route-commentId="@Model.Comment.Id">
               <div class="mt-5 border rounded-sm">
                 <input type="hidden" asp-for="@Model.SaveComment.UserId" value="@userSession?.Id">
-                <textarea asp-for="@Model.SaveComment.Description" rows="4" class="!outline-none border-b w-full resize-none p-2 text-sm overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300"></textarea>
+                <textarea asp-for="@Model.SaveComment.Description" rows="4" 
+                  class="!outline-none border-b w-full resize-none p-2 text-sm overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300"></textarea>
                 <div class="w-full flex justify-end items-center p-1">
                   <button type="button" class="px-2 text-blue-700 text-sm mr-2 cancelReplyButton">Cancel</button>
                   <button type="submit" class="text-white py-1 px-4 bg-blue-700 rounded-full text-sm">Comment</button>
@@ -114,23 +117,102 @@
               {
                 foreach (var newComment in Model.Comments)
                 {
-                  if (reply.Id == newComment.Id)
+                  if (comment.Id == newComment.PrincipalPostCommentId)
                   {
-                    var replyPartialModel = new CommentPartialViewModel
-                    {
-                      Comment = newComment,
-                      UserProfile = newComment.UserProfile,
-                      Comments = Model.Comments,
-                    };
+                    <div class="w-full flex flex-row">
+                      <!-- PFP -->
+                      <div class="w-fit mr-1 flex flex-col items-center justify-between">
+                        <img src="~/@newComment.UserProfile.ProfilePicturePath" alt=""
+                             class="w-7 h-7 object-cover rounded-full my-1"/>
+                        <div class="w-1 h-full border-l border-gray-300"></div>
+                      </div>
 
-                    @await Html.PartialAsync("_CommentPartial", replyPartialModel)
+                      <!-- REPLY -->
+                      <div class="w-full">
+                        <!-- USERNAMNE AND TIME AGO-->
+                        <div class="flex flex-row justify-start items-center py-1">
+                          <div class="flex">
+                            <p class="text-xs font-semibold hover:cursor-pointer hover:underline underline-offset-4">
+                              U/@newComment.UserProfile.UserName
+                            </p>
+                            @*<span class="text-xs text-gray-600">. 6 min. ago</span>*@
+                            <span class="@(newComment.ParentComment == null ? "hidden" : "inline") text-xs ml-1 text-gray-600 rounded-full px-2 bg-slate-200">
+                              <span>Replied to</span> @(newComment.ParentCommentUsername)
+                            </span>
+                          </div>
+                        </div>
+                        <!-- DESCRIPTION -->
+                        <div class="px-2">
+                          <p class="text-sm text-slate-900 w-fit descriptionText">
+                            @newComment.Description
+                          </p>
+                        </div>
+                        <!-- LIKES, RESPONDS, ETC -->
+                        <div class="flex flex-row mt-1">
+                          <!-- likes and dislike -->
+                          <div class="flex flex-row items-center text-sm ml-1 w-fit">
+                            <span class="mr-1">
+                              <a asp-controller="Likes" asp-action="Like" asp-route-commentId="@newComment.Id">
+                                @{
+                                  var postLikes = newComment.Likes.Any(like => like.UserId == userSession?.Id && like.IsLike);
+                                }
+                                <i class="@(postLikes ? "ri-triangle-fill text-orange-600" : "text-slate-700 ri-triangle-line")"></i>
+                              </a>
+                            </span>
+                            <p>@newComment.Likes.Count</p>
+                            <span class="ml-1">
+                              @if (newComment.Likes.Any(like => like.UserId == userSession?.Id && like.IsLike))
+                              {
+                                <div class="flex items-center justify-center font-extrabold hover:bg-gray-200 text-gray-500">
+                                  <a class="rotate-180" asp-controller="Likes" asp-action="Dislike"
+                                     asp-route-id="@newComment.Likes.First(like => like.UserId == userSession?.Id).Id">
+                                    <i class="ri-triangle-line rotate-180 text-slate-700"></i>
+                                  </a>
+                                </div>
+                              }
+                            </span>
+                          </div>
+                          <!-- REPLY -->
+                          <button href="#" class="flex flex-row items-center rounded-full w-fit ml-1 replyButton">
+                            <span class="p-1 text-slate-700 text-sm">
+                              <i class="ri-message-2-line"></i>
+                              @(newComment.Replies != null ? newComment.Replies.Count : "0")
+                              Reply
+                            </span>
+                          </button>
+                          <!-- Share button -->
+                          <a href="#" class="flex flex-row items-center rounded-full w-fit ml-1">
+                            <span class="p-1">
+                              <p class="text-slate-700 text-sm">Share</p>
+                            </span>
+                          </a>
+                        </div>
+
+                        <!-- FORM TO SEND A REPLY -->
+                        <form method="post" class="hidden replyForm" asp-controller="Comment" asp-action="AddReply"
+                              asp-route-principalCommentId="@comment.Id"
+                              asp-route-commentId="@newComment.Id">
+                          <div class="mt-5 border rounded-sm">
+                            <input type="hidden" asp-for="@Model.SaveComment.UserId" value="@userSession?.Id">
+                            <textarea asp-for="@Model.SaveComment.Description" rows="4" 
+                                      class="!outline-none border-b w-full resize-none p-2 text-sm overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300"></textarea>
+                            <div class="w-full flex justify-end items-center p-1">
+                              <button type="button" class="px-2 text-blue-700 text-sm mr-2 cancelReplyButton">Cancel</button>
+                              <button type="submit" class="text-white py-1 px-4 bg-blue-700 rounded-full text-sm">Comment</button>
+                            </div>
+                          </div>
+                        </form>
+                        <!-- FORM TO SEND A REPLY -->
+
+                      </div>
+                    </div>
                   }
                 }
               }
             </div>
           }
         </div>
-        
+
       </div>
     }
   }

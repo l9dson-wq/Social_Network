@@ -43,6 +43,7 @@ public class CommentService : CommonService<SaveCommentViewModel, CommentViewMod
       ParentCommentId = comment.ParentCommentId,
       ParentCommentUsername = comment.ParentComment?.User?.UserProfile?.UserName,
       UserProfile = userProfiles.FirstOrDefault(userProfile => userProfile.UserId == comment.UserId),
+      PrincipalPostCommentId = comment.PrincipalPostCommentId,
     }).ToList();
 
     return commentViewModels;

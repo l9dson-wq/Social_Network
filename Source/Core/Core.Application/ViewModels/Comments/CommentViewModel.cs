@@ -19,4 +19,5 @@ public class CommentViewModel
   public string ParentCommentUsername { get; set; }
   public UserProfileViewModel UserProfile { get; set; }
   public List<UserProfilePictureViewModel> UserProfilePictureViewModels { get; set; }
+  public int? PrincipalPostCommentId { get; set; }
 }
