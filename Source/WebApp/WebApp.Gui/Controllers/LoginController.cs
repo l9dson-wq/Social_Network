@@ -50,6 +50,9 @@ public class LoginController : Controller
     {
       return View("Index", loginViewModel);
     }
+    
+    // almaceno la url de la vista en la que se encontraba el usuario antes de llegar aqui.
+    var returnUrl = Request.Headers["Referer"].ToString();
 
     // Search the user in te database
     UserProfileViewModel userProfileViewModel = await _iUserProfileService.Login(loginViewModel);
@@ -64,7 +67,7 @@ public class LoginController : Controller
     UserProfileViewModel userProfileVM = await _iUserProfileService.GetViewModelWithInclude(userProfileViewModel.UserId);
     HttpContext.Session.Set("userProfile", userProfileVM); // Register the userProfile to the session
 
-    return RedirectToRoute(new { controller = "Home", action = "Index" });
+    return Redirect(returnUrl);
   }
 
   public async Task<IActionResult> Register()

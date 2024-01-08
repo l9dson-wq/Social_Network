@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20240105211534_comment_nullable")]
-    partial class comment_nullable
+    [Migration("20240108211355_comment_modified")]
+    partial class comment_modified
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,6 +57,9 @@ namespace Infrastructure.Persistence.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("PostId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("PrincipalPostCommentId")
                         .HasColumnType("int");
 
                     b.Property<int>("Reported")

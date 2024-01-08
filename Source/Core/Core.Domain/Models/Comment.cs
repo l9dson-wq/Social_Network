@@ -14,6 +14,7 @@ public class Comment : AuditableBaseEntity
   public Post Post { get; set; }
 
   public int? ParentCommentId { get; set; }
+  public int? PrincipalPostCommentId { get; set; }
   public Comment ParentComment { get; set; }
 
   public ICollection<Like> Likes { get; set; }

@@ -57,6 +57,9 @@ namespace Infrastructure.Persistence.Migrations
                     b.Property<int?>("PostId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("PrincipalPostCommentId")
+                        .HasColumnType("int");
+
                     b.Property<int>("Reported")
                         .HasColumnType("int");
 

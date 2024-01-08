@@ -28,6 +28,9 @@ namespace WebApp.Gui.Controllers
         return RedirectToRoute(new { controller = "Login", action = "Index"});
       }
       
+      // almaceno la url de la vista en la que se encontraba el usuario antes de llegar aqui.
+      var returnUrl = Request.Headers["Referer"].ToString();
+      
       SaveLikeViewModel saveLikeViewModel = new SaveLikeViewModel();
 
       //if we send the user here it means is a like
@@ -48,7 +51,7 @@ namespace WebApp.Gui.Controllers
       await _iLikeService.AddAsync(saveLikeViewModel);
 
       // return the user to the Home route
-      return RedirectToRoute(new { controller = "Home", action = "Index" });
+      return Redirect(returnUrl);
     }
 
     public async Task<IActionResult> Dislike(int id, int? postId, int? commentId)

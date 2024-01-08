@@ -9,18 +9,26 @@ public class CommentService : CommonService<SaveCommentViewModel, CommentViewMod
 {
   private readonly ICommentRepository _iCommentRepository;
   private readonly IMapper _iMapper;
+  private readonly IUserProfileService _iUserProfile;
   
-  public CommentService(ICommentRepository iCommentRepository, IMapper iMapper) : base(iCommentRepository, iMapper)
+  public CommentService(
+    ICommentRepository iCommentRepository, 
+    IMapper iMapper,
+    IUserProfileService iUserProfile) : base(iCommentRepository, iMapper)
   {
     _iCommentRepository = iCommentRepository;
     _iMapper = iMapper;
+    _iUserProfile = iUserProfile;
   }
 
   public async Task<List<CommentViewModel>> GetAllViewModelWithInclude()
   {
-    var comments = await _iCommentRepository.GetAllWithIncludeAsync(new List<string>{"Likes","Replies","ParentComment"});
+    var comments = await _iCommentRepository.
+      GetAllWithIncludeAsync(new List<string>{"Likes","Replies","ParentComment","User"});
 
-    return comments.Select(comment => new CommentViewModel()
+    var userProfiles = await _iUserProfile.GetAllViewModelWithInclude();
+    
+    var commentViewModels = comments.Select(comment => new CommentViewModel()
     {
       Id = comment.Id,
       Description = comment.Description,
@@ -33,6 +41,10 @@ public class CommentService : CommonService<SaveCommentViewModel, CommentViewMod
       Replies = _iMapper.Map<List<CommentViewModel>>(comment.Replies),
       ParentComment = _iMapper.Map<CommentViewModel>(comment.ParentComment),
       ParentCommentId = comment.ParentCommentId,
+      ParentCommentUsername = comment.ParentComment?.User?.UserProfile?.UserName,
+      UserProfile = userProfiles.FirstOrDefault(userProfile => userProfile.UserId == comment.UserId),
     }).ToList();
+
+    return commentViewModels;
   }
 }

@@ -21,15 +21,12 @@
 
         <!-- PFP -->
         <div class="w-fit mr-1 flex flex-col items-center justify-between">
-          <img src="~/@Model.UserProfile.ProfilePicturePath" alt=""
+          <img src="~/@Model.UserProfile?.ProfilePicturePath" alt=""
                class="w-7 h-7 object-cover rounded-full my-1"/>
           <div class="w-1 h-5 border-l border-gray-300"></div>
           <i class="@(comment.Replies.Any() ? "ri-add-circle-line hover:cursor-pointer showMore" : "hidden")"></i>
           <div class="w-1 h-full border-l border-gray-300"></div>
         </div>
-
-        @* lo que puedo hacer para controlar los comentarios es saber cuantos hay incluso en los replies (si es posible)*@
-        @* Darle una clase al div de abajo y crear un boton mas arriba que me permita ocultar el div inferior y mostrarlo*@
         
         <!-- COMMENTS AND REPLIES -->
         <div class="w-full flex flex-col commentReplies">
@@ -41,8 +38,10 @@
                 <p class="text-xs font-semibold hover:cursor-pointer hover:underline underline-offset-4">
                   U/@Model.UserProfile.UserName
                 </p>
-                <span class="text-xs text-gray-600">. 6 min. ago</span>
-                <span class="text-xs text-gray-600"> - Replied to [username]</span>
+                @*<span class="text-xs text-gray-600">. 6 min. ago</span>*@
+                <span class="@(comment.ParentComment == null ? "hidden" : "inline") text-xs ml-1 text-gray-600 rounded-full px-2 bg-slate-200">
+                  <span class="hidden min-[500px]:inline">Replied to</span> @(comment.ParentCommentUsername)
+                </span>
               </div>
             </div>
             <!-- DESCRIPTION -->
@@ -96,7 +95,7 @@
             <form method="post" class="hidden replyForm" asp-controller="Comment" asp-action="AddReply" asp-route-commentId="@Model.Comment.Id">
               <div class="mt-5 border rounded-sm">
                 <input type="hidden" asp-for="@Model.SaveComment.UserId" value="@userSession?.Id">
-                <textarea asp-for="@Model.ReplyDescription" rows="4" class="!outline-none border-b w-full resize-none p-2 text-sm overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300"></textarea>
+                <textarea asp-for="@Model.SaveComment.Description" rows="4" class="!outline-none border-b w-full resize-none p-2 text-sm overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300"></textarea>
                 <div class="w-full flex justify-end items-center p-1">
                   <button type="button" class="px-2 text-blue-700 text-sm mr-2 cancelReplyButton">Cancel</button>
                   <button type="submit" class="text-white py-1 px-4 bg-blue-700 rounded-full text-sm">Comment</button>
@@ -113,14 +112,20 @@
             <div class="replies-container hidden">
               @foreach (var reply in comment?.Replies)
               {
-                var replyPartialModel = new CommentPartialViewModel
+                foreach (var newComment in Model.Comments)
                 {
-                  Comment = reply,
-                  UserProfile = Model.UserProfile,
-                  Comments = Model.Comments,
-                };
+                  if (reply.Id == newComment.Id)
+                  {
+                    var replyPartialModel = new CommentPartialViewModel
+                    {
+                      Comment = newComment,
+                      UserProfile = newComment.UserProfile,
+                      Comments = Model.Comments,
+                    };
 
-                @await Html.PartialAsync("_CommentPartial", replyPartialModel)
+                    @await Html.PartialAsync("_CommentPartial", replyPartialModel)
+                  }
+                }
               }
             </div>
           }

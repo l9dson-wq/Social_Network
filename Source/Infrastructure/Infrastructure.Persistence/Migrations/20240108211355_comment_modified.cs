@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Infrastructure.Persistence.Migrations
 {
-    public partial class comment_nullable : Migration
+    public partial class comment_modified : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -120,6 +120,7 @@ namespace Infrastructure.Persistence.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false),
                     PostId = table.Column<int>(type: "int", nullable: true),
                     ParentCommentId = table.Column<int>(type: "int", nullable: true),
+                    PrincipalPostCommentId = table.Column<int>(type: "int", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),
                     LastModifiedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),

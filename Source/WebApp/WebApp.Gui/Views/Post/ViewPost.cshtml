@@ -4,6 +4,7 @@
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @using static Core.Application.SessionHelper;
 @using Core.Application
+@using Core.Application.ViewModels.Comments
 @using Core.Application.ViewModels.Partial
 @inject IHttpContextAccessor iHttpContext;
 @{
@@ -36,7 +37,7 @@
   <div class="mx-auto min-h-screen flex min-[950px]:px-36 min-[1350px]:w-10/12 min-[1800px]:w-8/12 max-[1350px]:w-full bg-slate-300">
 
     <!-- Left side content -->
-    <div class="w-full min-[950px]:w-[70%] mx-auto min-[950px]:p-4 h-fit">
+    <div class="w-full min-[950px]:w-[70%] mx-auto min-[950px]:p-4 h-fit pb-5">
       <div class="bg-white rounded-md">
         <!-- pfp, forum's name, time ago, username, 3 dots -->
         <div class="p-2 flex flex-row">

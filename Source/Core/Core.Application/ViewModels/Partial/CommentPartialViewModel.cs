@@ -8,5 +8,4 @@ public class CommentPartialViewModel
   public List<CommentViewModel>? Comments { get; set; }
   public UserProfileViewModel? UserProfile { get; set; }
   public SaveCommentViewModel? SaveComment { get; set; }
-  public string? ReplyDescription { get; set; }
 }

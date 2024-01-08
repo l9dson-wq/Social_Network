@@ -1,6 +1,7 @@
 using Core.Application;
 using Core.Application.ViewModels.Comments;
 using Core.Application.ViewModels.Home;
+using Core.Application.ViewModels.Partial;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WebApp.Gui.Controllers;
@@ -34,14 +35,14 @@ public class CommentController : Controller
   }
 
   [HttpPost]
-  public async Task<IActionResult> AddReply(HomeViewModel? homeViewModel, int commentId, CommentViewModel? commentViewModel)
+  public async Task<IActionResult> AddReply(HomeViewModel? homeViewModel, int commentId, CommentPartialViewModel? commentViewModel)
   {
     // almaceno la url de la vista en la que se encontraba el usuario antes de llegar aqui.
     var returnUrl = Request.Headers["Referer"].ToString();
 
     // almaceno la descripcion dependiendo de cual de mis ViewModels sea nulo el valor. 
     // !TODO arreglar con simplemente obteniendo la descripcion en las propiedades.
-    var replyDescription = homeViewModel.ReplyDescription ?? commentViewModel.Description;
+    var replyDescription = homeViewModel.ReplyDescription ?? commentViewModel.SaveComment.Description;
     var UserId = _userProfileViewModel.Id;
     
     // Verifico si la respuesta es nula, si es asi regreso al usuario a la vista anterior sin enviar nada.
