@@ -14,7 +14,7 @@ public class CommentViewModel
   public PostViewModel Post { get; set; }
   public CommentViewModel ParentComment { get; set; }
   public ICollection<LikeViewModel> Likes { get; set; }
-  public ICollection<Comment> Replies { get; set; }
+  public ICollection<CommentViewModel> Replies { get; set; }
   public int UserId { get; set; }
   public int PostId { get; set; }
 }

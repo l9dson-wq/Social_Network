@@ -118,7 +118,7 @@ namespace Infrastructure.Persistence.Migrations
                     ImagePath = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Reported = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    PostId = table.Column<int>(type: "int", nullable: false),
+                    PostId = table.Column<int>(type: "int", nullable: true),
                     ParentCommentId = table.Column<int>(type: "int", nullable: true),
                     CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Created = table.Column<DateTime>(type: "datetime2", nullable: false),

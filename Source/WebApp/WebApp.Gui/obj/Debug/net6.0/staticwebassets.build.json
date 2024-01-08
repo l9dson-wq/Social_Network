@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "lDni3qiOF2EXqVgzJiOw9ZsZw/5bF6+MKrIY2xZucRw=",
+  "Hash": "9iaZs3uJSK5n76IaRB7cI3grFqdR3dfXcHkQokpCoO0=",
   "Source": "WebApp.Gui",
   "BasePath": "_content/WebApp.Gui",
   "Mode": "Default",
@@ -131,6 +131,25 @@
       "OriginalItemSpec": "wwwroot/favicon.ico"
     },
     {
+      "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/1/00606ddf-b1c1-4152-8feb-07c861de06e0.jpg",
+      "SourceId": "WebApp.Gui",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/",
+      "BasePath": "_content/WebApp.Gui",
+      "RelativePath": "Images/Users/1/00606ddf-b1c1-4152-8feb-07c861de06e0.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Images/Users/1/00606ddf-b1c1-4152-8feb-07c861de06e0.jpg"
+    },
+    {
       "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/1/76795f7e-b85e-485e-916b-ae42862f8c51.jpg",
       "SourceId": "WebApp.Gui",
       "SourceType": "Discovered",
@@ -169,6 +188,25 @@
       "OriginalItemSpec": "wwwroot/Images/Users/1/7d3328f1-de4a-49d5-ad4b-7f13f92f034a.jpg"
     },
     {
+      "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/1/d83e9823-6f8b-4088-afca-6506e4ad45f0.jpg",
+      "SourceId": "WebApp.Gui",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/",
+      "BasePath": "_content/WebApp.Gui",
+      "RelativePath": "Images/Users/1/d83e9823-6f8b-4088-afca-6506e4ad45f0.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Images/Users/1/d83e9823-6f8b-4088-afca-6506e4ad45f0.jpg"
+    },
+    {
       "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/2/4b27b9e1-8e26-4f96-88c9-60b750ee2c31.jpg",
       "SourceId": "WebApp.Gui",
       "SourceType": "Discovered",
@@ -186,6 +224,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/Images/Users/2/4b27b9e1-8e26-4f96-88c9-60b750ee2c31.jpg"
+    },
+    {
+      "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/2/6f972abc-c332-4006-8f99-ad49356f36fb.jpg",
+      "SourceId": "WebApp.Gui",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/",
+      "BasePath": "_content/WebApp.Gui",
+      "RelativePath": "Images/Users/2/6f972abc-c332-4006-8f99-ad49356f36fb.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Images/Users/2/6f972abc-c332-4006-8f99-ad49356f36fb.jpg"
     },
     {
       "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/2/96c21d70-ee19-417a-984c-84b38110d2c2.jpg",
@@ -435,6 +492,25 @@
       "OriginalItemSpec": "wwwroot/Images/Users/8fc29092-dee2-4ae7-9650-fd9cf5a481f7/cee5515b-747b-44c4-aa89-db0a233e7174.jpg"
     },
     {
+      "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/a190028a-8a24-4ed2-864c-91f99718a4ec/797dc64b-85bd-45da-a8f9-e4dda9b92f60.png",
+      "SourceId": "WebApp.Gui",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/",
+      "BasePath": "_content/WebApp.Gui",
+      "RelativePath": "Images/Users/a190028a-8a24-4ed2-864c-91f99718a4ec/797dc64b-85bd-45da-a8f9-e4dda9b92f60.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Images/Users/a190028a-8a24-4ed2-864c-91f99718a4ec/797dc64b-85bd-45da-a8f9-e4dda9b92f60.png"
+    },
+    {
       "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/a2f3df6d-5ddf-4a83-b853-27ba0676a851/2cb53bf5-1e6e-4df9-9ae4-0074a535ec97.jpeg",
       "SourceId": "WebApp.Gui",
       "SourceType": "Discovered",
@@ -471,6 +547,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/Images/Users/aad2d676-4236-4f2f-8e61-f38b656156e3/85629b10-9890-41cc-82be-7f9118346363.png"
+    },
+    {
+      "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/dc2bc74f-34d1-4a0e-a5df-fe174c32cec0/10437e39-af2a-497f-96ff-df2daa516a30.webp",
+      "SourceId": "WebApp.Gui",
+      "SourceType": "Discovered",
+      "ContentRoot": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/",
+      "BasePath": "_content/WebApp.Gui",
+      "RelativePath": "Images/Users/dc2bc74f-34d1-4a0e-a5df-fe174c32cec0/10437e39-af2a-497f-96ff-df2daa516a30.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/Images/Users/dc2bc74f-34d1-4a0e-a5df-fe174c32cec0/10437e39-af2a-497f-96ff-df2daa516a30.webp"
     },
     {
       "Identity": "/Users/ledson/Desktop/dotnet_projects/Social_Network/Source/WebApp/WebApp.Gui/wwwroot/Images/Users/ea24de2d-4eec-43d7-a957-5f7bfbd8c16d/a27f8407-23c5-44ad-ab80-3952dc930224.png",

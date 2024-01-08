@@ -4,6 +4,7 @@
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @using static Core.Application.SessionHelper;
 @using Core.Application
+@using Core.Application.ViewModels.Partial
 @inject IHttpContextAccessor iHttpContext;
 @{
   var userSession = iHttpContext?.HttpContext?.Session.Get<UserProfileViewModel>("userProfile");
@@ -103,7 +104,7 @@
           }
           else
           {
-            <form method="post" asp-controller="Comment" asp-action="AddComment">
+            <form method="post" asp-controller="Comment" asp-action="AddComment" class="mb-4">
               <!-- Section  to write the comment -->
               <div class="mt-2">
                 <a class="mb-2 text-slate-900 text-sm">Comment as <span class="text-violet-700 text-sm hover:cursor-pointer hover:underline underline-offset-4">u/@userSession.UserName</span></a>
@@ -120,88 +121,23 @@
           }
         </div>
         <!-- COMMENTS -->
-        @foreach (var comment in Model.PostViewModel.Comments)
+        @if (Model.PostViewModel.Comments != null && Model.UserProfileViewModels != null)
         {
-          @foreach (var userProfile in Model.UserProfileViewModels)
+          @foreach (var comment in Model.PostViewModel.Comments)
           {
-            if (comment.UserId == userProfile.UserId)
+            @foreach (var userProfile in Model.UserProfileViewModels)
             {
-              <div class="mt-2 p-4 w-full flex flex-row">
-                <div class="w-10 mr-1 flex flex-col items-center justify-between">
-                  <!-- PFP -->
-                  <img src="~/@userProfile.ProfilePicturePath" alt=""
-                       class="w-8 h-8 object-cover rounded-full my-1"/>
-                  <div class="w-1 h-full border-l-2 border-gray-300"></div>
-                </div>
-                <div class="w-full flex flex-col">
-                  <div class="w-full">
-                    <!-- USERNAMNE AND TIME AGO-->
-                    <div class="flex flex-row justify-start items-center py-1">
-                      <div class="flex">
-                        <p class="text-xs font-semibold hover:cursor-pointer hover:underline underline-offset-4">
-                          U/@userProfile.UserName
-                        </p>
-                        <span class="text-xs text-gray-600">. 6 min. ago</span>
-                      </div>
-                    </div>
-                    <!-- DESCRIPTION -->
-                    <div class="px-2">
-                      <p class="text-sm text-slate-900 w-fit descriptionText">
-                        @comment.Description
-                      </p>
-                    </div>
-                    <!-- LIKES, RESPONDS, ETC -->
-                    <div class="flex flex-row mt-1">
-                      <!-- likes and dislike -->
-                      <div class="flex flex-row items-center rounded-full w-fit text-slate-700">
-                        <span class="mr-2">
-                          <a asp-controller="Likes" asp-action="Like" asp-route-commentId="@comment.Id">
-                            @{
-                              var postLikes = comment.Likes.Any(like => like.UserId == userSession?.Id && like.IsLike);
-                            }
-                            <i class="@(postLikes ? "ri-triangle-fill text-orange-600" : "ri-triangle-line")"></i>
-                          </a>
-                        </span>
-                        <p>@comment.Likes.Count</p>
-                        <span class="ml-2">
-                          @if (comment.Likes.Any(like => like.UserId == userSession?.Id && like.IsLike))
-                          {
-                            <div class="flex items-center justify-center text-gray-500">
-                              <a class="rotate-180" asp-controller="Likes" asp-action="Dislike"
-                                 asp-route-id="@comment.Likes.First(like => like.UserId == userSession?.Id).Id">
-                                <i class="ri-triangle-line rotate-180"></i>
-                              </a>
-                            </div>
-                          }
-                        </span>
-                      </div>
-                      <!-- REPLY -->
-                      <button href="#" class="flex flex-row items-center rounded-full w-fit ml-1 replyButton">
-                        <span class="p-1 text-slate-700 text-sm"><i class="ri-message-2-line"></i> Reply</span>
-                      </button>
-                      <!-- Share button -->
-                      <a href="#" class="flex flex-row items-center rounded-full w-fit ml-1">
-                        <span class="p-1">
-                          <p class="text-slate-700 text-sm">Share</p>
-                        </span>
-                      </a>
-                    </div>
+              if (comment.UserId == userProfile.UserId)
+              {
+                var commentPartialModel = new CommentPartialViewModel
+                {
+                  Comment = comment,
+                  UserProfile = userProfile,
+                  Comments = Model?.CommentViewModels,
+                };
 
-                    <!-- FORM TO SEND A REPLY -->
-                    <form method="post" class="hidden replyForm">
-                      <div class="mt-5 border rounded-sm">
-                        <textarea rows="4" class="!outline-none border-b w-full resize-none p-2 text-sm overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300"></textarea>
-                        <div class="w-full flex justify-end items-center p-1">
-                          <button type="button" class="px-2 text-blue-700 text-sm mr-2 cancelReplyButton">Cancel</button>
-                          <button type="submit" class="text-white py-1 px-4 bg-blue-700 rounded-full text-sm">Comment</button>
-                        </div>
-                      </div>
-                    </form>
-                    <!-- FORM TO SEND A REPLY -->
-                    
-                  </div>
-                </div>
-              </div>
+                @(await Html.PartialAsync("_CommentPartial", commentPartialModel))
+              }
             }
           }
         }

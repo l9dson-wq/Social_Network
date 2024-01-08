@@ -103,12 +103,13 @@ public class ApplicationContext : DbContext
       comment.ToTable("Comments");
 
       comment.HasKey(c => c.Id);
-      
-      comment.Property(c => c.ParentCommentId).IsRequired(false);
 
       comment.HasMany(c => c.Likes).WithOne(l => l.Comment).HasForeignKey(l => l.CommentId).OnDelete(DeleteBehavior.Cascade);
       comment.HasOne(c => c.ParentComment).WithMany(c => c.Replies).HasForeignKey(c => c.ParentCommentId)
         .OnDelete(DeleteBehavior.NoAction);
+      
+      comment.Property(c => c.ParentCommentId).IsRequired(false);
+      comment.Property(c => c.PostId).IsRequired(false);
     });
 
     //UserProfilePicture

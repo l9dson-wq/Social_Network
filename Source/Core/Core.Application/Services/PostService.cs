@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Core.Application.ViewModels.Comments;
 using Core.Application.ViewModels.Post;
 using Core.Domain;
 
@@ -6,12 +7,12 @@ namespace Core.Application;
 
 public class PostService : CommonService<SavePostViewModel, PostViewModel, Post>, IPostService
 {
-  private readonly IMapper _mapper;
+  private readonly IMapper _iMapper;
   private readonly IPostRepository _iPostRepository;
 
   public PostService(IMapper mapper, IPostRepository iPostRepository) : base(iPostRepository, mapper)
   {
-    _mapper = mapper;
+    _iMapper = mapper;
     _iPostRepository = iPostRepository;
   }
 
@@ -28,7 +29,7 @@ public class PostService : CommonService<SavePostViewModel, PostViewModel, Post>
       Reported = post.Reported,
       UserId = post.UserId,
       User = post.User,
-      Comments = post.Comments,
+      Comments = _iMapper.Map<List<CommentViewModel>>(post.Comments),
       Created = post.Created,
       LastModified = post.LastModified,
       RelativeDate = GetRelativeTime(post.Created),
@@ -52,7 +53,7 @@ public class PostService : CommonService<SavePostViewModel, PostViewModel, Post>
         postVm.Reported = post.Reported;
         postVm.UserId = post.UserId;
         postVm.User = post.User;
-        postVm.Comments = post.Comments;
+        postVm.Comments = _iMapper.Map<List<CommentViewModel>>(post.Comments);
         postVm.Created = post.Created;
         postVm.LastModified = post.LastModified;
         postVm.RelativeDate = GetRelativeTime(post.Created);

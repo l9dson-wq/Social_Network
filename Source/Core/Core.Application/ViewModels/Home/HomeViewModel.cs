@@ -11,6 +11,9 @@ public class HomeViewModel
     public UserProfileViewModel? UserProfileViewModel { get; set; }
     public SaveCommentViewModel? SaveCommentViewModel { get; set; }
     
+    // Situacionles donde tengo que usarlos para situaciones especificas
+    public string? ReplyDescription { get; set; }
+    
     // Lists
     public List<PostViewModel>? PostViewModels { get; set; }
     public List<UserProfileViewModel>? UserProfileViewModels { get; set; }

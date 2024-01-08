@@ -1,3 +1,4 @@
+using Core.Application.ViewModels.Comments;
 using Core.Domain;
 
 namespace Core.Application.ViewModels.Post;
@@ -13,7 +14,7 @@ public class PostViewModel
 
     public User User { get; set; }
     //Collections
-    public ICollection<Comment> Comments { get; set; }
+    public ICollection<CommentViewModel> Comments { get; set; }
     public ICollection<Like> Likes { get; set; }
     
     // Dates

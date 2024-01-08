@@ -63,14 +63,17 @@ public class PostController : Controller
   [Route("Post/ViewPost/{postId}")]
   public async Task<IActionResult> ViewPost(int postId)
   {
-    HomeViewModel homeViewModel = new HomeViewModel();
-
+    // almanceno la informacion que me retorna acerca del post que obtuvimos haciendo uso del "postId".
     var postInfo = await _iPostService.GetViewModelWithIncludeById(postId);
-    homeViewModel.PostViewModel = postInfo;
     
-    homeViewModel.UserProfileViewModel = await _iUserProfileService.GetViewModelWithInclude(postInfo.UserId);
-    homeViewModel.CommentViewModels = await _iCommentService.GetAllViewModelWithInclude();
-    homeViewModel.UserProfileViewModels = await _iUserProfileService.GetAllViewModelWithInclude();
+    // Cargando el modelo con los datos de usuarios, posts, comentarios y respuestas.
+    var homeViewModel = new HomeViewModel
+    {
+      PostViewModel = postInfo,
+      UserProfileViewModel = await _iUserProfileService.GetViewModelWithInclude(postInfo.UserId),
+      CommentViewModels = await _iCommentService.GetAllViewModelWithInclude(),
+      UserProfileViewModels = await _iUserProfileService.GetAllViewModelWithInclude(),
+    };
 
     return View(homeViewModel);
   }
