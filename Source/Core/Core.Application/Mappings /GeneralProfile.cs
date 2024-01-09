@@ -130,6 +130,7 @@ public class GeneralProfile : Profile
       .ForMember(dest => dest.UserProfile, opt => opt.Ignore())
       .ForMember(dest => dest.ParentCommentUsername, opt => opt.Ignore())
       .ForMember(dest => dest.Replies, opt => opt.Ignore())
+      .ForMember(dest => dest.LiteralDate, opt => opt.Ignore())
       .ReverseMap()
       .ForMember(dest => dest.Created, opt => opt.Ignore())
       .ForMember(dest => dest.CreatedBy, opt => opt.Ignore())

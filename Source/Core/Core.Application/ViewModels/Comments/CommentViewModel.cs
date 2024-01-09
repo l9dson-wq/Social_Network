@@ -20,4 +20,5 @@ public class CommentViewModel
   public UserProfileViewModel UserProfile { get; set; }
   public List<UserProfilePictureViewModel> UserProfilePictureViewModels { get; set; }
   public int? PrincipalPostCommentId { get; set; }
+  public string? LiteralDate { get; set; }
 }

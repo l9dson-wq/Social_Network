@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-  const maxLength = 100;
-  const descriptionTexts = document.querySelectorAll('.descriptionText');
+  const maxLength = 60;
+  const descriptionTexts = document.querySelectorAll('.descriptionTextReplies');
 
   descriptionTexts.forEach(descriptionText => {
     const originalText = descriptionText.textContent;

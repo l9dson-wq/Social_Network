@@ -44,8 +44,35 @@ public class CommentService : CommonService<SaveCommentViewModel, CommentViewMod
       ParentCommentUsername = comment.ParentComment?.User?.UserProfile?.UserName,
       UserProfile = userProfiles.FirstOrDefault(userProfile => userProfile.UserId == comment.UserId),
       PrincipalPostCommentId = comment.PrincipalPostCommentId,
+      LiteralDate = GetRelativeTime(comment.Created),
     }).ToList();
 
     return commentViewModels;
+  }
+  
+  private string GetRelativeTime(DateTime originalDateTime)
+  {
+    TimeSpan timeDifference = DateTime.Now - originalDateTime;
+
+    if (timeDifference.TotalSeconds < 60)
+    {
+      return $"about {Math.Round(timeDifference.TotalSeconds)} {(Math.Round(timeDifference.TotalSeconds) == 1 ? "second" : "seconds")} ago";
+    }
+    else if (timeDifference.TotalMinutes < 60)
+    {
+      return $"about {Math.Round(timeDifference.TotalMinutes)} {(Math.Round(timeDifference.TotalMinutes) == 1 ? "minute" : "minutes")} ago";
+    }
+    else if (timeDifference.TotalHours < 24)
+    {
+      return $"about {Math.Round(timeDifference.TotalHours)} {(Math.Round(timeDifference.TotalHours) == 1 ? "hour" : "hours")} ago";
+    }
+    else if (timeDifference.TotalDays < 7)
+    {
+      return $"about {Math.Round(timeDifference.TotalDays)} {(Math.Round(timeDifference.TotalDays) == 1 ? "day" : "days")} ago";
+    }
+    else
+    {
+      return originalDateTime.ToString("MM/dd/yyyy"); // If more than a week has passed, show the original date
+    }
   }
 }
