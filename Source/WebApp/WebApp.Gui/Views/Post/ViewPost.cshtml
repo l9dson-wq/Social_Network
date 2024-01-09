@@ -18,11 +18,34 @@
   
   <div class="mx-auto hidden min-[600px]:inline min-[1350px]:w-10/12 min-[1800px]:w-8/12 max-[1350px]:w-full py-2 px-1 min-[600px]:px-9 bg-black text-white">
     <!-- TOP CONTENT -->
-    <div class="flex flex-row justify-between sticky px-2">
+    <div class="flex flex-row justify-between sticky px-12">
       <!-- LIKES -->
 
       <!-- Title -->
       <div class="flex flex-row items-center">
+        <!-- Likes and dislikes -->
+        <div class="flex flex-row items-center px-2 w-fit border-x border-white text-white mx-2">
+          <span class="mr-2">
+            <a asp-controller="Likes" asp-action="Like" asp-route-postId="@Model.PostViewModel.Id">
+              @{
+                var postLikes = Model.PostViewModel.Likes.Any(like => like.UserId == userSession?.Id && like.IsLike);
+              }
+              <i class="@(postLikes ? "ri-triangle-fill text-orange-600" : "ri-triangle-line")"></i>
+            </a>
+          </span>
+          <p>@Model.PostViewModel.Likes.Count</p>
+          <span class="ml-2">
+            @if (Model.PostViewModel.Likes.Any(like => like.UserId == userSession?.Id && like.IsLike))
+            {
+              <div class="flex items-center justify-center">
+                <a class="rotate-180" asp-controller="Likes" asp-action="Dislike"
+                   asp-route-id="@Model.PostViewModel.Likes.First(like => like.UserId == userSession?.Id).Id">
+                  <i class="ri-triangle-fill text-white rotate-180"></i>
+                </a>
+              </div>
+            }
+          </span>
+        </div>
         <p class="font-semibold text-md">
           @(Model.PostViewModel.Title.Length > 50 ? @Model.PostViewModel.Title.Substring(0, 10) + "..." : @Model.PostViewModel.Title)
         </p>
@@ -34,11 +57,33 @@
     </div>
   </div>
 
-  <div class="mx-auto min-h-screen flex min-[950px]:px-10 min-[1350px]:px-36 min-[1350px]:w-10/12 min-[1800px]:w-8/12 max-[1350px]:w-full bg-slate-300">
+  <div class="mx-auto min-h-screen flex min-[950px]:px-10 min-[1350px]:px-20 min-[1350px]:w-10/12 min-[1800px]:w-8/12 max-[1350px]:w-full bg-slate-300">
 
     <!-- Left side content -->
-    <div class="w-full min-[950px]:w-[70%] mx-auto min-[950px]:p-4 h-fit pb-5">
-      <div class="bg-white min-[600px]:rounded-md max-[600px]:pt-8">
+    <div class="w-full flex min-[950px]:w-[90%] mx-auto min-[950px]:p-4 h-fit pb-5">
+      <div class="font-bold bg-white w-10 hidden min-[500px]:inline p-2">
+        <div class="">
+          <div class="flex items-center justify-center text-xl font-extrabold hover:bg-gray-200 text-gray-500">
+            <a asp-controller="Likes" asp-action="Like" asp-route-postId="@Model.PostViewModel.Id">
+              @{
+                var postLikes = Model.PostViewModel.Likes.Any(like => like.UserId == userSession?.Id && like.IsLike);
+              }
+              <i class="@(postLikes ? "ri-triangle-fill text-orange-600" : "ri-triangle-line")"></i>
+            </a>
+          </div>
+          <div class="flex items-center justify-center text-gray-500">@Model.PostViewModel.Likes.Count</div>
+          @if (Model.PostViewModel.Likes.Any(like => like.UserId == userSession?.Id && like.IsLike))
+          {
+            <div class="flex items-center justify-center text-xl font-extrabold hover:bg-gray-200 text-gray-500">
+              <a class="rotate-180" asp-controller="Likes" asp-action="Dislike"
+                 asp-route-id="@Model.PostViewModel.Likes.First(like => like.UserId == userSession?.Id).Id">
+                <i class="ri-triangle-line rotate-180"></i>
+              </a>
+            </div>
+          }
+        </div>
+      </div>
+      <div class="bg-white min-[600px]:rounded-sm max-[600px]:pt-8">
         <!-- pfp, forum's name, time ago, username, 3 dots -->
         <div class="p-2 flex flex-row">
           <img
@@ -48,7 +93,7 @@
             <div>
               <div class="flex flex-row items-center">
                 <p class="text-sm font-bold mr-2">Foro's name</p>
-                <span class="text-sm">@Model.PostViewModel.RelativeDate</span>
+                <span class="text-xs text-slate-700">@Model.PostViewModel.RelativeDate</span>
               </div>
               <p class="text-sm font-extralight">@Model.UserProfileViewModel.UserName</p>
             </div>
@@ -73,23 +118,36 @@
         <!-- Like and dislike count, comments count, share -->
         <div class="p-2 m-2 flex flex-row">
           <!-- likes and dislike -->
-          <div class="flex flex-row items-center bg-gray-200 px-2 rounded-full w-fit">
+          <div class="min-[500px]:hidden flex flex-row items-center px-2 w-fit mx-2">
             <span class="mr-2">
-              <i class="ri-arrow-up-fill text-xl"></i>
+              <a asp-controller="Likes" asp-action="Like" asp-route-postId="@Model.PostViewModel.Id">
+                @{
+                  var postLikes = Model.PostViewModel.Likes.Any(like => like.UserId == userSession?.Id && like.IsLike);
+                }
+                <i class="@(postLikes ? "ri-triangle-fill text-orange-600" : "ri-triangle-line")"></i>
+              </a>
             </span>
             <p>@Model.PostViewModel.Likes.Count</p>
             <span class="ml-2">
-              <i class="ri-arrow-down-fill text-xl"></i>
+              @if (Model.PostViewModel.Likes.Any(like => like.UserId == userSession?.Id && like.IsLike))
+              {
+                <div class="flex items-center justify-center">
+                  <a class="rotate-180" asp-controller="Likes" asp-action="Dislike"
+                     asp-route-id="@Model.PostViewModel.Likes.First(like => like.UserId == userSession?.Id).Id">
+                    <i class="ri-triangle-fill text-white rotate-180"></i>
+                  </a>
+                </div>
+              }
             </span>
           </div>
           <!-- Comments -->
-          <div class="flex flex-row bg-gray-200 items-center px-2 rounded-full w-fit ml-4">
+          <div class="flex flex-row items-center px-2 w-fit ml-4">
             <span class="p-1">
               <i class="ri-message-2-fill mr-2 text-xl"></i> @Model.PostViewModel.Comments.Count
             </span>
           </div>
           <!-- Share button -->
-          <div class="flex flex-row bg-gray-200 items-center px-2 rounded-full w-fit ml-4">
+          <div class="flex flex-row items-center px-2 w-fit ml-4">
             <span class="p-1">
               <i class="ri-share-2-line text-xl"></i>
             </span>
@@ -137,7 +195,9 @@
                   Comments = Model?.CommentViewModels,
                 };
 
-                @(await Html.PartialAsync("_CommentPartial", commentPartialModel))
+                <div class="mb-4">
+                  @(await Html.PartialAsync("_CommentPartial", commentPartialModel))
+                </div>
               }
             }
           }

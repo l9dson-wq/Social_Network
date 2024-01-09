@@ -7,4 +7,5 @@ public interface IUserProfileService : ICommonService<SaveUserProfileViewModel, 
   Task<List<UserProfileViewModel>> GetAllViewModelWithInclude();
   Task<UserProfileViewModel> Login(LoginViewModel loginViewModel);
   Task<UserProfileViewModel> GetViewModelWithInclude(int id);
+  Task<UserProfileViewModel> GetUserByUsername(string username);
 }

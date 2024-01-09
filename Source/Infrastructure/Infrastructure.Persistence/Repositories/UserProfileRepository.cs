@@ -23,7 +23,16 @@ public class UserProfileRepository : CommonRepository<UserProfile>, IUserProfile
   {
     string passwordEncrypt = PasswordEncryption.ComputeSha256Hash(loginViewModel.Password);
 
-    UserProfile userProfile = await _dbContext.Set<UserProfile>().FirstOrDefaultAsync(userProfile => userProfile.UserName == loginViewModel.Username && userProfile.Password == passwordEncrypt);
+    UserProfile userProfile = await _dbContext
+      .Set<UserProfile>()
+      .FirstOrDefaultAsync(userProfile => userProfile.UserName == loginViewModel.Username && userProfile.Password == passwordEncrypt);
+
+    return userProfile;
+  }
+
+  public async Task<UserProfile> GetUserByUsername(string username)
+  {
+    var userProfile = await _dbContext.Set<UserProfile>().FirstOrDefaultAsync(userPRofile => userPRofile.UserName == username);
 
     return userProfile;
   }

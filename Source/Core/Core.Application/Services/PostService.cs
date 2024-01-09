@@ -65,6 +65,27 @@ public class PostService : CommonService<SavePostViewModel, PostViewModel, Post>
 
     return new PostViewModel();
   }
+
+  public async Task<List<PostViewModel>> GetAllPostByUserId(int userId)
+  {
+    var posts = await _iPostRepository.GetAllWithIncludeAsync(new List<string> { "User", "Comments", "Likes" });
+
+    return posts.OrderByDescending(post => post.Created).Select(post => new PostViewModel()
+    {
+      Id = post.Id,
+      ImagePath = post.ImagePath,
+      Title = post.Title,
+      Description = post.Description,
+      Reported = post.Reported,
+      UserId = post.UserId,
+      User = post.User,
+      Comments = _iMapper.Map<List<CommentViewModel>>(post.Comments),
+      Created = post.Created,
+      LastModified = post.LastModified,
+      RelativeDate = GetRelativeTime(post.Created),
+      Likes = post.Likes.Where(like => like.IsLike == true).ToList(),
+    }).Where(post => post.UserId == userId).ToList();
+  }
   
   private string GetRelativeTime(DateTime originalDateTime)
   {

@@ -47,6 +47,7 @@ public class CommentController : Controller
     // almaceno la descripcion dependiendo de cual de mis ViewModels sea nulo el valor. 
     var replyDescription = homeViewModel.ReplyDescription ?? commentViewModel.SaveComment.Description;
     var UserId = _userProfileViewModel.Id;
+    var postId = commentViewModel.SaveComment.PostId;
     
     // Verifico si la respuesta es nula, si es asi regreso al usuario a la vista anterior sin enviar nada.
     if (string.IsNullOrEmpty(replyDescription))
@@ -62,7 +63,8 @@ public class CommentController : Controller
       Description = replyDescription,
       ParentCommentId = commentId,
       UserId = UserId,
-      PrincipalPostCommentId = principalCommentId
+      PrincipalPostCommentId = principalCommentId,
+      PostId = postId,
     };
     
     // Guardo la respusta

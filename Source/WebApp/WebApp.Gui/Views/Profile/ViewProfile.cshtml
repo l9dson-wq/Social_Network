@@ -1,0 +1,223 @@
+@model Core.Application.ViewModels.Home.HomeViewModel
+@using Microsoft.AspNetCore.Http;
+@using Core.Application;
+@inject IHttpContextAccessor iHttpContext;
+@{
+  UserProfileViewModel userSession = iHttpContext.HttpContext.Session.Get<UserProfileViewModel>("userProfile");
+}
+@{
+  ViewData["Title"] = "Profile";
+}
+
+<!-- TOP BAR -->
+<div class="bg-white w-full">
+  <div class="mx-auto min-[1250px]:px-36 min-[1350px]:w-10/12 min-[1800px]:w-8/12 max-[1350px]:w-full">
+    <div class="flex flex-row justify-start items-center">
+      <a href="#" class="ml-5 text-blue-600 border-b-2 border-blue-600 py-2 px-1">OVERVIEW</a>
+      <a href="#" class="ml-5 py-2 px-1">POSTS</a>
+      <a href="#" class="ml-5 py-2 px-1">COMMENTS</a>
+    </div>
+  </div>
+</div>
+<!-- TOP BAR -->
+
+<div class="flex flex-col items-center justify-center mx-auto w-full animate-fade">
+
+  <div class="flex min-[1250px]:px-36 items-stretch min-[1350px]:w-10/12 min-[1800px]:w-8/12 max-[1350px]:w-full">
+
+    <!-- Left side content -->
+    <div class="w-full min-[950px]:w-[70%] mx-auto min-[950px]:p-4 h-fit">
+      <div class="rounded-md">
+        <!-- OVERVIEW OF USER'S POSTS -->
+        @foreach (var post in Model.PostViewModels)
+        {
+          <div class="flex items-center justify-center mt-2">
+            <div class="w-full mx-auto">
+              <div
+                class="bg-white min-[600px]:rounded-md border box-border flex flex-col items-start w-full mx-auto hover:outline hover:outline-1 hover:outline-gray-500">
+                <div class="flex items-stretch justify-start flex-row w-full rounded-md">
+
+                  <!-- Likes and dislikes -->
+                  <div class="font-bold w-10 bg-slate-100 hidden min-[500px]:inline p-2">
+                    <div class="">
+                      <div class="flex items-center justify-center text-xl font-extrabold hover:bg-gray-200 text-gray-500">
+                        <a href="#">
+                          <i class="ri-triangle-line"></i>
+                        </a>
+                      </div>
+                      <div class="flex items-center justify-center text-gray-500">@post.Likes.Count</div>
+                      <div class="flex items-center justify-center text-xl font-extrabold hover:bg-gray-200 text-gray-500">
+                        <a class="rotate-180" href="#">
+                          <i class="ri-triangle-line"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-start justify-start flex-col w-full">
+                    <a href="#">
+                      <!-- USER PFP, USERNAME AND TIME AGO -->
+                      <div class="w-full flex items-center pl-2 pt-2">
+                        <img src="~/@Model.UserProfileViewModel.ProfilePicturePath" class="w-8 h-8 object-cover mr-2 rounded-full" alt="pfp"/>
+                        <p class="text-sm">
+                          Posted by <span class="font-bold">u/@Model.UserProfileViewModel.UserName</span>
+                          <span class="text-gray-400">
+                            @post.RelativeDate
+                          </span>
+                        </p>
+                      </div>
+                      <!-- TITLE AND DESCRIPTION -->
+                      <div class="w-full mt-2 mb-2 pl-1">
+                        <h4 class="mb-2 text-xl font-bold">@post.Title</h4>
+                        <p class="text-sm w-full pr-1">
+                          @post.Description
+                        </p>
+                      </div>
+                      <!-- POST'S IMAGE -->
+                      <div class="flex justify-center items-center">
+                        <img src="~/@post.ImagePath" class="w-fit" alt=""/>
+                      </div>
+                    </a>
+                    <!-- THIS IS THE DIV THAT CONTAINS COMMENTS, SHARE, SAVE AND OPTION LINKS -->
+                    <div class="w-full flex justify-start items-start flex-row font-bold border-t border-slate-100">
+                      <div class="w-fit flex flex-row">
+                        <div
+                          class="flex items-center hover:bg-gray-200 p-2 text-gray-500 hover:cursor-pointer text-sm min-[400px]:text-base"
+                          id="CommentsDiv">
+                          <i class="ri-message-2-line mr-1"></i>
+                          @(@post.Comments.Count == 0 ? "" : post.Comments.Count)
+                          Comments
+                        </div>
+                        <div class="p-2 text-sm min-[400px]:text-base text-gray-500 hover:bg-gray-200 hover:cursor-pointer">
+                          <a href="#">
+                            <i class="ri-share-forward-line mr-1">
+                            </i>Share
+                          </a>
+                        </div>
+                        <div class="p-2 text-gray-500 hidden min-[500px]:inline hover:bg-gray-200 hover:cursor-pointer">
+                          <a href="#">
+                            <i class="ri-bookmark-line mr-1"></i>
+                            Save
+                          </a>
+                        </div>
+                        <div class="hidden min-[500px]:flex items-center justify-center p-1 text-gray-500 hover:bg-gray-200 hover:cursor-pointer">
+                          <a href="#">
+                            <i class="ri-menu-3-line"></i>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                @*<div class="w-full h-fit border-b border-gray-500"></div>*@
+              </div>
+            </div>
+          </div>
+        }
+        <!-- OVERVIEW -->
+      </div>
+    </div>
+
+    <!-- RIGHT SIDE CONTENT -->
+    <div class="w-[40%] hidden min-[950px]:flex justify-start flex-1 self-stretch">
+      <div class="w-full pt-2 pr-2">
+
+        <!-- User's Card -->
+        <div class="w-80 pt-4 mx-auto animate-fade-down">
+          <div class="rounded-md bg-white static">
+            <!-- PROFILE PICTURE AND USERNAME -->
+            <div class="flex flex-col w-full text-center relative">
+              <!-- PROFILE BACKGROUND -->
+              <div class="bg-blue-300 flex flex-col justify-end items-end h-20 px-2 py-1">
+                @*<span class="hover:cursor-pointer text-white text-xl border border-white rounded-full px-2">+</span>*@
+              </div>
+              <img src="~/@Model.UserProfileViewModel.ProfilePicturePath" alt=""
+                   class="w-20 h-20 rounded-full mx-auto mb-2 absolute top-[5vh] inset-0"/>
+              <p class="text-2xl font-semibold mt-14">@Model.UserProfileViewModel.UserName</p>
+              <span class="text-xs text-gray-600 flex justify-center items-center">
+                u/@Model.UserProfileViewModel.UserName
+                <i class="ri-circle-fill mx-1 text-[10px]"></i>
+                3yr
+              </span>
+              @*<a href="#" class="mt-3 w-4/5 bg-orange-500 text-white rounded-full p-1 mx-auto mb-5 flex items-center">
+                <i class="ri-t-shirt-fill mr-12 ml-2"></i>
+                <span class="text-sm">Change Avatar</span>
+              </a>*@
+            </div>
+            <!-- POINST AND CAKE DAY -->
+            <div class="w-full flex justify-between px-10">
+              <div>
+                <p class="font-medium">Karma</p>
+                <div class="flex justify-center items-center">
+                  <i class="ri-bubble-chart-line mr-1 text-blue-600"></i>
+                  <p class="text-sm text-gray-700">3</p>
+                </div>
+              </div>
+              <div>
+                <p class="font-medium">Cake day</p>
+                <div class="flex justify-center items-center">
+                  <i class="ri-cake-line mr-1 text-blue-600"></i>
+                  <p class="text-sm text-gray-700">May 28, 2021</p>
+                </div>
+              </div>
+            </div>
+            <!-- ADD SOCIAL LINK -->
+            @*<div class="flex mt-5 pb-5 w-full">
+              <div class="w-full p-2">
+                <a href="#" class="bg-gray-200 text-black text-sm px-4 py-1 rounded-full flex w-fit items-center">
+                  <i class="ri-add-line text-2xl font-light"></i>
+                  <span>Follow</span>
+                </a>
+              </div>
+            </div>*@
+            <!-- ADD SOCIAL LINK -->
+            <!-- New Post -->
+            <div class="flex w-full p-5 mx-auto">
+              <div class="flex justify-center items-center mr-1 flex-1">
+                <a asp-controller="Post" asp-action="Index"
+                   class="w-full text-center bg-blue-500 text-white px-4 py-2 font-semibold text-sm rounded-full">
+                  Follow
+                </a>
+              </div>
+              <div class="flex justify-center items-center flex-1">
+                <a asp-controller="Post" asp-action="Index"
+                   class="w-full text-center bg-blue-500 text-white px-4 py-2 font-semibold text-sm rounded-full">
+                  Chat
+                </a>
+              </div>
+            </div>
+            <!-- New Post -->
+            <!-- More Options -->
+            <div class=" w-full">
+              <div class="flex justify-end items-end px-4 pb-4">
+                <a href="#" class="text-sm font-semibold text-blue-500">More Options</a>
+              </div>
+            </div>
+            <!-- More Options -->
+          </div>
+
+        </div>
+        <!-- User's Card -->
+
+        <!-- USER INFORMATION -->
+        <div class="w-80 pt-4 mx-auto animate-fade-down mt-2">
+          <!-- TROPHY CASE -->
+          <div class="rounded-md bg-white static p-4">
+            <div class="w-full flex justify-start items-start">
+              <p class="text-sm font-semibold">Trophy Case (1)</p>
+            </div>
+            <div class="w-full flex justify-start items-start mt-4">
+              <div class="w-full flex flex-row justify-start items-start">
+                <img src="https://www.redditstatic.com/awards2/2_year_club-40.png" class="rounded-md w-10 mr-2" alt="">
+                <p class="text-sm">Two-Years Club</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

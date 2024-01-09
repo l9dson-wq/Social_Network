@@ -15,7 +15,7 @@
 {
   foreach (var comment in Model.Comments)
   {
-    if (comment.Id == Model.Comment.Id)
+    if (comment.Id == Model.Comment.Id && comment?.ParentComment == null)
     {
       <div class="w-full flex flex-row px-4">
 
@@ -97,6 +97,7 @@
                   asp-route-commentId="@Model.Comment.Id">
               <div class="mt-5 border rounded-sm">
                 <input type="hidden" asp-for="@Model.SaveComment.UserId" value="@userSession?.Id">
+                <input type="hidden" asp-for="@Model.SaveComment.PostId" value="@Model.Comment.PostId">
                 <textarea asp-for="@Model.SaveComment.Description" rows="4" 
                   class="!outline-none border-b w-full resize-none p-2 text-sm overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300"></textarea>
                 <div class="w-full flex justify-end items-center p-1">
@@ -113,13 +114,12 @@
           @if (comment.Replies != null && comment.Replies.Any())
           {
             <div class="replies-container hidden">
-              @foreach (var reply in comment?.Replies)
-              {
-                foreach (var newComment in Model.Comments)
+                @foreach (var newComment in Model.Comments)
                 {
                   if (comment.Id == newComment.PrincipalPostCommentId)
                   {
-                    <div class="w-full flex flex-row my-5">
+                    <!-- REPLIES -->
+                    <div class="w-full flex flex-row commentsInside">
                       <!-- PFP -->
                       <div class="w-fit mr-1 flex flex-col items-center justify-between">
                         <img src="~/@newComment.UserProfile.ProfilePicturePath" alt=""
@@ -199,6 +199,7 @@
                               asp-route-commentId="@newComment.Id">
                           <div class="mt-5 border rounded-sm">
                             <input type="hidden" asp-for="@Model.SaveComment.UserId" value="@userSession?.Id">
+                            <input type="hidden" asp-for="@Model.SaveComment.PostId" value="@Model.Comment.PostId">
                             <textarea asp-for="@Model.SaveComment.Description" rows="4" 
                                       class="!outline-none border-b w-full resize-none p-2 text-sm overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300"></textarea>
                             <div class="w-full flex justify-end items-center p-1">
@@ -213,7 +214,6 @@
                     </div>
                   }
                 }
-              }
             </div>
           }
         </div>

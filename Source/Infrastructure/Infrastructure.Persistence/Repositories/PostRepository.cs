@@ -1,5 +1,6 @@
 ﻿using Core.Application;
 using Core.Domain;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Persistence;
 

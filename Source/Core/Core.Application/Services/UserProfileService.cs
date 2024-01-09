@@ -24,6 +24,15 @@ public class UserProfileService : CommonService<SaveUserProfileViewModel, UserPr
     return userProfileViewModel;
   }
 
+  public async Task<UserProfileViewModel> GetUserByUsername(string username)
+  {
+    var userProfile = await _iUserProfileRepository.GetUserByUsername(username);
+
+    UserProfileViewModel userProfileViewModel = _iMapper.Map<UserProfileViewModel>(userProfile);
+
+    return userProfileViewModel;
+  }
+
   public async Task<List<UserProfileViewModel>> GetAllViewModelWithInclude()
   {
     List<UserProfile> users =

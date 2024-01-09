@@ -40,4 +40,19 @@ public class ProfileController : Controller
       
     return View(homeViewModel);
   }
+
+  [HttpGet]
+  [Route("Profile/{userName}")]
+  public async Task<IActionResult> ViewProfile(string username)
+  {
+    var userProfileVm = await _iUserProfileService.GetUserByUsername(username);
+    
+    var homeViewModel = new HomeViewModel()
+    {
+      UserProfileViewModel = await _iUserProfileService.GetViewModelWithInclude(userProfileVm.Id),
+      PostViewModels = await _iPostService.GetAllPostByUserId(userProfileVm.UserId),
+    };
+    
+    return View("ViewProfile", homeViewModel);
+  }
 }

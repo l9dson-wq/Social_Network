@@ -190,7 +190,10 @@
                           <div class="w-full flex items-center pl-2 pt-2">
                             <img src="@userProfile.ProfilePicturePath" class="w-8 h-8 object-cover mr-2 rounded-full" alt="pfp"/>
                             <p class="text-sm">
-                              <span class="text-gray-700 text-xs">Posted by</span> <a href="#" class="font-bold hover:cursor-pointer hover:underline underline-offset-4">u/@userProfile.UserName</a>
+                              <span class="text-gray-700 text-xs">
+                                Posted by
+                              </span> 
+                              <a asp-controller="Profile" asp-action="ViewProfile" asp-route-username="@userProfile.UserName" class="font-bold hover:cursor-pointer hover:underline underline-offset-4">u/@userProfile.UserName</a>
                               <span class="text-gray-700 text-xs">
                                 @post.RelativeDate
                               </span>
